@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 11 Regresión y correlación lineal | “Compendio didáctico para el uso de R en el curso de Estadística”</title>
+  <meta name="description" content="Capítulo 11 Regresión y correlación lineal | “Compendio didáctico para el uso de R en el curso de Estadística”" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 11 Regresión y correlación lineal | “Compendio didáctico para el uso de R en el curso de Estadística”" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 11 Regresión y correlación lineal | “Compendio didáctico para el uso de R en el curso de Estadística”" />
+  
+  
+  
+
+<meta name="author" content="M.Sc. Esteban Ballestero Alfaro" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="prueba-de-analisis-de-varianza-anova.html"/>
+<link rel="next" href="regresión-no-lineal-simple.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
+<li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#simulaci%C3%B3n-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulación de Intervalos de Confianza</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulación: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#intervalos-de-confianza-para-el-par%C3%A1meto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parámeto p</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#m%C3%A9todo-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#m%C3%A9todo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Método de Wilson</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#m%C3%A9todo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Método de Laplace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#intervalo-de-confianza-para-la-varianza-de-una-poblaci%C3%B3n-normal"><i class="fa fa-check"></i><b>2.3</b> Intervalo de confianza para la varianza de una población normal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html"><i class="fa fa-check"></i><b>3</b> II Parte: Casos con dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-promedios"><i class="fa fa-check"></i><b>3.1</b> Diferencia de Promedios</a></li>
+<li class="chapter" data-level="3.2" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#cociente-de-varianzas"><i class="fa fa-check"></i><b>3.2</b> Cociente de varianzas</a></li>
+<li class="chapter" data-level="3.3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.3</b> Diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#pruebas-de-hip%C3%B3tesis-para-una-poblaci%C3%B3n"><i class="fa fa-check"></i><b>4</b> Pruebas de hipótesis para una población</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipótesis para Micro</a></li>
+<li class="chapter" data-level="4.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipótesis para p</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#muestas-peque%C3%B1as"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipótesis-para-una-población.html"><a href="pruebas-de-hipótesis-para-una-población.html"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipótesis para sigma de una variable aleatoria con comportamiento normal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#pruebas-de-hip%C3%B3tesis-para-dos-poblaciones"><i class="fa fa-check"></i><b>5</b> Pruebas de hipótesis para dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="pruebas-de-hipótesis-para-dos-poblaciones.html"><a href="pruebas-de-hipótesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipótesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#contraste-para-dos-medias-independientes-en-r-funci%C3%B3n-t.test"><i class="fa fa-check"></i><b>5.2.2</b> Contraste para dos medias independientes en R: función t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
+<li class="chapter" data-level="5.4" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#prueba-de-hip%C3%B3tesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipótesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#una-visi%C3%B3n-gr%C3%A1fica-de-las-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>6</b> Una visión gráfica de las pruebas de hipótesis</a></li>
+<li class="chapter" data-level="7" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipótesis</a></li>
+<li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#visualizaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test"><i class="fa fa-check"></i><b>8.2.2</b> Test de normalidad de Anderson-Darling o A-D test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test"><i class="fa fa-check"></i><b>8.2.3</b> Test de Shapiro-Wilks o S-W test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson"><i class="fa fa-check"></i><b>8.2.4</b> Test omnibus de D’Agostino-Pearson</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prueba-de-independencia.html"><a href="prueba-de-independencia.html"><i class="fa fa-check"></i><b>9</b> Prueba de Independencia</a></li>
+<li class="chapter" data-level="10" data-path="prueba-de-analisis-de-varianza-anova.html"><a href="prueba-de-analisis-de-varianza-anova.html"><i class="fa fa-check"></i><b>10</b> Prueba de Analisis de Varianza (ANOVA)</a></li>
+<li class="chapter" data-level="11" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#regresi%C3%B3n-y-correlaci%C3%B3n-lineal"><i class="fa fa-check"></i><b>11</b> Regresión y correlación lineal</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#generando-el-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresión</a></li>
+<li class="chapter" data-level="11.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#coeficientes-de-determinaci%C3%B3n-y-correlaci%C3%B3n"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlación</a></li>
+<li class="chapter" data-level="11.3" data-path="regresión-y-correlación-lineal.html"><a href="regresión-y-correlación-lineal.html"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
+<li class="chapter" data-level="11.4" data-path="regresión-y-correlación-lineal.html"><a href="regresión-y-correlación-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
+<li class="chapter" data-level="11.5" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#intervalo-de-confianza-y-predicci%C3%B3n"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y predicción</a></li>
+<li class="chapter" data-level="11.6" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#constraste-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipótesis</a></li>
+<li class="chapter" data-level="11.7" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#comprobaci%C3%B3n-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobación de las variabilidades presentes</a></li>
+<li class="chapter" data-level="11.8" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#cuidado-con-el-coeficiente-de-correlaci%C3%B3n-y-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlación y de determinación</a></li>
+<li class="chapter" data-level="11.9" data-path="regresión-y-correlación-lineal.html"><a href="regresión-y-correlación-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#regresi%C3%B3n-no-lineal-simple"><i class="fa fa-check"></i><b>12</b> Regresión no lineal simple</a></li>
+<li class="chapter" data-level="13" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>13</b> Regresión lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#regresi%C3%B3n-lineal-m%C3%BAltiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresión Lineal Múltiple (RLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#regresi%C3%B3n-no-lineal-m%C3%BAltiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Múltiple (RNLM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto"><i class="fa fa-check"></i>Especificaciones del proyecto</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#i-parte-explicaci%C3%B3n-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicación de los datos</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#ii-parte-an%C3%A1lisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Análisis Inferencial (IC)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iii-parte-an%C3%A1lisis-inferencial-pruebas-de-hip%C3%B3tesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Análisis Inferencial (pruebas de hipótesis de una y dos poblaciones)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iv-parte-an%C3%A1lisis-inferencial-otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i>IV Parte: Análisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#v-parte-an%C3%A1lisis-de-regresi%C3%B3n"><i class="fa fa-check"></i>V Parte: : Análisis de regresión</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#iii-parte-an%C3%A1lisis-inferencial-pruebas-de-hip%C3%B3tesis-de-una-y-dos-poblaciones-1"><i class="fa fa-check"></i>III parte: Análisis Inferencial (pruebas de hipótesis de una y dos poblaciones)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#espesificaciones-del-proyecto-fase-iii"><i class="fa fa-check"></i>Espesificaciones del proyecto Fase III</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#i-parte-otras-pruebas-de-hip%C3%B3tesis-en-r"><i class="fa fa-check"></i>I Parte: Otras pruebas de hipótesis en R</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-1"><i class="fa fa-check"></i>Caso 1</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-2"><i class="fa fa-check"></i>Caso 2</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-3"><i class="fa fa-check"></i>Caso 3</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-4"><i class="fa fa-check"></i>Caso 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#ii-parte-modelos-de-regresi%C3%B3n-lineal"><i class="fa fa-check"></i>II Parte: Modelos de regresión lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-5"><i class="fa fa-check"></i>Caso 5</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-6"><i class="fa fa-check"></i>Caso 6</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#generaci%C3%B3n-de-los-modelos"><i class="fa fa-check"></i>Generación de los modelos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#seleccionando-el-mejor-modelo"><i class="fa fa-check"></i>Seleccionando el mejor modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#iii-parte-modelos-de-regresi%C3%B3n-no-lineal"><i class="fa fa-check"></i>III PARTE: Modelos de regresión no lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-7"><i class="fa fa-check"></i>Caso 7</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n-iii-parcial-de-estad%C3%ADstica"><i class="fa fa-check"></i>Solución III Parcial de Estadística</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-0-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-1-regresi%C3%B3n-lineal-m%C3%BAltiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresión lineal múltiple con todas las variables</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
+<li class="chapter" data-level="13.2.1" data-path="chapters/07-RegresionCorrelacionLineal.html"><a href="#modelo-3-regresi%C3%B3n-no-lineal-m%C3%BAltiple-con-interacci%C3%B3n"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresión no Lineal Múltiple (Con Interacción)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">“Compendio didáctico para el uso de R en el curso de Estadística”</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresión-y-correlación-lineal" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Capítulo 11</span> Regresión y correlación lineal<a href="#regresi%C3%B3n-y-correlaci%C3%B3n-lineal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Cómo se ha estudado durante las clases, es importante comprender la diferencia entre lo que es regresión y correlación:</p>
+<ul>
+<li><p>Regresión lineal: donde una variable (exploratoria) es utilizada para predecir los valores de la otra variable (respuesta).</p></li>
+<li><p>Correlación: donde se mide la intensidad de la relación lineal entre las variables.</p></li>
+</ul>
+<p>En este material, vamos a conocer algunas herramientas que ofrece R a sus usuarios para el trabajo, tanto de la <strong>Regresión Lineal Simple</strong>, el caso en una variable, como de la Correlación.</p>
+<p>Seguidamente, los paquetes que vamos a utilizar:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="regresión-y-correlación-lineal.html#cb125-1" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb125-2"><a href="regresión-y-correlación-lineal.html#cb125-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb125-3"><a href="regresión-y-correlación-lineal.html#cb125-3" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb125-4"><a href="regresión-y-correlación-lineal.html#cb125-4" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code></pre></div>
+<pre><code>## corrplot 0.94 loaded</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="regresión-y-correlación-lineal.html#cb127-1" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
+<span id="cb127-2"><a href="regresión-y-correlación-lineal.html#cb127-2" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span></code></pre></div>
+<div id="generando-el-modelo-de-regresión" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Generando el modelo de regresión<a href="#generando-el-modelo-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Ejemplo 1</strong></p>
+<p>En un experimento donde se quería estudiar la asociación entre consumo de sal y presión arterial, se asignó aleatoriamente a algunos individuos una cantidad diaria constante de sal en su dieta, y al cabo de un mes se les midió la presión arterial media.</p>
+<p>Algunos resultados fueron los siguientes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(X\)</span>(sal en g)</th>
+<th align="center"><span class="math inline">\(Y\)</span>(presión en mm de Hg)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.8</td>
+<td align="center">100</td>
+</tr>
+<tr class="even">
+<td align="center">2.2</td>
+<td align="center">98</td>
+</tr>
+<tr class="odd">
+<td align="center">3.5</td>
+<td align="center">110</td>
+</tr>
+<tr class="even">
+<td align="center">4.0</td>
+<td align="center">110</td>
+</tr>
+<tr class="odd">
+<td align="center">4.3</td>
+<td align="center">112</td>
+</tr>
+<tr class="even">
+<td align="center">5.0</td>
+<td align="center">120</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos a hallar la recta de regresión lineal por mínimos cuadrados de <span class="math inline">\(Y\)</span> en función de <span class="math inline">\(X\)</span>, usando la función <code>lm</code> que calcula el ajuste lineal usando la técnica de mínimos cuadrados:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="regresión-y-correlación-lineal.html#cb128-1" tabindex="-1"></a><span class="co"># Creamos la tabla de valores</span></span>
+<span id="cb128-2"><a href="regresión-y-correlación-lineal.html#cb128-2" tabindex="-1"></a>sal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.8</span>, <span class="fl">2.2</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">4.3</span>, <span class="fl">5.0</span>) <span class="co"># vector datos de sal</span></span>
+<span id="cb128-3"><a href="regresión-y-correlación-lineal.html#cb128-3" tabindex="-1"></a>tension <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">98</span>, <span class="dv">110</span>, <span class="dv">110</span>, <span class="dv">112</span>, <span class="dv">120</span>) <span class="co"># vector de datos de presión</span></span>
+<span id="cb128-4"><a href="regresión-y-correlación-lineal.html#cb128-4" tabindex="-1"></a>datos.sal <span class="ot">&lt;-</span> <span class="fu">cbind</span>(sal, tension) <span class="co"># se juntan las columnas</span></span>
+<span id="cb128-5"><a href="regresión-y-correlación-lineal.html#cb128-5" tabindex="-1"></a>datos.sal.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(datos.sal) <span class="co"># se crea un objeto dataframe</span></span>
+<span id="cb128-6"><a href="regresión-y-correlación-lineal.html#cb128-6" tabindex="-1"></a><span class="fu">names</span>(datos.sal.df) <span class="co"># verificamos los nombres de las columnas</span></span></code></pre></div>
+<pre><code>## [1] &quot;sal&quot;     &quot;tension&quot;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="regresión-y-correlación-lineal.html#cb130-1" tabindex="-1"></a><span class="co"># Se crea un gráfico de dispersión para ver de manera exporatoria los datos</span></span>
+<span id="cb130-2"><a href="regresión-y-correlación-lineal.html#cb130-2" tabindex="-1"></a>gsal <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(datos.sal.df, <span class="fu">aes</span>(sal, tension))</span>
+<span id="cb130-3"><a href="regresión-y-correlación-lineal.html#cb130-3" tabindex="-1"></a>gsal <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="regresión-y-correlación-lineal.html#cb132-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(tension <span class="sc">~</span> sal, <span class="at">data =</span> datos.sal.df)</span>
+<span id="cb132-2"><a href="regresión-y-correlación-lineal.html#cb132-2" tabindex="-1"></a>modelo</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = tension ~ sal, data = datos.sal.df)
+## 
+## Coefficients:
+## (Intercept)          sal  
+##      86.371        6.335</code></pre>
+<p>Por tanto, el modelo de RLS para los datos sería <span class="math inline">\(\text{tension} = 86.371 + 6.335 \cdot sal\)</span></p>
+</div>
+<div id="coeficientes-de-determinación-y-correlación" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Coeficientes de determinación y correlación<a href="#coeficientes-de-determinaci%C3%B3n-y-correlaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para medir la calidad del modelo, hacemos uso del <strong>Coeficiente de correlarción</strong> y el
+<strong>Coeficiente de determinación</strong>, haciendo uso nuevamente de la función <code>lm</code> y la
+herramienta <code>summary</code> junto con el parámetro <code>r.squared</code>.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="regresión-y-correlación-lineal.html#cb134-1" tabindex="-1"></a><span class="do">## Coeficiente de determinación</span></span>
+<span id="cb134-2"><a href="regresión-y-correlación-lineal.html#cb134-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(tension <span class="sc">~</span> sal))<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.9343685</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="regresión-y-correlación-lineal.html#cb136-1" tabindex="-1"></a><span class="do">## Coeficiente de correlación</span></span>
+<span id="cb136-2"><a href="regresión-y-correlación-lineal.html#cb136-2" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">summary</span>(<span class="fu">lm</span>(tension <span class="sc">~</span> sal))<span class="sc">$</span>r.squared)</span></code></pre></div>
+<pre><code>## [1] 0.9666274</code></pre>
+<p>En el caso anterior se puede indicar que, como $R = 0.9666274 $ la correlación lineal
+entre los datos consumo de sal y presión es fuerte y positiva. Por otra parte como <span class="math inline">\(R^2 = 0.9343685\)</span>, se interpreta que el <span class="math inline">\(93.44\%\)</span> de la variación en la presión arterial, se debe a la variación en el consumo de sal, el restante <span class="math inline">\(6.56\%\)</span> se debe a otros factores.</p>
+<p>Otra forma de calcular las correlaciones, se presentan en los siguientes chunks:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="regresión-y-correlación-lineal.html#cb138-1" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">cor</span>(datos.sal)</span>
+<span id="cb138-2"><a href="regresión-y-correlación-lineal.html#cb138-2" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>##               sal   tension
+## sal     1.0000000 0.9666274
+## tension 0.9666274 1.0000000</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="regresión-y-correlación-lineal.html#cb140-1" tabindex="-1"></a><span class="co"># Se toma solo la celda que contiene la correlación de interés</span></span>
+<span id="cb140-2"><a href="regresión-y-correlación-lineal.html#cb140-2" tabindex="-1"></a>c[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 0.9666274</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="regresión-y-correlación-lineal.html#cb142-1" tabindex="-1"></a>c[<span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 0.9666274</code></pre>
+<p>Note que la función corgenera una matriz de correlaciones, que en este caso los valores de la diagonal no tienen sentido, porque al ser la relación entre cada variable consigomisma, esta siempre es 1, es perfecta. La matriz resulta más interesante cuando tenemos más variables para comparar en nuestra base de datos, pero en este caso solo tenemos dos.</p>
+<p>Note que las celdas <code>c[1,2]</code> y <code>c[2,1]</code> tienen el mismo resultado para la correlación, esto se debe a lo estudiado en clase donde este estadístico nos indica el grado o fuerza de dependencia lineal entre las variables, pero no discrimina entre variables respuesta o exploratoria, así la correlación de <span class="math inline">\(X\)</span> con <span class="math inline">\(Y\)</span>, es igual a la correlación de <span class="math inline">\(Y\)</span> con <span class="math inline">\(X\)</span>.</p>
+<p>Existen versiones gráficas que permiten ver de forma visual las correlaciones:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="regresión-y-correlación-lineal.html#cb144-1" tabindex="-1"></a><span class="fu">corrplot</span>(c) <span class="co"># cargue el paquete corrplot</span></span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="regresión-y-correlación-lineal.html#cb145-1" tabindex="-1"></a><span class="fu">ggcorrplot</span>(c)</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
+<p>Desde luego, que estas herramientas resultan más interesantes cuando se trata de ver correlaciones entre más combinaciones de casos.</p>
+<p>Al final de este documento, a manera de ejemplo, se mostrará un ejemplo como complemento para el lector.</p>
+<p>Seguidamente, graficamos los puntos junto con el modelo de Regresión Lineal Simple que encontramos:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="regresión-y-correlación-lineal.html#cb146-1" tabindex="-1"></a>gsal <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb146-2"><a href="regresión-y-correlación-lineal.html#cb146-2" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>La función geom_smooth con la opción para el parámetro<code>method = "lm"</code> dibuja por defecto una franja sombreada alrededor de la recta de ajuste que representa el IC de <span class="math inline">\(95%\)</span> para el modelo (corresponde al IC para <span class="math inline">\(\mu_{y|x_0}\)</span>), no obstante, este IC puede ser modificado a preferencia del usuario mediante el parámetro level. A manera de ejemplo, se vuelve a realizar el gráfico anterior, pero usando respectivamente un IC de <span class="math inline">\(90\%\)</span> y de <span class="math inline">\(99\%\)</span>:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regresión-y-correlación-lineal.html#cb149-1" tabindex="-1"></a>gsal <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb149-2"><a href="regresión-y-correlación-lineal.html#cb149-2" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">level =</span> <span class="fl">0.90</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regresión-y-correlación-lineal.html#cb152-1" tabindex="-1"></a>gsal <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb152-2"><a href="regresión-y-correlación-lineal.html#cb152-2" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+<div id="prueba-para-los-residuos" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Prueba para los residuos<a href="regresión-y-correlación-lineal.html#prueba-para-los-residuos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uno de los principios que debe cumplir un grupo de datos para ser sujeta a ajustarse de forma lineal, es que la distribución de sus errores o residuos se comporten de manera normal. Seguidamente se hará una prueba de normalidad para estos residuos.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="regresión-y-correlación-lineal.html#cb155-1" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fl">86.371</span></span>
+<span id="cb155-2"><a href="regresión-y-correlación-lineal.html#cb155-2" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fl">6.335</span></span>
+<span id="cb155-3"><a href="regresión-y-correlación-lineal.html#cb155-3" tabindex="-1"></a></span>
+<span id="cb155-4"><a href="regresión-y-correlación-lineal.html#cb155-4" tabindex="-1"></a>tension.estimada <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>datos.sal.df<span class="sc">$</span>sal</span>
+<span id="cb155-5"><a href="regresión-y-correlación-lineal.html#cb155-5" tabindex="-1"></a>errores <span class="ot">&lt;-</span> tension.estimada <span class="sc">-</span> datos.sal.df<span class="sc">$</span>tension</span>
+<span id="cb155-6"><a href="regresión-y-correlación-lineal.html#cb155-6" tabindex="-1"></a><span class="fu">lillie.test</span>(errores)</span></code></pre></div>
+<pre><code>## 
+##  Lilliefors (Kolmogorov-Smirnov) normality test
+## 
+## data:  errores
+## D = 0.2803, p-value = 0.147</code></pre>
+<p>Como <span class="math inline">\(P - \text{valor}\)</span> es grande, no existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span>, por tanto se puede asumir normalidad para dichos errores, por lo que se cumpliría el principio.</p>
+</div>
+<div id="intervalos-de-confianza-para-la-pendiente-y-el-intercepto" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Intervalos de confianza para la pendiente y el intercepto<a href="regresión-y-correlación-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para hallar los intervalos de confianza de los parámetros <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> en <span class="math inline">\(R\)</span> hay que aplicar
+la función confint al objeto <code>lm(...)</code>. El parámetro level nos da el nivel de confianza cuyo valor por defecto es <span class="math inline">\(\textbf{0.95}\)</span>.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="regresión-y-correlación-lineal.html#cb157-1" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">lm</span>(datos.sal.df<span class="sc">$</span>tension <span class="sc">~</span> datos.sal.df<span class="sc">$</span>sal),<span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##                      2.5 %    97.5 %
+## (Intercept)      77.869064 94.872509
+## datos.sal.df$sal  4.004434  8.666266</code></pre>
+</div>
+<div id="intervalo-de-confianza-y-predicción" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Intervalo de confianza y predicción<a href="#intervalo-de-confianza-y-predicci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>También se estudió en clases el cáclulo del Intervalo de Confianza para <span class="math inline">\(\mu_{Y|x=x_0}\)</span>, es decir, un IC para la media de los valores <span class="math inline">\(Y\)</span> que se pueden generar para un valor fijo de <span class="math inline">\(x = x_0\)</span>. Para realizar dichos cálculo en <span class="math inline">\(R\)</span> se utilizará la función <code>predict.lm</code> del paquete stats.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="regresión-y-correlación-lineal.html#cb159-1" tabindex="-1"></a><span class="co"># Para un dato</span></span>
+<span id="cb159-2"><a href="regresión-y-correlación-lineal.html#cb159-2" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sal =</span> <span class="fl">4.5</span>)</span>
+<span id="cb159-3"><a href="regresión-y-correlación-lineal.html#cb159-3" tabindex="-1"></a><span class="fu">predict.lm</span>(modelo, x0, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 114.8799 111.3041 118.4556</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="regresión-y-correlación-lineal.html#cb161-1" tabindex="-1"></a><span class="co"># Para una lista de datos</span></span>
+<span id="cb161-2"><a href="regresión-y-correlación-lineal.html#cb161-2" tabindex="-1"></a>x0s <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">sal =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">3.1</span>, <span class="fl">2.35</span>))</span>
+<span id="cb161-3"><a href="regresión-y-correlación-lineal.html#cb161-3" tabindex="-1"></a><span class="fu">predict.lm</span>(modelo, x0s, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##        fit       lwr      upr
+## 1 114.8799 111.30410 118.4556
+## 2 106.0104 103.23276 108.7880
+## 3 101.2589  97.54948 104.9682</code></pre>
+<p>Si se toma una persona al azar que consume una cantidad definida de sal, también podemos calcular un Intervalo de Predicción para el dato correspondiente a la presión, haciendo <code>interval = “prediction”</code> como se muestra en el siguiente código:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="regresión-y-correlación-lineal.html#cb163-1" tabindex="-1"></a><span class="co"># Para un dato</span></span>
+<span id="cb163-2"><a href="regresión-y-correlación-lineal.html#cb163-2" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sal =</span> <span class="fl">4.5</span>)</span>
+<span id="cb163-3"><a href="regresión-y-correlación-lineal.html#cb163-3" tabindex="-1"></a><span class="fu">predict.lm</span>(modelo, x0, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 114.8799 107.4843 122.2754</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="regresión-y-correlación-lineal.html#cb165-1" tabindex="-1"></a><span class="co"># Para una lista de datos</span></span>
+<span id="cb165-2"><a href="regresión-y-correlación-lineal.html#cb165-2" tabindex="-1"></a>x0s <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">sal =</span> <span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">3.1</span>, <span class="fl">2.35</span>))</span>
+<span id="cb165-3"><a href="regresión-y-correlación-lineal.html#cb165-3" tabindex="-1"></a><span class="fu">predict.lm</span>(modelo, x0s, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##        fit       lwr      upr
+## 1 114.8799 107.48433 122.2754
+## 2 106.0104  98.96601 113.0547
+## 3 101.2589  93.79780 108.7199</code></pre>
+</div>
+<div id="constraste-de-hipótesis" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Constraste de hipótesis<a href="#constraste-de-hip%C3%B3tesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para el contraste de hipótesis en R, se debe usar nuevamente la herramienta <code>summary</code> aplicada al modelo generado mediante la función <code>lm</code>. Tome en cuenta que para esta prueba:</p>
+<p><span class="math display">\[
+H_0: \beta = 0 \\
+H_1: \beta \neq 0 \\
+\]</span></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="regresión-y-correlación-lineal.html#cb167-1" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = tension ~ sal, data = datos.sal.df)
+## 
+## Residuals:
+##      1      2      3      4      5      6 
+##  2.226 -2.309  1.455 -1.712 -1.613  1.952 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  86.3708     3.0621  28.206  9.4e-06 ***
+## sal           6.3354     0.8395   7.546  0.00165 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.332 on 4 degrees of freedom
+## Multiple R-squared:  0.9344, Adjusted R-squared:  0.918 
+## F-statistic: 56.95 on 1 and 4 DF,  p-value: 0.001652</code></pre>
+<p>Del informe anterior interesa los estimadores del intercepto y la pendiente, así el modelo de regresión lineal coincide con el encontrado previamente.</p>
+<p>El <code>Std. Error</code> no será relevante en este análisis, el <span class="math inline">\(t \; \text{value}\)</span> corresponde al valor del <span class="math inline">\(t_{obs}\)</span> de la prueba de hipótesis y al final de cada lìnea vemos el Valor P indicando que los coeficientes estimados son estadìsticamete significativos, al ser un valor menor que el nivel de significancia de la prueba <span class="math inline">\(a = 0.05\)</span>. Al rechazar <span class="math inline">\(H_0\)</span> en este caso, se está indicando que existe dependencia lineal entre las variables.</p>
+<p>En la línea final tenemos el Residual standar error, el cuál se calcula de la siguiente manera:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="regresión-y-correlación-lineal.html#cb169-1" tabindex="-1"></a><span class="co"># Residual standar error (RSE)</span></span>
+<span id="cb169-2"><a href="regresión-y-correlación-lineal.html#cb169-2" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.226</span>, <span class="sc">-</span><span class="fl">2.309</span>, <span class="fl">1.455</span>, <span class="sc">-</span><span class="fl">1.712</span>, <span class="sc">-</span><span class="fl">1.613</span>, <span class="fl">1.952</span> )</span>
+<span id="cb169-3"><a href="regresión-y-correlación-lineal.html#cb169-3" tabindex="-1"></a>RSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb169-4"><a href="regresión-y-correlación-lineal.html#cb169-4" tabindex="-1"></a>RSE</span></code></pre></div>
+<pre><code>## [1] 2.331662</code></pre>
+<p>Note que el modelo posee 4 grados de libertad <span class="math inline">\((n-2)\)</span>, dos valores para el coeficiente de determinación: <strong>Multiple R-squared</strong> corresponde al valor que hemos trabajado en el curso este es recomendable para un modelo RLS, en caso de que se incluyan más variables como en los modelos de RLM (Regresión Lineal Múltiple) debe preferirse el <strong>Adjusted R-squared</strong> porque contempla una penalización debido a la inclusión de más variables al modelo que lo hacen más complejo. Finalmente <strong>F-statistic</strong> corresponde al cuadrado del <span class="math inline">\(t_{obs}\)</span> asociado a la pendiente del modelo y el <strong>p-value</strong> que aparece al final, es el que usamos para contrastar <span class="math inline">\(H_0\)</span> y es el mismo valor asociado al valor de P de la pendiente.</p>
+</div>
+<div id="comprobación-de-las-variabilidades-presentes" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Comprobación de las variabilidades presentes<a href="#comprobaci%C3%B3n-de-las-variabilidades-presentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se estudió en la clase que, la suma de la variabilidad total<span class="math inline">\((SS_T)\)</span>, es igual a la variabilidad del modelo de regresión <span class="math inline">\((SS_R)\)</span> más la variabilidad asociada al error <span class="math inline">\((SS_E)\)</span>, así, si la variabilidad del modelo es similar a la variabilidad total, entonces el modelo sería muy preciso y bueno, caso contrario se debe pensar en otro modelo que no sea lineal.</p>
+<p>Los anterior, se resume en la siguiente ecuación:</p>
+<p><span class="math display">\[
+SS_T = SS_R + SS_E
+\]</span>
+Seguidamente, se comprobará que esta ecuación se cumple para el caso en estudio.</p>
+<p><strong>Variabilidad total</strong>:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="regresión-y-correlación-lineal.html#cb171-1" tabindex="-1"></a>tension.media <span class="ot">&lt;-</span> <span class="fu">mean</span>(tension)</span>
+<span id="cb171-2"><a href="regresión-y-correlación-lineal.html#cb171-2" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((tension <span class="sc">-</span> tension.media)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb171-3"><a href="regresión-y-correlación-lineal.html#cb171-3" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 331.3333</code></pre>
+<p><strong>Variabilidad de la regresión</strong>:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="regresión-y-correlación-lineal.html#cb173-1" tabindex="-1"></a>tension.estimada <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>sal</span>
+<span id="cb173-2"><a href="regresión-y-correlación-lineal.html#cb173-2" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">sum</span>((tension.estimada <span class="sc">-</span> tension.media)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb173-3"><a href="regresión-y-correlación-lineal.html#cb173-3" tabindex="-1"></a>SSR</span></code></pre></div>
+<pre><code>## [1] 309.5532</code></pre>
+<p><strong>Variabilidad asociada al error</strong>:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regresión-y-correlación-lineal.html#cb175-1" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> <span class="fu">sum</span>((tension <span class="sc">-</span> tension.estimada)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb175-2"><a href="regresión-y-correlación-lineal.html#cb175-2" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 21.7459</code></pre>
+<p>Comprobando la igualdad:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="regresión-y-correlación-lineal.html#cb177-1" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 331.3333</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="regresión-y-correlación-lineal.html#cb179-1" tabindex="-1"></a>SSR <span class="sc">+</span> SSE</span></code></pre></div>
+<pre><code>## [1] 331.2991</code></pre>
+</div>
+<div id="cuidado-con-el-coeficiente-de-correlación-y-de-determinación" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Cuidado con el coeficiente de correlación y de determinación<a href="#cuidado-con-el-coeficiente-de-correlaci%C3%B3n-y-de-determinaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Usar solamente el coeficiente de determinación para medir la calidad de la regresión es un error, pues nos pone en riesgo de hacer conjeturas sobre un modelo cuyos datos pordrían confundir su significado.</p>
+<p>Tenemos que observar más información para poder afirmar que la regresión obtenida es adecuada y se ajusta bien a nuestros datos, así la correlación debe ir acompañada de otros filtros complementarios.</p>
+<p>En R existe una tabla de datos denominada anscombe que pone de manifiesto este hecho. Vamos a echarle un vistazo:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="regresión-y-correlación-lineal.html#cb181-1" tabindex="-1"></a><span class="fu">data</span>(anscombe)</span>
+<span id="cb181-2"><a href="regresión-y-correlación-lineal.html#cb181-2" tabindex="-1"></a><span class="fu">str</span>(anscombe)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    11 obs. of  8 variables:
+##  $ x1: num  10 8 13 9 11 14 6 4 12 7 ...
+##  $ x2: num  10 8 13 9 11 14 6 4 12 7 ...
+##  $ x3: num  10 8 13 9 11 14 6 4 12 7 ...
+##  $ x4: num  8 8 8 8 8 8 8 19 8 8 ...
+##  $ y1: num  8.04 6.95 7.58 8.81 8.33 ...
+##  $ y2: num  9.14 8.14 8.74 8.77 9.26 8.1 6.13 3.1 9.13 7.26 ...
+##  $ y3: num  7.46 6.77 12.74 7.11 7.81 ...
+##  $ y4: num  6.58 5.76 7.71 8.84 8.47 7.04 5.25 12.5 5.56 7.91 ...</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="regresión-y-correlación-lineal.html#cb183-1" tabindex="-1"></a>anscombe</span></code></pre></div>
+<pre><code>##    x1 x2 x3 x4    y1   y2    y3    y4
+## 1  10 10 10  8  8.04 9.14  7.46  6.58
+## 2   8  8  8  8  6.95 8.14  6.77  5.76
+## 3  13 13 13  8  7.58 8.74 12.74  7.71
+## 4   9  9  9  8  8.81 8.77  7.11  8.84
+## 5  11 11 11  8  8.33 9.26  7.81  8.47
+## 6  14 14 14  8  9.96 8.10  8.84  7.04
+## 7   6  6  6  8  7.24 6.13  6.08  5.25
+## 8   4  4  4 19  4.26 3.10  5.39 12.50
+## 9  12 12 12  8 10.84 9.13  8.15  5.56
+## 10  7  7  7  8  4.82 7.26  6.42  7.91
+## 11  5  5  5  8  5.68 4.74  5.73  6.89</code></pre>
+<p>Note que si calculamos los coeficientes de determinación para las 4 parejas, se obtiene un resultado similar:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="regresión-y-correlación-lineal.html#cb185-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y1<span class="sc">~</span>x1,<span class="at">data=</span>anscombe))<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.6665425</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regresión-y-correlación-lineal.html#cb187-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y2<span class="sc">~</span>x2,<span class="at">data=</span>anscombe))<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.666242</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="regresión-y-correlación-lineal.html#cb189-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y3<span class="sc">~</span>x3,<span class="at">data=</span>anscombe))<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.666324</code></pre>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="regresión-y-correlación-lineal.html#cb191-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y4<span class="sc">~</span>x4,<span class="at">data=</span>anscombe))<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.6667073</code></pre>
+<p>En cambio, si vemos su representación gráfica, su aspecto es muy distinto:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="regresión-y-correlación-lineal.html#cb193-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb193-2"><a href="regresión-y-correlación-lineal.html#cb193-2" tabindex="-1"></a></span>
+<span id="cb193-3"><a href="regresión-y-correlación-lineal.html#cb193-3" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(x1, y1))</span>
+<span id="cb193-4"><a href="regresión-y-correlación-lineal.html#cb193-4" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb193-5"><a href="regresión-y-correlación-lineal.html#cb193-5" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="regresión-y-correlación-lineal.html#cb196-1" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(x2, y2))</span>
+<span id="cb196-2"><a href="regresión-y-correlación-lineal.html#cb196-2" tabindex="-1"></a>g2 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb196-3"><a href="regresión-y-correlación-lineal.html#cb196-3" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="regresión-y-correlación-lineal.html#cb199-1" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(x3, y3))</span>
+<span id="cb199-2"><a href="regresión-y-correlación-lineal.html#cb199-2" tabindex="-1"></a>g3 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb199-3"><a href="regresión-y-correlación-lineal.html#cb199-3" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="regresión-y-correlación-lineal.html#cb202-1" tabindex="-1"></a>g4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(x4, y4))</span>
+<span id="cb202-2"><a href="regresión-y-correlación-lineal.html#cb202-2" tabindex="-1"></a>g4 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb202-3"><a href="regresión-y-correlación-lineal.html#cb202-3" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in geom_point(width = 0.3, alpha = 0.4): Ignoring unknown parameters:
+## `width`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Observamos que en el caso de la tabla de datos <span class="math inline">\((x1, y1)\)</span> ha sido un modelo bueno, <span class="math inline">\((x3, y3)\)</span> es bueno pero tiene el problema de <strong>outlier</strong> (valores extremos), la recta de regresión ha sido efectiva pero en los demás hemos obtenido un error considerable, por ejemplo <span class="math inline">\((x2, y2)\)</span> presenta una curvatura y el peor caso es el de la tabla de datos <span class="math inline">\((x4, y4)\)</span>.</p>
+<p>Por tanto, considerar sólo el valor del <strong>coeficiente de determinación</strong> para medir el ajuste de la recta de regresión a nuestros datos no es conveniente. EL recurso gráfico es bastante útil en estos casos, pues permite visualizar lo que está ocurriendo.</p>
+</div>
+<div id="ejemplo-2-correlaciones" class="section level2 hasAnchor" number="11.9">
+<h2><span class="header-section-number">11.9</span> EJEMPLO 2: CORRELACIONES<a href="regresión-y-correlación-lineal.html#ejemplo-2-correlaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El siguiente ejemplo toma los datos correspondientes a las notas de 6 estudiantes, obtenidas en los cursos de Matemáticas, Ciencias, Español, Historia y Educación Física.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="regresión-y-correlación-lineal.html#cb205-1" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/EjemploEstudiantes.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span><span class="st">&quot;,&quot;</span>, <span class="at">header =</span> T,<span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb205-2"><a href="regresión-y-correlación-lineal.html#cb205-2" tabindex="-1"></a><span class="fu">head</span>(estudiantes)</span></code></pre></div>
+<pre><code>##        Matematicas Ciencias Espanol Historia EdFisica
+## Lucia          7.0      6.5     9.2      8.6      8.0
+## Pedro          7.5      9.4     7.3      7.0      7.0
+## Ines           7.6      9.2     8.0      8.0      7.5
+## Luis           5.0      6.5     6.5      7.0      9.0
+## Andres         6.0      6.0     7.8      8.9      7.3
+## Ana            7.8      9.6     7.7      8.0      6.5</code></pre>
+<p>Seguidamente calculamos las correlaciones para todas las variables (asignaturas) presentes en la base de datos:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="regresión-y-correlación-lineal.html#cb207-1" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">cor</span>(estudiantes)</span>
+<span id="cb207-2"><a href="regresión-y-correlación-lineal.html#cb207-2" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>##             Matematicas   Ciencias    Espanol   Historia   EdFisica
+## Matematicas   1.0000000  0.8106706  0.4786264  0.1168622 -0.7942102
+## Ciencias      0.8106706  1.0000000 -0.1077795 -0.3979567 -0.6602394
+## Espanol       0.4786264 -0.1077795  1.0000000  0.7453201 -0.2296214
+## Historia      0.1168622 -0.3979567  0.7453201  1.0000000 -0.2488004
+## EdFisica     -0.7942102 -0.6602394 -0.2296214 -0.2488004  1.0000000</code></pre>
+<p>Pueden usar redondeo a dos decimales:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="regresión-y-correlación-lineal.html#cb209-1" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(estudiantes), <span class="dv">2</span>)</span>
+<span id="cb209-2"><a href="regresión-y-correlación-lineal.html#cb209-2" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>##             Matematicas Ciencias Espanol Historia EdFisica
+## Matematicas        1.00     0.81    0.48     0.12    -0.79
+## Ciencias           0.81     1.00   -0.11    -0.40    -0.66
+## Espanol            0.48    -0.11    1.00     0.75    -0.23
+## Historia           0.12    -0.40    0.75     1.00    -0.25
+## EdFisica          -0.79    -0.66   -0.23    -0.25     1.00</code></pre>
+<p>Veamos seguidamente algunos modelos gráficos:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="regresión-y-correlación-lineal.html#cb211-1" tabindex="-1"></a><span class="co"># Explore otras opciones: corrplot(c, method = &quot;number&quot;) / corrplot(c, method = &quot;square&quot;) / corrplot(c, method = &quot;ellipse&quot;) / corrplot(c, method = &quot;pie&quot;) / corrplot(c, method = &quot;shade&quot;) / corrplot(c, method = &quot;shade&quot;,type = &quot;upper&quot;) / corrplot(c, method = &quot;shade&quot;, type = &quot;low&quot;)</span></span>
+<span id="cb211-2"><a href="regresión-y-correlación-lineal.html#cb211-2" tabindex="-1"></a><span class="fu">corrplot</span>(c) <span class="co">#requiere el paqeute corrplot</span></span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="regresión-y-correlación-lineal.html#cb212-1" tabindex="-1"></a><span class="co"># Explore: ggcorrplot(c, method = &quot;circle&quot;) / ggcorrplot(c, method = &quot;square&quot;, lab = TRUE) /</span></span>
+<span id="cb212-2"><a href="regresión-y-correlación-lineal.html#cb212-2" tabindex="-1"></a></span>
+<span id="cb212-3"><a href="regresión-y-correlación-lineal.html#cb212-3" tabindex="-1"></a><span class="fu">ggcorrplot</span>(c) <span class="co"># Usaremos funciones del paquete ggcorrplot</span></span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="regresión-y-correlación-lineal.html#cb213-1" tabindex="-1"></a><span class="co"># Se crea un data frame</span></span>
+<span id="cb213-2"><a href="regresión-y-correlación-lineal.html#cb213-2" tabindex="-1"></a>c_df <span class="ot">&lt;-</span> <span class="fu">correlate</span>(estudiantes) <span class="co"># Usa el paquete corrr </span></span></code></pre></div>
+<pre><code>## Correlation computed with
+## • Method: &#39;pearson&#39;
+## • Missing treated using: &#39;pairwise.complete.obs&#39;</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="regresión-y-correlación-lineal.html#cb215-1" tabindex="-1"></a><span class="co"># Explore: rplot(cor_df, colours = c(&quot;yellow&quot;,&quot;white&quot;,&quot;red&quot;)) / rplot(cor_df, shape = 2, colours = c(&quot;yellow&quot;,&quot;white&quot;,&quot;red&quot;)) / rplot(cor_df, shape = 2, colours = c(&quot;yellow&quot;,&quot;white&quot;,&quot;red&quot;), print_cor = TRUE) / </span></span>
+<span id="cb215-2"><a href="regresión-y-correlación-lineal.html#cb215-2" tabindex="-1"></a><span class="fu">rplot</span>(c_df)</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>Finalmente, se tiene una variante más que se basa en líneas de conexión. Para interpretar la intensidad de la correlación, tome en cuenta el grosor de las líneas, las tonalidades de los colores según la escala que aparece a la derecha, mientras más rojo: <strong>fuerte y decreciente o negativa</strong>, mientras más azul: <strong>fuerte y creciente</strong> y cercana a blanco: <strong>no hay correlación o muy débil</strong></p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="regresión-y-correlación-lineal.html#cb216-1" tabindex="-1"></a><span class="co"># Otro gráfico interesante de correlaciones</span></span>
+<span id="cb216-2"><a href="regresión-y-correlación-lineal.html#cb216-2" tabindex="-1"></a><span class="fu">network_plot</span>(c_df) <span class="co"># Paquete corrr</span></span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prueba-de-analisis-de-varianza-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresión-no-lineal-simple.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

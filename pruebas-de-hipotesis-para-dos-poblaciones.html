@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Pruebas de hipotesis para dos poblaciones | “Elementos de Estadística Inferencial con R”</title>
+  <meta name="description" content="Capítulo 5 Pruebas de hipotesis para dos poblaciones | “Elementos de Estadística Inferencial con R”" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Pruebas de hipotesis para dos poblaciones | “Elementos de Estadística Inferencial con R”" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Pruebas de hipotesis para dos poblaciones | “Elementos de Estadística Inferencial con R”" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pruebas-de-hipotesis-para-una-poblacion.html"/>
+<link rel="next" href="una-visión-grafica-de-las-pruebas-de-hipotesis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
+<li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
+<li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulación-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
+<li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalo-de-confianza-para-la-varianza-de-una-poblacion-normal"><i class="fa fa-check"></i><b>2.3</b> Intervalo de confianza para la varianza de una poblacion normal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html"><i class="fa fa-check"></i><b>3</b> II Parte: Casos con dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-promedios"><i class="fa fa-check"></i><b>3.1</b> Diferencia de Promedios</a></li>
+<li class="chapter" data-level="3.2" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#cociente-de-varianzas"><i class="fa fa-check"></i><b>3.2</b> Cociente de varianzas</a></li>
+<li class="chapter" data-level="3.3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.3</b> Diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html"><i class="fa fa-check"></i><b>4</b> Pruebas de hipotesis para una poblacion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
+<li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-pequeñas"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#contraste-para-dos-medias-independientes-en-r-funcion-t.test"><i class="fa fa-check"></i><b>5.2.2</b> Contraste para dos medias independientes en R: funcion t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
+<li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#visualización-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test"><i class="fa fa-check"></i><b>8.2.2</b> Test de normalidad de Anderson-Darling o A-D test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test"><i class="fa fa-check"></i><b>8.2.3</b> Test de Shapiro-Wilks o S-W test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson"><i class="fa fa-check"></i><b>8.2.4</b> Test omnibus de D’Agostino-Pearson</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prueba-de-independencia.html"><a href="prueba-de-independencia.html"><i class="fa fa-check"></i><b>9</b> Prueba de Independencia</a></li>
+<li class="chapter" data-level="10" data-path="prueba-de-analisis-de-varianza-anova.html"><a href="prueba-de-analisis-de-varianza-anova.html"><i class="fa fa-check"></i><b>10</b> Prueba de Analisis de Varianza (ANOVA)</a></li>
+<li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
+<li class="chapter" data-level="11.2" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#coeficientes-de-determinación-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
+<li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
+<li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
+<li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
+<li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
+<li class="chapter" data-level="11.8" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#cuidado-con-el-coeficiente-de-correlacion-y-de-determinación"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
+<li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresión-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto"><i class="fa fa-check"></i>Especificaciones del proyecto</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iv-parte-analisis-inferencial-otras-pruebas-de-hipótesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#v-parte-analisis-de-regresión"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones-1"><i class="fa fa-check"></i>III parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#espesificaciones-del-proyecto-fase-iii"><i class="fa fa-check"></i>Espesificaciones del proyecto Fase III</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-otras-pruebas-de-hipotesis-en-r"><i class="fa fa-check"></i>I Parte: Otras pruebas de hipotesis en R</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-1"><i class="fa fa-check"></i>Caso 1</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-2"><i class="fa fa-check"></i>Caso 2</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-3"><i class="fa fa-check"></i>Caso 3</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-4"><i class="fa fa-check"></i>Caso 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-modelos-de-regresion-lineal"><i class="fa fa-check"></i>II Parte: Modelos de regresion lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-5"><i class="fa fa-check"></i>Caso 5</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-6"><i class="fa fa-check"></i>Caso 6</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#generacion-de-los-modelos"><i class="fa fa-check"></i>Generacion de los modelos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#seleccionando-el-mejor-modelo"><i class="fa fa-check"></i>Seleccionando el mejor modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-modelos-de-regresion-no-lineal"><i class="fa fa-check"></i>III PARTE: Modelos de regresion no lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-7"><i class="fa fa-check"></i>Caso 7</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-0-regresión-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
+<li class="chapter" data-level="13.2.1" data-path="anexos.html"><a href="anexos.html#modelo-3-regresion-no-lineal-multiple-con-interacción"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">“Elementos de Estadística Inferencial con R”</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pruebas-de-hipotesis-para-dos-poblaciones" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Pruebas de hipotesis para dos poblaciones<a href="pruebas-de-hipotesis-para-dos-poblaciones.html#pruebas-de-hipotesis-para-dos-poblaciones" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introducción<a href="pruebas-de-hipotesis-para-dos-poblaciones.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección se estudiará el uso de pruebas de hipótesis para constrastar un mismo parámetro en dos grupos o poblaciones diferentes.</p>
+<p>Para hacer dicho contraste se dispondrá de una muestra de cada población, las cuáles podría cumplir con alguna de las siguientes condiciones:</p>
+<ul>
+<li><strong>Muestas Independientes</strong>: Las dos muestras se han obtenido de forma independiente. Recordemos que dos eventos son independientes si la probabilidad de uno no afecta la probabilidad del otro.</li>
+</ul>
+<p><strong>Ejemplo</strong>: Se toma un grupo de hombres y otro de mujeres, se prueba un medidcamento sobre dos muestras de enfermos diferentes, se toma una muestra de estudiantes de un grupo y otra de otro grupo</p>
+<ul>
+<li><strong>Muestas emparejadas o pareadas</strong>: ocurre cuando las dos muestras corresponden a los mismos individuos.</li>
+</ul>
+<p><strong>Ejemplos</strong>: se toma nuesta muestra de personas y se estudia su antes y después, se prueban dos medicamento sobre el mismo grupo de enfermos.</p>
+<p>De los casos que interesa estudiar están: diferencia de medias, diferencia de proporciones y cociente de varianzas.
+Como es de costrumbre al iniciar, se cargarán las librerías a utilizar:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb62-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:EnvStats&#39;:
+## 
+##     boxcox</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb65-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#para utilizar pipes </span></span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ lubridate 1.9.3     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2     ✔ tidyr     1.3.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ✖ dplyr::select() masks MASS::select()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div id="casos-de-dos-poblaciones" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Casos de Dos poblaciones<a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tenemos dos v.a <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>, de medias <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></p>
+<p>Tomamos una m.a.s de cada variable:
+<span class="math display">\[
+X_{1,1}, X_{2,1}, \dots , X_{1,n_1}, \text{ de } X_1
+X_{2,1}, X_{2,2}, \dots , X_{1,n_2}, \text{ de } X_2
+\]</span></p>
+<p>Sean <span class="math inline">\(\bar{X_1}\)</span> y <span class="math inline">\(\bar{X_2}\)</span> sus medias, respectivamente.
+La hipótesis nula será del tipo:
+<span class="math display">\[
+H_0 : \mu_1 = \mu_2 \text{, o, equivalentemente, } H_0 : \mu_1 - \mu_2 = 0
+\]</span>
+La hipótesis alternativa que nos plantearemos serán del tipo:</p>
+<p><span class="math display">\[
+\mu_1 &lt; \mu_2 \text{, o, equivalentemente, } \mu_1 - \mu_2 &lt; 0
+\mu_1 &gt; \mu_2 \text{, o, equivalentemente, } \mu_1 - \mu_2 &gt; 0
+\mu_1 \neq \mu_2 \text{, o, equivalentemente, } \mu_1 - \mu_2 \neq 0
+\]</span></p>
+<p>En las pruebas de hipotesis para la diferencia de medias, se deben considerar varios casos:</p>
+<table>
+<colgroup>
+<col width="54%" />
+<col width="45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estadístico de contraste o crítico</th>
+<th>Condiciones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Z_c = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{sp^2}{n_1}+\frac{sp^2}{n_2}}}\)</span></td>
+<td><span class="math inline">\(\bar{x_1}, \bar{x_2}\)</span> se distribuye normalmente, <span class="math inline">\(n_1, n_2 \geq 30 \; \text{o } 40\)</span>, donde <span class="math inline">\(\sigma_1, \sigma_2\)</span> se conocen.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T_c = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{sp^2}{n_1} + \frac{sp^2}{n_2}}} \\ \text{Con: } v = n_1 + n_2 -2 \;gl\)</span></td>
+<td>Poblaciones <strong>normales o</strong> <span class="math inline">\(n_1, n_2 \geq 30 \text{ o } 40, \sigma_1, \sigma_2\)</span> <strong>no se conocen</strong>, pero se asumen <span class="math inline">\(\sigma_1 \ = \sigma_2 \\ sp^2 = \frac{(n_1 -1)s_1^2 + (n_2 -1)s_2^2}{n_1 + n_2 -2}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T_c = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \\ \text{donde:} \quad v = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left( \frac{s_1^2}{n_1} \right)^2}{n_1 - 1} + \frac{\left( \frac{s_2^2}{n_2} \right)^2}{n_2 - 1}}\)</span></td>
+<td>Poblaciones <strong>normales</strong> o <span class="math inline">\(n_1,n_2 \geq 30 \text{ o } 40, \sigma_1, \sigma_2\)</span> <strong>No se conocen</strong> y se asume <span class="math inline">\(\sigma_1 \neq \sigma_2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="contraste-para-dos-medias-independientes-en-r-funcion-t.test" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Contraste para dos medias independientes en R: funcion t.test<a href="pruebas-de-hipotesis-para-dos-poblaciones.html#contraste-para-dos-medias-independientes-en-r-funcion-t.test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para el contraste de dos medias, se usará la fución t.test de R, cuya sintaxis se
+presenta a continuación:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb68-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">mu=</span>..., <span class="at">alternative=</span>..., <span class="at">conf.level=</span>..., <span class="at">paired=</span>..., </span>
+<span id="cb68-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb68-2" tabindex="-1"></a> <span class="at">var.equal=</span>..., <span class="at">na.omit=</span>...)</span></code></pre></div>
+<p>Dónde:
+* x: Es el vector de los datos de la primera muestra.
+* y: Es el vector de datos de la segunda muestra.
+* alternative: Indica si la prueba es de cola izquierda(less), derecha(greater) o de dos colas(two.sided).
+* var.equal: Es para indicar que se asumen varianzas iguales(True o T) o diferentes(False o F).</p>
+<p><strong>Ejemplo</strong>
+Imaginemos ahora que nos planteamos si la media de la longitud del pétalo es la
+misma para las flores de las especies setosa y versicolor.</p>
+<p>Sea:
+<span class="math inline">\(\mu_5\)</span> la media de la longitud del pétalo de las flores de la variedad setosa</p>
+<p><span class="math inline">\(\mu_v\)</span> la media de la longitud del pétalo de las flores de la variedad versicolor</p>
+<p>Para realizar esta prueba, se considerarán las siguientes hipótesis:</p>
+<p><span class="math display">\[
+H_0: \mu_5 - \mu_v = 0 \\
+H_1: \mu_5 - \mu_v \ne 0\\
+\]</span>
+Se trabajará con una muestra de 40 flores de cada especie. Primero para explicar el
+muestreo que se desea hacer, echemos una mirada a los datos de iris:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb69-1" tabindex="-1"></a>datosiris <span class="ot">&lt;-</span> iris</span></code></pre></div>
+<p>Note que la variable Species ya viene ordenada de manera que los datos de 1 a 50
+corresponde a la especie setosa y del 51 al 100 corresponden a la especie
+versicolor. Seguidamente se procede con el muestreo:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-1" tabindex="-1"></a><span class="co"># Se planta la semilla</span></span>
+<span id="cb70-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
+<span id="cb70-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-3" tabindex="-1"></a><span class="co"># Se establecen los índices para la muestra</span></span>
+<span id="cb70-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-4" tabindex="-1"></a>flores.elegidas.setosa <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb70-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-5" tabindex="-1"></a>flores.elegidas.versicolor <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb70-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-6" tabindex="-1"></a><span class="co"># Se extraen las muestras</span></span>
+<span id="cb70-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-7" tabindex="-1"></a>muestra.setosa <span class="ot">&lt;-</span> iris[flores.elegidas.setosa, ]</span>
+<span id="cb70-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-8" tabindex="-1"></a>muestra.versicolor <span class="ot">&lt;-</span> iris[flores.elegidas.versicolor, ]</span>
+<span id="cb70-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-9" tabindex="-1"></a><span class="co"># Se aplica la prueba de hipótesis con valores por defecto de nivel de </span></span>
+<span id="cb70-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-10" tabindex="-1"></a>confianza de <span class="dv">95</span>% y varianzas <span class="fu">diferentes</span>(<span class="at">var.equal =</span> F)</span>
+<span id="cb70-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-11" tabindex="-1"></a><span class="fu">t.test</span>(muestra.setosa<span class="sc">$</span>Petal.Length, muestra.versicolor<span class="sc">$</span>Petal.Length, </span>
+<span id="cb70-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-12" tabindex="-1"></a> <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span>
+<span id="cb70-13"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb70-14"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-14" tabindex="-1"></a><span class="do">## Welch Two Sample t-test</span></span>
+<span id="cb70-15"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb70-16"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-16" tabindex="-1"></a><span class="do">## data: muestra.setosa$Petal.Length and muestra.versicolor$Petal.Length</span></span>
+<span id="cb70-17"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-17" tabindex="-1"></a><span class="do">## t = -42.766, df = 49.953, p-value &lt; 2.2e-16</span></span>
+<span id="cb70-18"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-18" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb70-19"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-19" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb70-20"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-20" tabindex="-1"></a><span class="do">## -2.913186 -2.651814</span></span>
+<span id="cb70-21"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-21" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb70-22"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-22" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb70-23"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb70-23" tabindex="-1"></a><span class="do">## 1.4075 4.1900</span></span></code></pre></div>
+<p>El p-valor del contraste ha sido prácticamente cero, lo que hace que se tenga
+evidencia suficiente para concluir que las medias de la longitud del pétalo son
+diferentes para las dos especies.</p>
+<p>Además, se observa en el intervalo de confianza que este no contiene el valor cero y
+está totalmente a la izquierda de cero. Por tanto, debemos rechazar la hipótesis nula.</p>
+<p>Note que se ha considerado que las varianzas de las dos variables son diferentes y en
+caso de haberlas considerado como iguales, se debe hacer lo siguiente:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-1" tabindex="-1"></a><span class="fu">t.test</span>(muestra.setosa<span class="sc">$</span>Petal.Length, muestra.versicolor<span class="sc">$</span>Petal.Length,</span>
+<span id="cb71-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-2" tabindex="-1"></a> <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb71-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb71-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-4" tabindex="-1"></a><span class="do">## Two Sample t-test</span></span>
+<span id="cb71-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb71-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-6" tabindex="-1"></a><span class="do">## data: muestra.setosa$Petal.Length and muestra.versicolor$Petal.Length</span></span>
+<span id="cb71-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-7" tabindex="-1"></a><span class="do">## t = -42.766, df = 78, p-value &lt; 2.2e-16</span></span>
+<span id="cb71-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-8" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb71-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-9" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb71-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-10" tabindex="-1"></a><span class="do">## -2.91203 -2.65297</span></span>
+<span id="cb71-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-11" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb71-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-12" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb71-13"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb71-13" tabindex="-1"></a><span class="do">## 1.4075 4.1900</span></span></code></pre></div>
+<p>En este caso, el p-valor también es despreciable, por lo que llegamos a la misma
+conclusión anterior: las medias son diferentes.</p>
+<p>Es importante tomar en cuenta que el asumir varianzas iguales no es una decisión que
+se tome a la ligera, en este caso se requiere que, antes de aplicar la prueba T, se realice
+una prueba de contraste para las varianzas y dependiendo de su resultado, se procede
+con la prueba de contraste de medias, asumiendo varianzas iguales o no.</p>
+</div>
+</div>
+<div id="prueba-de-hipotesis-para-dos-proporciones-p_1-p_2" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="77%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estadístico de contraste o crítico</th>
+<th>¿ Cuándo ?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Z_c = \frac{\hat{p_1} - \hat{p_2}}{\sqrt{\frac{\hat{p_1}\hat{q_1}}{n_1} + \frac{\hat{p_2}\hat{q_2}}{n_2}}}\)</span></td>
+<td>La muestra es grande. <span class="math inline">\(n_ip_i &gt; 5 \text{ o } 10, i = 1,2\)</span> Y <span class="math inline">\(n_1, n_2 \ge 50\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Para las pruebas de contraste de proporciones para muestras grandes, se utilizará la
+función prop.test</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb72-1" tabindex="-1"></a><span class="fu">prop.test</span>(x, n, <span class="at">p =</span>..., <span class="at">alternative=</span>..., <span class="at">conf.level=</span>...)</span></code></pre></div>
+<p>Dónde:
+* x: En el caso de un constraste de proporciones es el un vector de dos números
+naturales que representan los éxitos de ambas muestas.</p>
+<ul>
+<li><p>n: En el caso de trabajar con dos muestras, es un vector de dos entradas de sus
+respectivos tamaños para las muestras.</p></li>
+<li><p>alternative y Conf.level y sus posibles valores, son los usuales.</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Se contrastaré si la proporción de madres fumadoras de raza blanca es la misma que
+la proporción de madres fumadoras de raza negra, en la tabla de datos birthwt</p>
+<p>Para realizar esta prueba, se considerarán las siguientes hipótesis:
+<span class="math display">\[
+H_0: p_b - p_n = 0 \\
+H_1: p_b - p_n \ne 0 \\
+\]</span></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-1" tabindex="-1"></a><span class="co"># Se revisa primeramente la comporisión de la tabla birthwt</span></span>
+<span id="cb73-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-2" tabindex="-1"></a><span class="fu">str</span>(birthwt)</span>
+<span id="cb73-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-3" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;: 189 obs. of 10 variables:</span></span>
+<span id="cb73-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-4" tabindex="-1"></a><span class="do">## $ low : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb73-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-5" tabindex="-1"></a><span class="do">## $ age : int 19 33 20 21 18 21 22 17 29 26 ...</span></span>
+<span id="cb73-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-6" tabindex="-1"></a><span class="do">## $ lwt : int 182 155 105 108 107 124 118 103 123 113 ...</span></span>
+<span id="cb73-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-7" tabindex="-1"></a><span class="do">## $ race : int 2 3 1 1 1 3 1 3 1 1 ...</span></span>
+<span id="cb73-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-8" tabindex="-1"></a><span class="do">## $ smoke: int 0 0 1 1 1 0 0 0 1 1 ...</span></span>
+<span id="cb73-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-9" tabindex="-1"></a><span class="do">## $ ptl : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb73-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-10" tabindex="-1"></a><span class="do">## $ ht : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb73-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-11" tabindex="-1"></a><span class="do">## $ ui : int 1 0 0 1 1 0 0 0 0 0 ...</span></span>
+<span id="cb73-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-12" tabindex="-1"></a><span class="do">## $ ftv : int 0 3 1 2 0 0 1 1 1 0 ...</span></span>
+<span id="cb73-13"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-13" tabindex="-1"></a><span class="do">## $ bwt : int 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665 ...</span></span>
+<span id="cb73-14"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-14" tabindex="-1"></a><span class="fu">head</span>(birthwt, <span class="dv">5</span>)</span>
+<span id="cb73-15"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-15" tabindex="-1"></a><span class="do">## low age lwt race smoke ptl ht ui ftv bwt</span></span>
+<span id="cb73-16"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-16" tabindex="-1"></a><span class="do">## 85 0 19 182 2 0 0 0 1 0 2523</span></span>
+<span id="cb73-17"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-17" tabindex="-1"></a><span class="do">## 86 0 33 155 3 0 0 0 0 3 2551</span></span>
+<span id="cb73-18"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-18" tabindex="-1"></a><span class="do">## 87 0 20 105 1 1 0 0 0 1 2557</span></span>
+<span id="cb73-19"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-19" tabindex="-1"></a><span class="do">## 88 0 21 108 1 1 0 0 1 2 2594</span></span>
+<span id="cb73-20"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-20" tabindex="-1"></a><span class="do">## 89 0 18 107 1 1 0 0 1 0 2600</span></span>
+<span id="cb73-21"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-21" tabindex="-1"></a>b <span class="ot">&lt;-</span> birthwt</span>
+<span id="cb73-22"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-22" tabindex="-1"></a><span class="co"># Se extraen las etiquetas (número de fila) de las madres de cada raza</span></span>
+<span id="cb73-23"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-23" tabindex="-1"></a>madres.raza.blanca <span class="ot">&lt;-</span> <span class="fu">rownames</span>(birthwt[birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">1</span>, ])</span>
+<span id="cb73-24"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-24" tabindex="-1"></a>madres.raza.blanca</span>
+<span id="cb73-25"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-25" tabindex="-1"></a><span class="do">## [1] &quot;87&quot; &quot;88&quot; &quot;89&quot; &quot;92&quot; &quot;94&quot; &quot;95&quot; &quot;100&quot; &quot;101&quot; &quot;103&quot; &quot;105&quot; &quot;107&quot; </span></span>
+<span id="cb73-26"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-26" tabindex="-1"></a><span class="st">&quot;108&quot;</span></span>
+<span id="cb73-27"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-27" tabindex="-1"></a><span class="do">## [13] &quot;112&quot; &quot;113&quot; &quot;114&quot; &quot;118&quot; &quot;120&quot; &quot;123&quot; &quot;124&quot; &quot;125&quot; &quot;126&quot; &quot;127&quot; &quot;129&quot; </span></span>
+<span id="cb73-28"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-28" tabindex="-1"></a><span class="st">&quot;131&quot;</span></span>
+<span id="cb73-29"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-29" tabindex="-1"></a><span class="do">## [25] &quot;132&quot; &quot;133&quot; &quot;134&quot; &quot;136&quot; &quot;138&quot; &quot;140&quot; &quot;141&quot; &quot;151&quot; &quot;160&quot; &quot;162&quot; &quot;167&quot; </span></span>
+<span id="cb73-30"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-30" tabindex="-1"></a><span class="st">&quot;169&quot;</span></span>
+<span id="cb73-31"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-31" tabindex="-1"></a><span class="do">## [37] &quot;170&quot; &quot;173&quot; &quot;174&quot; &quot;175&quot; &quot;182&quot; &quot;183&quot; &quot;184&quot; &quot;185&quot; &quot;187&quot; &quot;188&quot; &quot;189&quot; </span></span>
+<span id="cb73-32"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-32" tabindex="-1"></a><span class="st">&quot;190&quot;</span></span>
+<span id="cb73-33"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-33" tabindex="-1"></a><span class="do">## [49] &quot;191&quot; &quot;192&quot; &quot;193&quot; &quot;195&quot; &quot;196&quot; &quot;197&quot; &quot;200&quot; &quot;203&quot; &quot;204&quot; &quot;205&quot; &quot;207&quot; </span></span>
+<span id="cb73-34"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-34" tabindex="-1"></a><span class="st">&quot;209&quot;</span></span>
+<span id="cb73-35"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-35" tabindex="-1"></a><span class="do">## [61] &quot;210&quot; &quot;211&quot; &quot;213&quot; &quot;215&quot; &quot;217&quot; &quot;219&quot; &quot;220&quot; &quot;221&quot; &quot;222&quot; &quot;223&quot; &quot;224&quot; </span></span>
+<span id="cb73-36"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-36" tabindex="-1"></a><span class="st">&quot;225&quot;</span></span>
+<span id="cb73-37"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-37" tabindex="-1"></a><span class="do">## [73] &quot;226&quot; &quot;10&quot; &quot;20&quot; &quot;22&quot; &quot;23&quot; &quot;26&quot; &quot;27&quot; &quot;29&quot; &quot;33&quot; &quot;34&quot; &quot;35&quot; </span></span>
+<span id="cb73-38"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-38" tabindex="-1"></a><span class="st">&quot;36&quot;</span> </span>
+<span id="cb73-39"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-39" tabindex="-1"></a><span class="do">## [85] &quot;42&quot; &quot;45&quot; &quot;51&quot; &quot;56&quot; &quot;57&quot; &quot;65&quot; &quot;67&quot; &quot;68&quot; &quot;69&quot; &quot;77&quot; &quot;79&quot; </span></span>
+<span id="cb73-40"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-40" tabindex="-1"></a><span class="st">&quot;84&quot;</span></span>
+<span id="cb73-41"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-41" tabindex="-1"></a>madres.raza.negra <span class="ot">&lt;-</span> <span class="fu">rownames</span>(birthwt[birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">2</span>, ])</span>
+<span id="cb73-42"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-42" tabindex="-1"></a>madres.raza.negra</span>
+<span id="cb73-43"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-43" tabindex="-1"></a><span class="do">## [1] &quot;85&quot; &quot;102&quot; &quot;115&quot; &quot;116&quot; &quot;117&quot; &quot;119&quot; &quot;121&quot; &quot;128&quot; &quot;130&quot; &quot;161&quot; &quot;166&quot; </span></span>
+<span id="cb73-44"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-44" tabindex="-1"></a><span class="st">&quot;168&quot;</span></span>
+<span id="cb73-45"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-45" tabindex="-1"></a><span class="do">## [13] &quot;172&quot; &quot;202&quot; &quot;206&quot; &quot;11&quot; &quot;18&quot; &quot;28&quot; &quot;40&quot; &quot;43&quot; &quot;50&quot; &quot;59&quot; &quot;60&quot; </span></span>
+<span id="cb73-46"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-46" tabindex="-1"></a><span class="st">&quot;61&quot;</span> </span>
+<span id="cb73-47"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-47" tabindex="-1"></a><span class="do">## [25] &quot;71&quot; &quot;83&quot;</span></span>
+<span id="cb73-48"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-48" tabindex="-1"></a><span class="co"># Se eligen las muestras de tamaño 50 para cada raza</span></span>
+<span id="cb73-49"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-49" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2000</span>)</span>
+<span id="cb73-50"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-50" tabindex="-1"></a>madres.elegidas.blanca <span class="ot">&lt;-</span> <span class="fu">sample</span>(madres.raza.blanca, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-51"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-51" tabindex="-1"></a>madres.elegidas.negra <span class="ot">&lt;-</span> <span class="fu">sample</span>(madres.raza.negra, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-52"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-52" tabindex="-1"></a>muestra.madres.raza.blanca <span class="ot">&lt;-</span> birthwt[madres.elegidas.blanca, ]</span>
+<span id="cb73-53"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb73-53" tabindex="-1"></a>muestra.madres.raza.negra <span class="ot">&lt;-</span> birthwt[madres.elegidas.negra, ]</span></code></pre></div>
+<p>Se calculan cuantas madres fumadoras hay en cada una de las muestras usando la
+función table y las almacenamos en una nueva variable:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-1" tabindex="-1"></a><span class="fu">table</span>(muestra.madres.raza.blanca<span class="sc">$</span>smoke)</span>
+<span id="cb74-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb74-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-3" tabindex="-1"></a><span class="do">## 0 1 </span></span>
+<span id="cb74-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-4" tabindex="-1"></a><span class="do">## 24 26</span></span>
+<span id="cb74-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-5" tabindex="-1"></a><span class="fu">table</span>(muestra.madres.raza.negra<span class="sc">$</span>smoke)</span>
+<span id="cb74-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb74-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-7" tabindex="-1"></a><span class="do">## 0 1 </span></span>
+<span id="cb74-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-8" tabindex="-1"></a><span class="do">## 33 17</span></span>
+<span id="cb74-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-9" tabindex="-1"></a><span class="co"># número de madres fumadoras de raza blanca</span></span>
+<span id="cb74-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-10" tabindex="-1"></a>x.blanca <span class="ot">&lt;-</span> <span class="fu">table</span>(muestra.madres.raza.blanca<span class="sc">$</span>smoke)[<span class="dv">2</span>]</span>
+<span id="cb74-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-11" tabindex="-1"></a><span class="co"># número de madres fumadoras de raza negra</span></span>
+<span id="cb74-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb74-12" tabindex="-1"></a>x.negra <span class="ot">&lt;-</span> <span class="fu">table</span>(muestra.madres.raza.negra<span class="sc">$</span>smoke)[<span class="dv">2</span>] </span></code></pre></div>
+<p>Finalmente, se realiza el contraste de hipótesis:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-1" tabindex="-1"></a><span class="co"># Se hace el contraste de hipótesis</span></span>
+<span id="cb75-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-2" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x.blanca, x.negra), <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">50</span>))</span>
+<span id="cb75-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb75-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-4" tabindex="-1"></a><span class="do">## 2-sample test for equality of proportions with continuity correction</span></span>
+<span id="cb75-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb75-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-6" tabindex="-1"></a><span class="do">## data: c(x.blanca, x.negra) out of c(50, 50)</span></span>
+<span id="cb75-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-7" tabindex="-1"></a><span class="do">## X-squared = 2.6112, df = 1, p-value = 0.1061</span></span>
+<span id="cb75-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-8" tabindex="-1"></a><span class="do">## alternative hypothesis: two.sided</span></span>
+<span id="cb75-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-9" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb75-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-10" tabindex="-1"></a><span class="do">## -0.03083246 0.39083246</span></span>
+<span id="cb75-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-11" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb75-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-12" tabindex="-1"></a><span class="do">## prop 1 prop 2 </span></span>
+<span id="cb75-13"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb75-13" tabindex="-1"></a><span class="do">## 0.52 0.34</span></span></code></pre></div>
+<p>El p-valor del contraste ha sido 0.1061 y mayor que 0.1. Se concluye que no se tiene
+evidencia para rechazar que las proporciones de madres fumadoras de razas blanca y
+negra sean iguales.</p>
+<p>Si se revisa el IC, se puede ver que el 0 está dentro de dicho intervalo, hecho que
+reafirma la conclusión anterior</p>
+</div>
+<div id="prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fórmula</th>
+<th>Condiciones</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(F_c = \frac{s_2^2}{s_1^2}\)</span></td>
+<td><span class="math display">\[v_1 = n_1 - 1gl \\ v_2 = n_2 -1gl \\ \text{Ambas poblaciones normales.}\]</span></td>
+</tr>
+</tbody>
+</table>
+<p>La función para efectuar este test en R es var.test y su sintaxis básica es la misma
+que la de t.test para dos muestras, como se muestra a continuación:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb76-1" tabindex="-1"></a><span class="fu">var.test</span>(x, y, <span class="at">alternative=</span>..., <span class="at">conf.level=</span>...)</span></code></pre></div>
+<p>Dónde:</p>
+<ul>
+<li>x,y: Son los vectores de datos.</li>
+<li>alternative y Conf.level y sus posibles valores: Son los usuales.</li>
+<li>null.value que por defecto es 1 considerando que la relación entre las
+varianzas es 1. Se puede cambiar si se desea probar otra relación.</li>
+</ul>
+<p><strong>Ejemplo</strong>
+Recordemos que cuando se explicó el contraste para dos medias independientes, se
+contrastó si las medias de las longitudes del pétalo para las especies setosa y
+versicolor eran iguales o no, pero también se necesitaba saber si las varianzas eran
+iguales o no, esto como un insumo previo a considerar antes de poder usar la función <code>t.test</code>.</p>
+<p>Con una prueba de hipótesis para varianzas, se podría tener información para adoptar
+la condición de igualdad o no de las varianzas.</p>
+<p>Las muestras eran muestra.setosa y muestra.versicolor</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-1" tabindex="-1"></a><span class="co">#Se realiza el contraste de varianza</span></span>
+<span id="cb77-2"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-2" tabindex="-1"></a><span class="fu">var.test</span>(muestra.setosa<span class="sc">$</span>Petal.Length, muestra.versicolor<span class="sc">$</span>Petal.Length)</span>
+<span id="cb77-3"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb77-4"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-4" tabindex="-1"></a><span class="do">## F test to compare two variances</span></span>
+<span id="cb77-5"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb77-6"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-6" tabindex="-1"></a><span class="do">## data: muestra.setosa$Petal.Length and muestra.versicolor$Petal.Length</span></span>
+<span id="cb77-7"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-7" tabindex="-1"></a><span class="do">## F = 0.14331, num df = 39, denom df = 39, p-value = 1.738e-08</span></span>
+<span id="cb77-8"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-8" tabindex="-1"></a><span class="do">## alternative hypothesis: true ratio of variances is not equal to 1</span></span>
+<span id="cb77-9"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-9" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb77-10"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-10" tabindex="-1"></a><span class="do">## 0.07579578 0.27095614</span></span>
+<span id="cb77-11"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-11" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb77-12"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-12" tabindex="-1"></a><span class="do">## ratio of variances </span></span>
+<span id="cb77-13"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#cb77-13" tabindex="-1"></a><span class="do">## 0.1433085</span></span></code></pre></div>
+<p>El p-valor del contraste ha sido prácticamente cero, por tanto, se concluye que tiene
+evidencias suficientes para afirmar que las varianzas de las longitudes del pétalo de
+las flores de las especies setosa y versicolor son diferentes.</p>
+<p>Note que además que, el IC no contiene el valor 1, de hecho está a la izquierda de él.
+Este hecho reafirma la conclusión anterior.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pruebas-de-hipotesis-para-una-poblacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

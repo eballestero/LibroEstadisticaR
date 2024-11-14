@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 13 Regresion lineal multiple | “Elementos de Estadística Inferencial con R”</title>
+  <meta name="description" content="Capítulo 13 Regresion lineal multiple | “Elementos de Estadística Inferencial con R”" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 13 Regresion lineal multiple | “Elementos de Estadística Inferencial con R”" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 13 Regresion lineal multiple | “Elementos de Estadística Inferencial con R”" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regresion-no-lineal-simple.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
+<li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
+<li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulación-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
+<li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalo-de-confianza-para-la-varianza-de-una-poblacion-normal"><i class="fa fa-check"></i><b>2.3</b> Intervalo de confianza para la varianza de una poblacion normal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html"><i class="fa fa-check"></i><b>3</b> II Parte: Casos con dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-promedios"><i class="fa fa-check"></i><b>3.1</b> Diferencia de Promedios</a></li>
+<li class="chapter" data-level="3.2" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#cociente-de-varianzas"><i class="fa fa-check"></i><b>3.2</b> Cociente de varianzas</a></li>
+<li class="chapter" data-level="3.3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.3</b> Diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html"><i class="fa fa-check"></i><b>4</b> Pruebas de hipotesis para una poblacion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
+<li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-pequeñas"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#contraste-para-dos-medias-independientes-en-r-funcion-t.test"><i class="fa fa-check"></i><b>5.2.2</b> Contraste para dos medias independientes en R: funcion t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
+<li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#visualización-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test"><i class="fa fa-check"></i><b>8.2.2</b> Test de normalidad de Anderson-Darling o A-D test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test"><i class="fa fa-check"></i><b>8.2.3</b> Test de Shapiro-Wilks o S-W test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson"><i class="fa fa-check"></i><b>8.2.4</b> Test omnibus de D’Agostino-Pearson</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prueba-de-independencia.html"><a href="prueba-de-independencia.html"><i class="fa fa-check"></i><b>9</b> Prueba de Independencia</a></li>
+<li class="chapter" data-level="10" data-path="prueba-de-analisis-de-varianza-anova.html"><a href="prueba-de-analisis-de-varianza-anova.html"><i class="fa fa-check"></i><b>10</b> Prueba de Analisis de Varianza (ANOVA)</a></li>
+<li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
+<li class="chapter" data-level="11.2" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#coeficientes-de-determinación-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
+<li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
+<li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
+<li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
+<li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
+<li class="chapter" data-level="11.8" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#cuidado-con-el-coeficiente-de-correlacion-y-de-determinación"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
+<li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresión-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto"><i class="fa fa-check"></i>Especificaciones del proyecto</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iv-parte-analisis-inferencial-otras-pruebas-de-hipótesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#v-parte-analisis-de-regresión"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones-1"><i class="fa fa-check"></i>III parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#espesificaciones-del-proyecto-fase-iii"><i class="fa fa-check"></i>Espesificaciones del proyecto Fase III</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-otras-pruebas-de-hipotesis-en-r"><i class="fa fa-check"></i>I Parte: Otras pruebas de hipotesis en R</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-1"><i class="fa fa-check"></i>Caso 1</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-2"><i class="fa fa-check"></i>Caso 2</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-3"><i class="fa fa-check"></i>Caso 3</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-4"><i class="fa fa-check"></i>Caso 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-modelos-de-regresion-lineal"><i class="fa fa-check"></i>II Parte: Modelos de regresion lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-5"><i class="fa fa-check"></i>Caso 5</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-6"><i class="fa fa-check"></i>Caso 6</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#generacion-de-los-modelos"><i class="fa fa-check"></i>Generacion de los modelos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#seleccionando-el-mejor-modelo"><i class="fa fa-check"></i>Seleccionando el mejor modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-modelos-de-regresion-no-lineal"><i class="fa fa-check"></i>III PARTE: Modelos de regresion no lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-7"><i class="fa fa-check"></i>Caso 7</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-0-regresión-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
+<li class="chapter" data-level="13.2.1" data-path="anexos.html"><a href="anexos.html#modelo-3-regresion-no-lineal-multiple-con-interacción"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">“Elementos de Estadística Inferencial con R”</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresion-lineal-multiple" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Capítulo 13</span> Regresion lineal multiple<a href="regresion-lineal-multiple.html#regresion-lineal-multiple" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este sección, se abordarán algunos ejemplos de <strong>Regresión Múltiple</strong>, dando especial atención al caso lineal.</p>
+<p>Como de constumbre, iniciemos cargando algunos paquetes de utilidad:</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="regresion-lineal-multiple.html#cb277-1" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb277-2"><a href="regresion-lineal-multiple.html#cb277-2" tabindex="-1"></a><span class="fu">library</span>(bbmle)</span></code></pre></div>
+<pre><code>## Loading required package: stats4</code></pre>
+<pre><code>## 
+## Attaching package: &#39;bbmle&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     slice</code></pre>
+<div id="regresion-lineal-multiple-rlm" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Regresion Lineal Multiple (RLM)<a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Ejemplo 1</strong></p>
+<p>En la siguiente tabla, se registran las siguiente observaciones:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(X_1\)</span></th>
+<th align="center"><span class="math inline">\(X_2\)</span></th>
+<th align="center"><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">-1</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">-1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Estime la ecuación de regresión de <span class="math inline">\(Y\)</span> en función de <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>.</p></li>
+<li><p>Calcule el coeficiente de determinación y correlación del modelo.</p></li>
+<li><p>Determine el valor esperado aproximado de <span class="math inline">\(Y\)</span> cuando $X_1 = 2 $ y <span class="math inline">\(X_2 = 3\)</span></p></li>
+</ul>
+<p><strong>Solución</strong></p>
+<p>Primeramente se genera la matriz asociada al sistema:</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="regresion-lineal-multiple.html#cb281-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb281-2"><a href="regresion-lineal-multiple.html#cb281-2" tabindex="-1"></a>X</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    1
+## [2,]    1    1    0
+## [3,]    1    1   -1
+## [4,]    1    0    0
+## [5,]    1   -1    1</code></pre>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="regresion-lineal-multiple.html#cb283-1" tabindex="-1"></a><span class="co"># La instrucción genera un vector columna</span></span>
+<span id="cb283-2"><a href="regresion-lineal-multiple.html#cb283-2" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">0</span>))</span>
+<span id="cb283-3"><a href="regresion-lineal-multiple.html#cb283-3" tabindex="-1"></a>Y</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    1
+## [2,]    4
+## [3,]    6
+## [4,]    3
+## [5,]    0</code></pre>
+<p>Seguidamente, usando el teorema siguiente:</p>
+<p><span class="math display">\[
+b = (X^t \; X)^{-1} (X^t \;Y)
+\]</span>
+Para el trabajo en R tome en cuenta las siguientes instrucciones:
+Sea <code>M</code> una matriz de orden <code>n</code>, así</p>
+<ul>
+<li><p><code>solve(M)</code>: Calcila la matriz inversa de <code>M</code></p></li>
+<li><p><code>t(M)</code>: Calcula la matriz transpuesta de <code>M</code></p></li>
+<li><p><code>%*%</code>: Corresponde a la multiplicación matricial</p></li>
+</ul>
+<p>Para calcular las estimaciones buscadas, hacemos el siguiente cálculo:</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="regresion-lineal-multiple.html#cb285-1" tabindex="-1"></a>estimaciones.b1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X) <span class="sc">%*%</span> (<span class="fu">t</span>(X) <span class="sc">%*%</span> Y)</span>
+<span id="cb285-2"><a href="regresion-lineal-multiple.html#cb285-2" tabindex="-1"></a>estimaciones.b1</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    3
+## [2,]    1
+## [3,]   -2</code></pre>
+<p>Así, el modelo de regresión buscado sería:
+<span class="math display">\[
+y = 3 + X_1 -2X_2
+\]</span>
+Otra forma de estimar el modelo, es haciendo uso de la función lm que se usó para el modelo de Regresión Lineal Simple, como se muestra a continuación:</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="regresion-lineal-multiple.html#cb287-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X[ ,<span class="dv">2</span>]<span class="sc">+</span>X[ ,<span class="dv">3</span>])</span>
+<span id="cb287-2"><a href="regresion-lineal-multiple.html#cb287-2" tabindex="-1"></a>modelo</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ X[, 2] + X[, 3])
+## 
+## Coefficients:
+## (Intercept)       X[, 2]       X[, 3]  
+##           3            1           -2</code></pre>
+<p>Veamos la calidad del modelo, mediante su coeficiente de determinación y de correlación:</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="regresion-lineal-multiple.html#cb289-1" tabindex="-1"></a><span class="co"># Coefieciente de determinación</span></span>
+<span id="cb289-2"><a href="regresion-lineal-multiple.html#cb289-2" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(modelo)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## Warning in summary.lm(modelo): essentially perfect fit: summary may be
+## unreliable</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="regresion-lineal-multiple.html#cb291-1" tabindex="-1"></a>R2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="regresion-lineal-multiple.html#cb293-1" tabindex="-1"></a><span class="co"># Coeficiente de correlación</span></span>
+<span id="cb293-2"><a href="regresion-lineal-multiple.html#cb293-2" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(R2)</span>
+<span id="cb293-3"><a href="regresion-lineal-multiple.html#cb293-3" tabindex="-1"></a>R</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Seguidamente, se crean una función para realizar las estimaciones</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="regresion-lineal-multiple.html#cb295-1" tabindex="-1"></a>modeloRLM1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x1,x2){</span>
+<span id="cb295-2"><a href="regresion-lineal-multiple.html#cb295-2" tabindex="-1"></a> y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> x1 <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x2</span>
+<span id="cb295-3"><a href="regresion-lineal-multiple.html#cb295-3" tabindex="-1"></a> <span class="fu">return</span>(y)</span>
+<span id="cb295-4"><a href="regresion-lineal-multiple.html#cb295-4" tabindex="-1"></a>}</span>
+<span id="cb295-5"><a href="regresion-lineal-multiple.html#cb295-5" tabindex="-1"></a><span class="fu">modeloRLM1</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<p><strong>Ejemplo 2</strong>
+Se pustula que la altura de un bebéé <span class="math inline">\((y)\)</span> tiene una relación lineal con su edad en días <span class="math inline">\((x_1)\)</span>, su altura al nacer en cm <span class="math inline">\((x_2)\)</span>, su peso en kg al nacer <span class="math inline">\((x_3)\)</span> y el aumento en tanto por ciento de su peso actual respecot de su peso al nacer <span class="math inline">\((x_4)\)</span>.</p>
+<p>En una muestra de 9 niños se obtuvieron los siguientes resultados:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">y</th>
+<th align="center">x1</th>
+<th align="center">x2</th>
+<th align="center">x3</th>
+<th align="center">x4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">57.5</td>
+<td align="center">78</td>
+<td align="center">48.2</td>
+<td align="center">2.75</td>
+<td align="center">29.5</td>
+</tr>
+<tr class="even">
+<td align="center">52.8</td>
+<td align="center">69</td>
+<td align="center">45.5</td>
+<td align="center">2.15</td>
+<td align="center">26.3</td>
+</tr>
+<tr class="odd">
+<td align="center">61.3</td>
+<td align="center">77</td>
+<td align="center">46.3</td>
+<td align="center">4.41</td>
+<td align="center">32.2</td>
+</tr>
+<tr class="even">
+<td align="center">67</td>
+<td align="center">88</td>
+<td align="center">49</td>
+<td align="center">5.52</td>
+<td align="center">36.5</td>
+</tr>
+<tr class="odd">
+<td align="center">53.5</td>
+<td align="center">67</td>
+<td align="center">43</td>
+<td align="center">3.21</td>
+<td align="center">27.2</td>
+</tr>
+<tr class="even">
+<td align="center">62.7</td>
+<td align="center">80</td>
+<td align="center">48</td>
+<td align="center">4.32</td>
+<td align="center">27.7</td>
+</tr>
+<tr class="odd">
+<td align="center">56.2</td>
+<td align="center">74</td>
+<td align="center">48</td>
+<td align="center">2.31</td>
+<td align="center">28.3</td>
+</tr>
+<tr class="even">
+<td align="center">68.5</td>
+<td align="center">94</td>
+<td align="center">53</td>
+<td align="center">4.3</td>
+<td align="center">30.3</td>
+</tr>
+<tr class="odd">
+<td align="center">69.2</td>
+<td align="center">102</td>
+<td align="center">58</td>
+<td align="center">3.71</td>
+<td align="center">28.7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Estime la ecuación de regresión de <span class="math inline">\(Y\)</span> en función de <span class="math inline">\(x_1, x_2, x_3 \; \text{ y } x_4\)</span>.</p></li>
+<li><p>Calcule el coerficiente de determinación y correlación del modelo.</p></li>
+</ul>
+<p><strong>Solución</strong>
+Primeramente, generamos la Matriz asociada al sistema y el vector solución:</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="regresion-lineal-multiple.html#cb297-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">78</span>,<span class="fl">48.2</span>,<span class="fl">2.75</span>,<span class="fl">29.5</span>,<span class="dv">1</span>,<span class="dv">69</span>,<span class="fl">45.5</span>,<span class="fl">2.15</span>,<span class="fl">26.3</span>,</span>
+<span id="cb297-2"><a href="regresion-lineal-multiple.html#cb297-2" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">77</span>,<span class="fl">46.3</span>,<span class="fl">4.41</span>,<span class="fl">32.2</span>,<span class="dv">1</span>,<span class="dv">88</span>,<span class="dv">49</span>,<span class="fl">5.52</span>,<span class="fl">36.5</span>,</span>
+<span id="cb297-3"><a href="regresion-lineal-multiple.html#cb297-3" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">67</span>,<span class="dv">43</span>,<span class="fl">3.21</span>,<span class="fl">27.2</span>,<span class="dv">1</span>,<span class="dv">80</span>,<span class="dv">48</span>,<span class="fl">4.32</span>,<span class="fl">27.7</span>,</span>
+<span id="cb297-4"><a href="regresion-lineal-multiple.html#cb297-4" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">74</span>,<span class="dv">48</span>,<span class="fl">2.31</span>,<span class="fl">28.3</span>,<span class="dv">1</span>,<span class="dv">94</span>,<span class="dv">53</span>,<span class="fl">4.3</span>,<span class="fl">30.3</span>,</span>
+<span id="cb297-5"><a href="regresion-lineal-multiple.html#cb297-5" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">102</span>,<span class="dv">58</span>,<span class="fl">3.71</span>,<span class="fl">28.7</span>), <span class="at">nrow=</span><span class="dv">9</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb297-6"><a href="regresion-lineal-multiple.html#cb297-6" tabindex="-1"></a></span>
+<span id="cb297-7"><a href="regresion-lineal-multiple.html#cb297-7" tabindex="-1"></a>X</span></code></pre></div>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5]
+##  [1,]    1   78 48.2 2.75 29.5
+##  [2,]    1   69 45.5 2.15 26.3
+##  [3,]    1   77 46.3 4.41 32.2
+##  [4,]    1   88 49.0 5.52 36.5
+##  [5,]    1   67 43.0 3.21 27.2
+##  [6,]    1   80 48.0 4.32 27.7
+##  [7,]    1   74 48.0 2.31 28.3
+##  [8,]    1   94 53.0 4.30 30.3
+##  [9,]    1  102 58.0 3.71 28.7</code></pre>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="regresion-lineal-multiple.html#cb299-1" tabindex="-1"></a>y.bebes <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="fl">57.5</span>,<span class="fl">52.8</span>,<span class="fl">61.3</span>,<span class="dv">67</span>,<span class="fl">53.5</span>,<span class="fl">62.7</span>,<span class="fl">56.2</span>,<span class="fl">68.5</span>,<span class="fl">69.2</span>))</span>
+<span id="cb299-2"><a href="regresion-lineal-multiple.html#cb299-2" tabindex="-1"></a>y.bebes</span></code></pre></div>
+<pre><code>##       [,1]
+##  [1,] 57.5
+##  [2,] 52.8
+##  [3,] 61.3
+##  [4,] 67.0
+##  [5,] 53.5
+##  [6,] 62.7
+##  [7,] 56.2
+##  [8,] 68.5
+##  [9,] 69.2</code></pre>
+<p>Seguidamente, se resuelve el sistema para obtener las estimaciones de los parámetros buscados:</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regresion-lineal-multiple.html#cb301-1" tabindex="-1"></a>estimaciones.b <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X) <span class="sc">%*%</span> (<span class="fu">t</span>(X) <span class="sc">%*%</span> y.bebes)</span>
+<span id="cb301-2"><a href="regresion-lineal-multiple.html#cb301-2" tabindex="-1"></a>estimaciones.b</span></code></pre></div>
+<pre><code>##             [,1]
+## [1,]  7.14753240
+## [2,]  0.10009447
+## [3,]  0.72641738
+## [4,]  3.07583698
+## [5,] -0.03004215</code></pre>
+<p>Por tanto, el modelo de Regresión Lineal Múltiple buscado, sería:</p>
+<p><span class="math display">\[
+\hat{y} = 7.14753240 + + 0.10009447x_1 + 0.72641738x_2 + 3.07583698x_3 - 0.03004215x_4
+\]</span>
+Para comprender el modelo de una mejor manera, se escribe como sigue:</p>
+<p><span class="math display">\[
+\hat{y} = 7.14753240 + 0.10009447 \textit{Edad} + 0.72641738\textit{Altura} + 3.07583698\textit{Peso} - 0.03004215\textit{Aumento}
+\]</span>
+Podemos observar, por ejemplo, que cuánto más edad tenga el niño, más altura tiene, cuánto más peso al nacer, más altura tiene pero cuánto más haya aumentado su peso respecto de su peso al nacer, su altura disminuye aunque dicha disminución es minúscula.</p>
+<p>Calculemos el modelo usando la función <code>lm</code>:</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="regresion-lineal-multiple.html#cb303-1" tabindex="-1"></a>modbebes <span class="ot">&lt;-</span> <span class="fu">lm</span>(y.bebes <span class="sc">~</span> X[,<span class="dv">2</span>] <span class="sc">+</span> X[,<span class="dv">3</span>] <span class="sc">+</span> X[,<span class="dv">4</span>] <span class="sc">+</span> X[,<span class="dv">5</span>])</span>
+<span id="cb303-2"><a href="regresion-lineal-multiple.html#cb303-2" tabindex="-1"></a>modbebes</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.bebes ~ X[, 2] + X[, 3] + X[, 4] + X[, 5])
+## 
+## Coefficients:
+## (Intercept)       X[, 2]       X[, 3]       X[, 4]       X[, 5]  
+##     7.14753      0.10009      0.72642      3.07584     -0.03004</code></pre>
+<p>Con la función summary aplicada al modelo, es posible determinar si todas las variables utilizadas en el modelo de RLM son significativas:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="regresion-lineal-multiple.html#cb305-1" tabindex="-1"></a><span class="fu">summary</span>(modbebes)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.bebes ~ X[, 2] + X[, 3] + X[, 4] + X[, 5])
+## 
+## Residuals:
+##        1        2        3        4        5        6        7        8 
+## -0.04053 -0.12898  0.21498 -0.43238 -0.64610  0.22143  0.52245  1.12764 
+##        9 
+## -0.83852 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  7.14753   16.45961   0.434   0.6865  
+## X[, 2]       0.10009    0.33971   0.295   0.7829  
+## X[, 3]       0.72642    0.78590   0.924   0.4076  
+## X[, 4]       3.07584    1.05918   2.904   0.0439 *
+## X[, 5]      -0.03004    0.16646  -0.180   0.8656  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.861 on 4 degrees of freedom
+## Multiple R-squared:  0.9908, Adjusted R-squared:  0.9815 
+## F-statistic: 107.3 on 4 and 4 DF,  p-value: 0.0002541</code></pre>
+<p>Finalmente, se calcula el coeficiente de determinación y de correlación para el modelo:</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="regresion-lineal-multiple.html#cb307-1" tabindex="-1"></a><span class="co"># Coeficiente de determinación</span></span>
+<span id="cb307-2"><a href="regresion-lineal-multiple.html#cb307-2" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(y.bebes <span class="sc">~</span> X[,<span class="dv">2</span>] <span class="sc">+</span> X[,<span class="dv">3</span>] <span class="sc">+</span> X[,<span class="dv">4</span>] <span class="sc">+</span> X[,<span class="dv">5</span>]))<span class="sc">$</span>r.squared</span>
+<span id="cb307-3"><a href="regresion-lineal-multiple.html#cb307-3" tabindex="-1"></a>R2</span></code></pre></div>
+<pre><code>## [1] 0.9907683</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="regresion-lineal-multiple.html#cb309-1" tabindex="-1"></a><span class="co"># Coeficiente de correlación</span></span>
+<span id="cb309-2"><a href="regresion-lineal-multiple.html#cb309-2" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(R2)</span>
+<span id="cb309-3"><a href="regresion-lineal-multiple.html#cb309-3" tabindex="-1"></a>R</span></code></pre></div>
+<pre><code>## [1] 0.9953735</code></pre>
+<p>Analizando los <strong>valores de P</strong> para cada coeficiente, vemos que el único que aporta de manera significativa al modelo es <span class="math inline">\(X[, 4]\)</span> que corresponde a <span class="math inline">\(x_3\)</span> de los datos originales (peso en <span class="math inline">\(\textit{kg}\)</span> del niño al nacer), esto sugiere que hagamos un modelo usando solo RLS con esta variable:</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="regresion-lineal-multiple.html#cb311-1" tabindex="-1"></a>modbebesRLS <span class="ot">&lt;-</span> <span class="fu">lm</span>(y.bebes <span class="sc">~</span> X[,<span class="dv">4</span>])</span>
+<span id="cb311-2"><a href="regresion-lineal-multiple.html#cb311-2" tabindex="-1"></a>modbebesRLS</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.bebes ~ X[, 4])
+## 
+## Coefficients:
+## (Intercept)       X[, 4]  
+##      45.298        4.315</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="regresion-lineal-multiple.html#cb313-1" tabindex="-1"></a><span class="fu">summary</span>(modbebesRLS)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.bebes ~ X[, 4])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.6496 -2.1172 -1.2392  0.9339  7.8929 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   45.298      5.254   8.621 5.64e-05 ***
+## X[, 4]         4.315      1.390   3.105   0.0172 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.394 on 7 degrees of freedom
+## Multiple R-squared:  0.5793, Adjusted R-squared:  0.5192 
+## F-statistic:  9.64 on 1 and 7 DF,  p-value: 0.0172</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="regresion-lineal-multiple.html#cb315-1" tabindex="-1"></a><span class="fu">summary</span>(modbebesRLS)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.5793379</code></pre>
+<p>Podemos comparar los modelos:</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="regresion-lineal-multiple.html#cb317-1" tabindex="-1"></a><span class="fu">AICctab</span>(modbebes, modbebesRLS, <span class="at">base =</span> T, <span class="at">delta =</span> T, <span class="at">sort =</span> T, <span class="at">weights =</span>T, <span class="at">nobs =</span> <span class="dv">9</span>)</span></code></pre></div>
+<pre><code>##             AICc dAICc df weight
+## modbebesRLS 60.7  0.0  3  0.988 
+## modbebes    69.5  8.8  6  0.012</code></pre>
+<p>Como AIC es menor para el modelo de RLS <strong>modbebesRLS</strong>, se podría preferir a este en lugar el modelo de RLM <strong>modbebes</strong>.</p>
+</div>
+<div id="regresión-no-lineal-multiple-rnlm" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Regresión No Lineal Multiple (RNLM)<a href="regresion-lineal-multiple.html#regresión-no-lineal-multiple-rnlm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Ejemplo 1</strong></p>
+<p>La tabla a trabjar es la siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(y\)</span></th>
+<th align="center"><span class="math inline">\(z\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">-46</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">-110</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">4</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">6</td>
+<td align="center">-12</td>
+</tr>
+<tr class="odd">
+<td align="center">20</td>
+<td align="center">2</td>
+<td align="center">64</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modelo a trabajar:</strong> $ z = _0 + _1 x + _2 y + _3 y^2$</p>
+<p>Se crea la tabla en R de la siguiente manera:</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="regresion-lineal-multiple.html#cb319-1" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">13</span>,<span class="dv">4</span>,<span class="dv">16</span>,<span class="dv">6</span>,<span class="dv">20</span>,<span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb319-2"><a href="regresion-lineal-multiple.html#cb319-2" tabindex="-1"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    3    5
+## [2,]    8    9
+## [3,]   13    4
+## [4,]   16    6
+## [5,]   20    2</code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="regresion-lineal-multiple.html#cb321-1" tabindex="-1"></a><span class="co"># La instrucción genera un vector columna, que representa el vector solución</span></span>
+<span id="cb321-2"><a href="regresion-lineal-multiple.html#cb321-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">46</span>,<span class="sc">-</span><span class="dv">110</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">12</span>,<span class="dv">64</span>))</span>
+<span id="cb321-3"><a href="regresion-lineal-multiple.html#cb321-3" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]  -46
+## [2,] -110
+## [3,]   10
+## [4,]  -12
+## [5,]   64</code></pre>
+<p>Para linealizar el modelo, se debe hacer el siguiente cambio de variable:</p>
+<ul>
+<li><p><span class="math inline">\(x_3\)</span> = <span class="math inline">\(y^2\)</span></p></li>
+<li><p><span class="math inline">\(x_1\)</span> = <span class="math inline">\(x\)</span></p></li>
+<li><p><span class="math inline">\(x_2\)</span> = <span class="math inline">\(y\)</span></p></li>
+<li><p><span class="math inline">\(z_2\)</span> = <span class="math inline">\(z\)</span></p></li>
+<li><p><span class="math inline">\(b_0\)</span> = <span class="math inline">\(\beta_0\)</span></p></li>
+<li><p><span class="math inline">\(b_1\)</span> = <span class="math inline">\(\beta_1\)</span></p></li>
+<li><p><span class="math inline">\(b_2\)</span> = <span class="math inline">\(\beta_2\)</span></p></li>
+<li><p><span class="math inline">\(b_3\)</span> = <span class="math inline">\(\beta_3\)</span></p></li>
+</ul>
+<p>Transformamos la tabla original, para que se ajuste al modelo de Regresión Lineal Múltiple:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="regresion-lineal-multiple.html#cb323-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), M[ ,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)], M[ ,<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb323-2"><a href="regresion-lineal-multiple.html#cb323-2" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5   25
+## [2,]    1    8    9   81
+## [3,]    1   13    4   16
+## [4,]    1   16    6   36
+## [5,]    1   20    2    4</code></pre>
+<p>Con esta nueva matriz, resolvemos el siguiente modelo:
+<span class="math display">\[
+z_2 = b_0 + b_1 x_1 + b_2 x_2 + b_3 x_3
+\]</span>
+como si fuese un caso de (Regresión Lineal Múltiple) RLM, de la siguiente manera:</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="regresion-lineal-multiple.html#cb325-1" tabindex="-1"></a>estimaciones.b <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(x) <span class="sc">%*%</span> x) <span class="sc">%*%</span> (<span class="fu">t</span>(x) <span class="sc">%*%</span> z)</span>
+<span id="cb325-2"><a href="regresion-lineal-multiple.html#cb325-2" tabindex="-1"></a>estimaciones.b</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    2
+## [2,]    4
+## [3,]   -7
+## [4,]   -1</code></pre>
+<p>Recordenmos también que el modelo se puede obtener usando la funión lm:</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="regresion-lineal-multiple.html#cb327-1" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(z <span class="sc">~</span> x[,<span class="dv">2</span>] <span class="sc">+</span> x[,<span class="dv">3</span>] <span class="sc">+</span> x[,<span class="dv">4</span>])</span>
+<span id="cb327-2"><a href="regresion-lineal-multiple.html#cb327-2" tabindex="-1"></a>modelo1</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = z ~ x[, 2] + x[, 3] + x[, 4])
+## 
+## Coefficients:
+## (Intercept)       x[, 2]       x[, 3]       x[, 4]  
+##           2            4           -7           -1</code></pre>
+<p>Por tanto, el modelo de Regresión Lineal Múltiple buscado, sería:
+<span class="math display">\[
+\hat{z} = 2 + 4x - 7y - y^2
+\]</span>
+Evaluamos el modelos para los valores de <span class="math inline">\(x = 2\)</span> y <span class="math inline">\(y = 7\)</span></p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="regresion-lineal-multiple.html#cb329-1" tabindex="-1"></a>b <span class="ot">&lt;-</span> estimaciones.b</span>
+<span id="cb329-2"><a href="regresion-lineal-multiple.html#cb329-2" tabindex="-1"></a>modeloRNLM1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb329-3"><a href="regresion-lineal-multiple.html#cb329-3" tabindex="-1"></a> z <span class="ot">&lt;-</span> b[<span class="dv">1</span>,] <span class="sc">+</span> b[<span class="dv">2</span>,]<span class="sc">*</span>x <span class="sc">+</span> b[<span class="dv">3</span>,]<span class="sc">*</span>y <span class="sc">+</span> b[<span class="dv">4</span>, ]<span class="sc">*</span>y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb329-4"><a href="regresion-lineal-multiple.html#cb329-4" tabindex="-1"></a> <span class="fu">return</span>(z)</span>
+<span id="cb329-5"><a href="regresion-lineal-multiple.html#cb329-5" tabindex="-1"></a>}</span>
+<span id="cb329-6"><a href="regresion-lineal-multiple.html#cb329-6" tabindex="-1"></a></span>
+<span id="cb329-7"><a href="regresion-lineal-multiple.html#cb329-7" tabindex="-1"></a><span class="fu">modeloRNLM1</span>(<span class="dv">2</span>,<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] -88</code></pre>
+<p><strong>Ejemplo 2</strong>:
+La tabla a trabjar es la siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(y\)</span></th>
+<th align="center"><span class="math inline">\(z\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.5</td>
+<td align="center">0.06</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">1</td>
+<td align="center">6.7</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">512</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">64</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modelo a trabajar:</strong> <span class="math inline">\(z = \beta_0 x^{\beta_1} y^{\beta_2}\)</span></p>
+<p>Se crea la tabla en R de la siguiente manera:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="regresion-lineal-multiple.html#cb331-1" tabindex="-1"></a>M2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="fl">1.5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb331-2"><a href="regresion-lineal-multiple.html#cb331-2" tabindex="-1"></a>M2</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  1.0  0.5
+## [2,]  1.5  1.0
+## [3,]  2.0  2.0
+## [4,]  1.0  2.0</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="regresion-lineal-multiple.html#cb333-1" tabindex="-1"></a><span class="co"># La instrucción genera un vector columna, que representa el vector solución</span></span>
+<span id="cb333-2"><a href="regresion-lineal-multiple.html#cb333-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="fl">0.06</span>,<span class="fl">6.7</span>,<span class="dv">512</span>,<span class="dv">64</span>))</span>
+<span id="cb333-3"><a href="regresion-lineal-multiple.html#cb333-3" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>##        [,1]
+## [1,]   0.06
+## [2,]   6.70
+## [3,] 512.00
+## [4,]  64.00</code></pre>
+<p>Se procede a la siguiente transformación del modelo original, con el fin de buscar una linealización del mismo:</p>
+<p><span class="math display">\[
+\ln(z) = \ln(\beta_0) + \beta_1 \ln(x) + \beta_2 \ln(y)
+\]</span>
+Para linealizar el modelo, se debe hacer el siguiente cambio de variable:</p>
+<ul>
+<li><p><span class="math inline">\(b_0\)</span> = <span class="math inline">\(\ln(\beta_0)\)</span></p></li>
+<li><p><span class="math inline">\(b_1\)</span> = <span class="math inline">\(\beta_1\)</span></p></li>
+<li><p><span class="math inline">\(b_2\)</span> = <span class="math inline">\(\beta_2\)</span></p></li>
+<li><p><span class="math inline">\(x_1\)</span> = <span class="math inline">\(\ln(x)\)</span></p></li>
+<li><p><span class="math inline">\(x_2\)</span> = <span class="math inline">\(\ln(y)\)</span></p></li>
+<li><p><span class="math inline">\(z_2\)</span> = <span class="math inline">\(\ln(z)\)</span></p></li>
+</ul>
+<p>Tranformamos la tabla original, para que se ajuste al modelo de <code>RLM</code>:</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="regresion-lineal-multiple.html#cb335-1" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">log</span>(M2[ ,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]))</span>
+<span id="cb335-2"><a href="regresion-lineal-multiple.html#cb335-2" tabindex="-1"></a>x2</span></code></pre></div>
+<pre><code>##      [,1]      [,2]       [,3]
+## [1,]    1 0.0000000 -0.6931472
+## [2,]    1 0.4054651  0.0000000
+## [3,]    1 0.6931472  0.6931472
+## [4,]    1 0.0000000  0.6931472</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="regresion-lineal-multiple.html#cb337-1" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">log</span>(z)</span>
+<span id="cb337-2"><a href="regresion-lineal-multiple.html#cb337-2" tabindex="-1"></a>z2</span></code></pre></div>
+<pre><code>##           [,1]
+## [1,] -2.813411
+## [2,]  1.902108
+## [3,]  6.238325
+## [4,]  4.158883</code></pre>
+<p>Con esta nueva matriz, resolvemos el siguiente modelo:</p>
+<p><span class="math display">\[
+z_2 = b_0 + b_1 x_2 +b_2  x_2
+\]</span>
+como si fuese una caso de RLM, de la siguiente manera:</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="regresion-lineal-multiple.html#cb339-1" tabindex="-1"></a>estimaciones.b <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(x2) <span class="sc">%*%</span> x2) <span class="sc">%*%</span> (<span class="fu">t</span>(x2) <span class="sc">%*%</span> z2)</span>
+<span id="cb339-2"><a href="regresion-lineal-multiple.html#cb339-2" tabindex="-1"></a>estimaciones.b</span></code></pre></div>
+<pre><code>##           [,1]
+## [1,] 0.6744198
+## [2,] 3.0078412
+## [3,] 5.0260234</code></pre>
+<p>Recordemos que estos coeficientes se pueden calcular con la función lm de R:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="regresion-lineal-multiple.html#cb341-1" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(z2 <span class="sc">~</span> x2[,<span class="dv">2</span>] <span class="sc">+</span> x2[,<span class="dv">3</span>])</span>
+<span id="cb341-2"><a href="regresion-lineal-multiple.html#cb341-2" tabindex="-1"></a>modelo1</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = z2 ~ x2[, 2] + x2[, 3])
+## 
+## Coefficients:
+## (Intercept)      x2[, 2]      x2[, 3]  
+##      0.6744       3.0078       5.0260</code></pre>
+<p>Recordemos los cambios de variables que se utilizaron para las estimaciones de los parámetros:</p>
+<ul>
+<li><p><span class="math inline">\(b_0\)</span> = <span class="math inline">\(\ln(\beta_0)\)</span></p></li>
+<li><p><span class="math inline">\(b_1\)</span> = <span class="math inline">\(\beta_1\)</span></p></li>
+<li><p><span class="math inline">\(b_2\)</span> = <span class="math inline">\(\beta_2\)</span></p></li>
+</ul>
+<p>De esta manera, para obterner el valor bucado, se precede con el siguiente despeje:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> = <span class="math inline">\(e^{b_0}\)</span></li>
+</ul>
+<p>Hacemos este cálculo en R para obtener nuevamente el vector con los valores de las estimaciones para los betas:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="regresion-lineal-multiple.html#cb343-1" tabindex="-1"></a>b <span class="ot">&lt;-</span> estimaciones.b</span>
+<span id="cb343-2"><a href="regresion-lineal-multiple.html#cb343-2" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">exp</span>(b[<span class="dv">1</span>, ]) , b[<span class="dv">2</span>, ], b[<span class="dv">3</span>, ]) </span>
+<span id="cb343-3"><a href="regresion-lineal-multiple.html#cb343-3" tabindex="-1"></a>beta</span></code></pre></div>
+<pre><code>## [1] 1.962894 3.007841 5.026023</code></pre>
+<p>Por tanto, el modelo de RNLM buscado, sería:</p>
+<p><span class="math display">\[
+z = (1.962894)x^{3.007841} y^{5.026023}
+\]</span>
+Evaluamos el modelos para los valores de <span class="math inline">\(x = 2\)</span> y <span class="math inline">\(y = 7\)</span></p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="regresion-lineal-multiple.html#cb345-1" tabindex="-1"></a>b <span class="ot">&lt;-</span> estimaciones.b</span>
+<span id="cb345-2"><a href="regresion-lineal-multiple.html#cb345-2" tabindex="-1"></a>modeloRNLM2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x1,x2){</span>
+<span id="cb345-3"><a href="regresion-lineal-multiple.html#cb345-3" tabindex="-1"></a> z <span class="ot">&lt;-</span> b[<span class="dv">1</span>,]<span class="sc">*</span> x1<span class="sc">^</span>b[<span class="dv">2</span>,]<span class="sc">*</span>x2<span class="sc">^</span>b[<span class="dv">3</span>,]</span>
+<span id="cb345-4"><a href="regresion-lineal-multiple.html#cb345-4" tabindex="-1"></a> <span class="fu">return</span>(z)</span>
+<span id="cb345-5"><a href="regresion-lineal-multiple.html#cb345-5" tabindex="-1"></a>}</span>
+<span id="cb345-6"><a href="regresion-lineal-multiple.html#cb345-6" tabindex="-1"></a><span class="fu">modeloRNLM2</span>(<span class="dv">2</span>,<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] 95909.87</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresion-no-lineal-simple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
