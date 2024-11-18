@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Una visión grafica de las pruebas de hipotesis | Compendio-Estadística.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Una visión grafica de las pruebas de hipotesis | Compendio-Estadística.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Una visión grafica de las pruebas de hipotesis | Compendio-Estadística.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pruebas-de-hipotesis-para-dos-poblaciones.html"/>
+<link rel="next" href="otras-pruebas-de-hipotesis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="section.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
+<li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
+<li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#m%C3%A9todo-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#m%C3%A9todo-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
+<li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalo-de-confianza-para-la-varianza-de-una-poblacion-normal"><i class="fa fa-check"></i><b>2.3</b> Intervalo de confianza para la varianza de una poblacion normal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html"><i class="fa fa-check"></i><b>3</b> II Parte: Casos con dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-promedios"><i class="fa fa-check"></i><b>3.1</b> Diferencia de Promedios</a></li>
+<li class="chapter" data-level="3.2" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#cociente-de-varianzas"><i class="fa fa-check"></i><b>3.2</b> Cociente de varianzas</a></li>
+<li class="chapter" data-level="3.3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.3</b> Diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html"><i class="fa fa-check"></i><b>4</b> Pruebas de hipotesis para una poblacion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
+<li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#muestas-peque%C3%B1as"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#contraste-para-dos-medias-independientes-en-r-funcion-t.test"><i class="fa fa-check"></i><b>5.2.2</b> Contraste para dos medias independientes en R: funcion t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#una-visi%C3%B3n-grafica-de-las-pruebas-de-hipotesis"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
+<li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#visualizaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test"><i class="fa fa-check"></i><b>8.2.2</b> Test de normalidad de Anderson-Darling o A-D test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test"><i class="fa fa-check"></i><b>8.2.3</b> Test de Shapiro-Wilks o S-W test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson"><i class="fa fa-check"></i><b>8.2.4</b> Test omnibus de D’Agostino-Pearson</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prueba-de-independencia.html"><a href="prueba-de-independencia.html"><i class="fa fa-check"></i><b>9</b> Prueba de Independencia</a></li>
+<li class="chapter" data-level="10" data-path="prueba-de-analisis-de-varianza-anova.html"><a href="prueba-de-analisis-de-varianza-anova.html"><i class="fa fa-check"></i><b>10</b> Prueba de Analisis de Varianza (ANOVA)</a></li>
+<li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
+<li class="chapter" data-level="11.2" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#coeficientes-de-determinaci%C3%B3n-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
+<li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
+<li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
+<li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
+<li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
+<li class="chapter" data-level="11.8" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#cuidado-con-el-coeficiente-de-correlacion-y-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
+<li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#regresi%C3%B3n-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto"><i class="fa fa-check"></i>Especificaciones del proyecto</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iv-parte-analisis-inferencial-otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#v-parte-analisis-de-regresi%C3%B3n"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones-1"><i class="fa fa-check"></i>III parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#espesificaciones-del-proyecto-fase-iii"><i class="fa fa-check"></i>Espesificaciones del proyecto Fase III</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-otras-pruebas-de-hipotesis-en-r"><i class="fa fa-check"></i>I Parte: Otras pruebas de hipotesis en R</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-1"><i class="fa fa-check"></i>Caso 1</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-2"><i class="fa fa-check"></i>Caso 2</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-3"><i class="fa fa-check"></i>Caso 3</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-4"><i class="fa fa-check"></i>Caso 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-modelos-de-regresion-lineal"><i class="fa fa-check"></i>II Parte: Modelos de regresion lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-5"><i class="fa fa-check"></i>Caso 5</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-6"><i class="fa fa-check"></i>Caso 6</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#generacion-de-los-modelos"><i class="fa fa-check"></i>Generacion de los modelos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#seleccionando-el-mejor-modelo"><i class="fa fa-check"></i>Seleccionando el mejor modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-modelos-de-regresion-no-lineal"><i class="fa fa-check"></i>III PARTE: Modelos de regresion no lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-7"><i class="fa fa-check"></i>Caso 7</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-0-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
+<li class="chapter" data-level="13.2.1" data-path="chapters/05-pruebasHipotesisDosPoblaciones.html"><a href="#modelo-3-regresion-no-lineal-multiple-con-interacci%C3%B3n"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="una-visión-grafica-de-las-pruebas-de-hipotesis" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Una visión grafica de las pruebas de hipotesis<a href="#una-visi%C3%B3n-grafica-de-las-pruebas-de-hipotesis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Cuando una prueba de hipótesis para dos poblaciones se concluye que 𝐻0 es
+rechazada significa que se ha detectado una varianción siginificativa entre los
+parámetros comparados para ambos grupos que no es posible explicarla por el azar.</p>
+<p>Se tomarán seguidamente dos ejemplos que ya fueron abordados en secciones previas
+de este documento, con la finalidad de mostrar los que ocurre gráficamente con el
+parámetro en estudio y su respectivo intervalo de confianza, esto con el fin de que se
+pueda comprender de una mejor manera el trasfondo del resultado de la prueba de
+hipótesis.</p>
+<p>El primer caso a ilustrar el la prueba T aplicada sobre la diferencia de promedios
+entre la longitud del pétalo de las flores iris de las especies setosa y versicolor:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-1" tabindex="-1"></a><span class="co"># Se planta la semilla</span></span>
+<span id="cb78-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
+<span id="cb78-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-3" tabindex="-1"></a><span class="co"># Se establecen los índices para la muestra</span></span>
+<span id="cb78-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-4" tabindex="-1"></a>flores.elegidas.setosa <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb78-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-5" tabindex="-1"></a>flores.elegidas.versicolor <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">40</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb78-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-6" tabindex="-1"></a><span class="co"># Se extraen las muestras</span></span>
+<span id="cb78-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-7" tabindex="-1"></a>muestra.setosa <span class="ot">&lt;-</span> iris[flores.elegidas.setosa, ]</span>
+<span id="cb78-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-8" tabindex="-1"></a>muestra.versicolor <span class="ot">&lt;-</span> iris[flores.elegidas.versicolor, ]</span>
+<span id="cb78-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-9" tabindex="-1"></a><span class="co"># Se aplica la prueba de hipótesis</span></span>
+<span id="cb78-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-10" tabindex="-1"></a><span class="fu">t.test</span>(muestra.setosa<span class="sc">$</span>Petal.Length, muestra.versicolor<span class="sc">$</span>Petal.Length, </span>
+<span id="cb78-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-11" tabindex="-1"></a> <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span>
+<span id="cb78-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-12" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb78-13"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-13" tabindex="-1"></a><span class="do">## Welch Two Sample t-test</span></span>
+<span id="cb78-14"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb78-15"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-15" tabindex="-1"></a><span class="do">## data: muestra.setosa$Petal.Length and muestra.versicolor$Petal.Length</span></span>
+<span id="cb78-16"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-16" tabindex="-1"></a><span class="do">## t = -42.766, df = 49.953, p-value &lt; 2.2e-16</span></span>
+<span id="cb78-17"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-17" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb78-18"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-18" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb78-19"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-19" tabindex="-1"></a><span class="do">## -2.913186 -2.651814</span></span>
+<span id="cb78-20"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-20" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb78-21"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-21" tabindex="-1"></a><span class="do">## mean of x mean of y </span></span>
+<span id="cb78-22"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb78-22" tabindex="-1"></a><span class="do">## 1.4075 4.1900</span></span></code></pre></div>
+<p>La prueba en este caso detectó diferencia significativa entre los promedios y por tanto <span class="math inline">\(H_0\)</span> fue rechazada.</p>
+<p>Seguidamanete trateremos de ilustrar el comportamiento de los intervalos de
+confianza para cada una de las medias de las 3 especies de flores iris (estamos
+incluyendo una tercera especie que no fue usada en la prueba T anterior) de manera
+que se pueda ver si esta diferencia que la prueba ha detectado es marcada.
+Primeramente, se preparan los datos para crear esos intervalos de confianza, para lo
+cual utilizaremos la función pipe o pipeline del paquete <code>tidyverse</code> mediante la
+instrucció <code>%&gt;%</code>:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-1" tabindex="-1"></a><span class="co"># Limpia el entorno de trabajo</span></span>
+<span id="cb79-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb79-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-3" tabindex="-1"></a><span class="co"># Instala el paquete dplyr si no está ya instalado</span></span>
+<span id="cb79-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-4" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(dplyr)) <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb79-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-5" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-6" tabindex="-1"></a><span class="co"># Carga el paquete dplyr</span></span>
+<span id="cb79-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-7" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb79-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-8" tabindex="-1"></a></span>
+<span id="cb79-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-9" tabindex="-1"></a>iris.ic <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb79-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-10" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb79-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-11" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb79-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-12" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(Petal.Length), </span>
+<span id="cb79-13"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-13" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb79-14"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-14" tabindex="-1"></a>    <span class="at">de =</span> <span class="fu">sd</span>(Petal.Length),</span>
+<span id="cb79-15"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-15" tabindex="-1"></a>    <span class="at">ee =</span> de <span class="sc">/</span> <span class="fu">sqrt</span>(n),</span>
+<span id="cb79-16"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-16" tabindex="-1"></a>    <span class="at">li =</span> media <span class="sc">-</span> <span class="fl">1.95996</span> <span class="sc">*</span> ee,</span>
+<span id="cb79-17"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-17" tabindex="-1"></a>    <span class="at">ls =</span> media <span class="sc">+</span> <span class="fl">1.95996</span> <span class="sc">*</span> ee</span>
+<span id="cb79-18"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-18" tabindex="-1"></a>  )</span>
+<span id="cb79-19"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-19" tabindex="-1"></a></span>
+<span id="cb79-20"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb79-20" tabindex="-1"></a>iris.ic</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 7
+##   Species    media     n    de     ee    li    ls
+##   &lt;fct&gt;      &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 setosa      1.46    50 0.174 0.0246  1.41  1.51
+## 2 versicolor  4.26    50 0.470 0.0665  4.13  4.39
+## 3 virginica   5.55    50 0.552 0.0780  5.40  5.70</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 7</span></span>
+<span id="cb81-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-2" tabindex="-1"></a><span class="do">## Species media n de ee li ls</span></span>
+<span id="cb81-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-3" tabindex="-1"></a><span class="do">## &lt;fct&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb81-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-4" tabindex="-1"></a><span class="do">## 1 setosa 1.46 50 0.174 0.0246 1.41 1.51</span></span>
+<span id="cb81-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-5" tabindex="-1"></a><span class="do">## 2 versicolor 4.26 50 0.470 0.0665 4.13 4.39</span></span>
+<span id="cb81-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb81-6" tabindex="-1"></a><span class="do">## 3 virginica 5.55 50 0.552 0.0780 5.40 5.70</span></span></code></pre></div>
+<p>La nueva base de datos resumen iris.ic contiene la información que necesitamos
+para contruir los intervalos de confianza de 95% para la media de la longitud del
+pétalo de las tres especies de flores iris.</p>
+<p>Usando el paquete ggplot2, que se carga por defecto al cargar la librería tidyverse,
+graficaremos estos intervalos de confianza de la siguiente forma:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb82-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb82-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb82-2" tabindex="-1"></a> <span class="fu">geom_errorbar</span>(<span class="at">data =</span> iris.ic, <span class="fu">aes</span>(Species, media, <span class="at">ymin =</span> li, <span class="at">ymax =</span></span>
+<span id="cb82-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb82-3" tabindex="-1"></a>ls), <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">color =</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb82-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb82-4" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">data =</span> iris.ic, <span class="fu">aes</span>(Species, media)) <span class="sc">+</span></span>
+<span id="cb82-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb82-5" tabindex="-1"></a> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Note que los IC no se superpone entre ellos, sino que quedan muy separados, lo que
+permite visualmente comprender que no es posible una igualdad entre las medias de
+las tres especies de iris, algo que refuerza lo concluído en la pruena T.</p>
+<p>Analicemos ahora el caso de <strong>proporciones</strong> de las mujeres negras que fumaron
+durante el embarazo con respecto a las muejres blancas que también lo hicieron.
+Previamente en esta prueba no se encontró evidencia en contra de <span class="math inline">\(H_0\)</span>, como
+seguidamente se muestra:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-1" tabindex="-1"></a><span class="co"># Se extraen las etiquetas (número de fila) de las madres de cada raza</span></span>
+<span id="cb83-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-2" tabindex="-1"></a>madres.raza.blanca <span class="ot">&lt;-</span> birthwt[birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">1</span>, ]</span>
+<span id="cb83-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-3" tabindex="-1"></a>madres.raza.blanca</span>
+<span id="cb83-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-4" tabindex="-1"></a><span class="do">## low age lwt race smoke ptl ht ui ftv bwt</span></span>
+<span id="cb83-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-5" tabindex="-1"></a><span class="do">## 87 0 20 105 1 1 0 0 0 1 2557</span></span>
+<span id="cb83-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-6" tabindex="-1"></a><span class="do">## 88 0 21 108 1 1 0 0 1 2 2594</span></span>
+<span id="cb83-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-7" tabindex="-1"></a><span class="do">## 89 0 18 107 1 1 0 0 1 0 2600</span></span>
+<span id="cb83-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-8" tabindex="-1"></a><span class="do">## 92 0 22 118 1 0 0 0 0 1 2637</span></span>
+<span id="cb83-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-9" tabindex="-1"></a><span class="do">## 94 0 29 123 1 1 0 0 0 1 2663</span></span>
+<span id="cb83-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-10" tabindex="-1"></a><span class="do">## 95 0 26 113 1 1 0 0 0 0 2665</span></span>
+<span id="cb83-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-11" tabindex="-1"></a><span class="do">## 100 0 18 100 1 1 0 0 0 0 2769</span></span>
+<span id="cb83-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-12" tabindex="-1"></a><span class="do">## 101 0 18 100 1 1 0 0 0 0 2769</span></span>
+<span id="cb83-13"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-13" tabindex="-1"></a><span class="do">## 103 0 25 118 1 1 0 0 0 3 2782</span></span>
+<span id="cb83-14"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-14" tabindex="-1"></a><span class="do">## 105 0 28 120 1 1 0 0 0 1 2821</span></span>
+<span id="cb83-15"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-15" tabindex="-1"></a><span class="do">## 107 0 31 100 1 0 0 0 1 3 2835</span></span>
+<span id="cb83-16"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-16" tabindex="-1"></a><span class="do">## 108 0 36 202 1 0 0 0 0 1 2836</span></span>
+<span id="cb83-17"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-17" tabindex="-1"></a><span class="do">## 112 0 28 167 1 0 0 0 0 0 2877</span></span>
+<span id="cb83-18"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-18" tabindex="-1"></a><span class="do">## 113 0 17 122 1 1 0 0 0 0 2906</span></span>
+<span id="cb83-19"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-19" tabindex="-1"></a><span class="do">## 114 0 29 150 1 0 0 0 0 2 2920</span></span>
+<span id="cb83-20"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-20" tabindex="-1"></a><span class="do">## 118 0 24 90 1 1 1 0 0 1 2948</span></span>
+<span id="cb83-21"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-21" tabindex="-1"></a><span class="do">## 120 0 25 155 1 0 0 0 0 1 2977</span></span>
+<span id="cb83-22"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-22" tabindex="-1"></a><span class="do">## 123 0 29 140 1 1 0 0 0 2 2977</span></span>
+<span id="cb83-23"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-23" tabindex="-1"></a><span class="do">## 124 0 19 138 1 1 0 0 0 2 2977</span></span>
+<span id="cb83-24"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-24" tabindex="-1"></a><span class="do">## 125 0 27 124 1 1 0 0 0 0 2922</span></span>
+<span id="cb83-25"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-25" tabindex="-1"></a><span class="do">## 126 0 31 215 1 1 0 0 0 2 3005</span></span>
+<span id="cb83-26"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-26" tabindex="-1"></a><span class="do">## 127 0 33 109 1 1 0 0 0 1 3033</span></span>
+<span id="cb83-27"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-27" tabindex="-1"></a><span class="do">## 129 0 19 189 1 0 0 0 0 2 3062</span></span>
+<span id="cb83-28"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-28" tabindex="-1"></a><span class="do">## 131 0 21 160 1 0 0 0 0 0 3062</span></span>
+<span id="cb83-29"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-29" tabindex="-1"></a><span class="do">## 132 0 18 90 1 1 0 0 1 0 3062</span></span>
+<span id="cb83-30"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-30" tabindex="-1"></a><span class="do">## 133 0 18 90 1 1 0 0 1 0 3062</span></span>
+<span id="cb83-31"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-31" tabindex="-1"></a><span class="do">## 134 0 32 132 1 0 0 0 0 4 3080</span></span>
+<span id="cb83-32"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-32" tabindex="-1"></a><span class="do">## 136 0 24 115 1 0 0 0 0 2 3090</span></span>
+<span id="cb83-33"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-33" tabindex="-1"></a><span class="do">## 138 0 22 120 1 0 0 1 0 1 3100</span></span>
+<span id="cb83-34"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-34" tabindex="-1"></a><span class="do">## 140 0 22 130 1 1 0 0 0 0 3132</span></span>
+<span id="cb83-35"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-35" tabindex="-1"></a><span class="do">## 141 0 30 95 1 1 0 0 0 2 3147</span></span>
+<span id="cb83-36"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-36" tabindex="-1"></a><span class="do">## 151 0 28 140 1 0 0 0 0 0 3234</span></span>
+<span id="cb83-37"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-37" tabindex="-1"></a><span class="do">## 160 0 20 141 1 0 2 0 1 1 3317</span></span>
+<span id="cb83-38"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-38" tabindex="-1"></a><span class="do">## 162 0 22 112 1 1 2 0 0 0 3317</span></span>
+<span id="cb83-39"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-39" tabindex="-1"></a><span class="do">## 167 0 16 135 1 1 0 0 0 0 3374</span></span>
+<span id="cb83-40"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-40" tabindex="-1"></a><span class="do">## 169 0 25 140 1 0 0 0 0 1 3416</span></span>
+<span id="cb83-41"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-41" tabindex="-1"></a><span class="do">## 170 0 32 134 1 1 1 0 0 4 3430</span></span>
+<span id="cb83-42"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-42" tabindex="-1"></a><span class="do">## 173 0 23 190 1 0 0 0 0 0 3459</span></span>
+<span id="cb83-43"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-43" tabindex="-1"></a><span class="do">## 174 0 22 131 1 0 0 0 0 1 3460</span></span>
+<span id="cb83-44"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-44" tabindex="-1"></a><span class="do">## 175 0 32 170 1 0 0 0 0 0 3473</span></span>
+<span id="cb83-45"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-45" tabindex="-1"></a><span class="do">## 182 0 23 130 1 0 0 0 0 0 3586</span></span>
+<span id="cb83-46"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-46" tabindex="-1"></a><span class="do">## 183 0 36 175 1 0 0 0 0 0 3600</span></span>
+<span id="cb83-47"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-47" tabindex="-1"></a><span class="do">## 184 0 22 125 1 0 0 0 0 1 3614</span></span>
+<span id="cb83-48"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-48" tabindex="-1"></a><span class="do">## 185 0 24 133 1 0 0 0 0 0 3614</span></span>
+<span id="cb83-49"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-49" tabindex="-1"></a><span class="do">## 187 0 19 235 1 1 0 1 0 0 3629</span></span>
+<span id="cb83-50"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-50" tabindex="-1"></a><span class="do">## 188 0 25 95 1 1 3 0 1 0 3637</span></span>
+<span id="cb83-51"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-51" tabindex="-1"></a><span class="do">## 189 0 16 135 1 1 0 0 0 0 3643</span></span>
+<span id="cb83-52"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-52" tabindex="-1"></a><span class="do">## 190 0 29 135 1 0 0 0 0 1 3651</span></span>
+<span id="cb83-53"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-53" tabindex="-1"></a><span class="do">## 191 0 29 154 1 0 0 0 0 1 3651</span></span>
+<span id="cb83-54"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-54" tabindex="-1"></a><span class="do">## 192 0 19 147 1 1 0 0 0 0 3651</span></span>
+<span id="cb83-55"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-55" tabindex="-1"></a><span class="do">## 193 0 19 147 1 1 0 0 0 0 3651</span></span>
+<span id="cb83-56"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-56" tabindex="-1"></a><span class="do">## 195 0 30 137 1 0 0 0 0 1 3699</span></span>
+<span id="cb83-57"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-57" tabindex="-1"></a><span class="do">## 196 0 24 110 1 0 0 0 0 1 3728</span></span>
+<span id="cb83-58"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-58" tabindex="-1"></a><span class="do">## 197 0 19 184 1 1 0 1 0 0 3756</span></span>
+<span id="cb83-59"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-59" tabindex="-1"></a><span class="do">## 200 0 23 110 1 0 0 0 0 1 3770</span></span>
+<span id="cb83-60"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-60" tabindex="-1"></a><span class="do">## 203 0 30 112 1 0 0 0 0 1 3799</span></span>
+<span id="cb83-61"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-61" tabindex="-1"></a><span class="do">## 204 0 22 169 1 0 0 0 0 0 3827</span></span>
+<span id="cb83-62"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-62" tabindex="-1"></a><span class="do">## 205 0 18 120 1 1 0 0 0 2 3856</span></span>
+<span id="cb83-63"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-63" tabindex="-1"></a><span class="do">## 207 0 32 186 1 0 0 0 0 2 3860</span></span>
+<span id="cb83-64"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-64" tabindex="-1"></a><span class="do">## 209 0 29 130 1 1 0 0 0 2 3884</span></span>
+<span id="cb83-65"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-65" tabindex="-1"></a><span class="do">## 210 0 33 117 1 0 0 0 1 1 3912</span></span>
+<span id="cb83-66"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-66" tabindex="-1"></a><span class="do">## 211 0 20 170 1 1 0 0 0 0 3940</span></span>
+<span id="cb83-67"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-67" tabindex="-1"></a><span class="do">## 213 0 14 135 1 0 0 0 0 0 3941</span></span>
+<span id="cb83-68"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-68" tabindex="-1"></a><span class="do">## 215 0 25 120 1 0 0 0 0 2 3983</span></span>
+<span id="cb83-69"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-69" tabindex="-1"></a><span class="do">## 217 0 20 158 1 0 0 0 0 1 3997</span></span>
+<span id="cb83-70"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-70" tabindex="-1"></a><span class="do">## 219 0 21 115 1 0 0 0 0 1 4054</span></span>
+<span id="cb83-71"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-71" tabindex="-1"></a><span class="do">## 220 0 22 129 1 0 0 0 0 0 4111</span></span>
+<span id="cb83-72"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-72" tabindex="-1"></a><span class="do">## 221 0 25 130 1 0 0 0 0 2 4153</span></span>
+<span id="cb83-73"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-73" tabindex="-1"></a><span class="do">## 222 0 31 120 1 0 0 0 0 2 4167</span></span>
+<span id="cb83-74"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-74" tabindex="-1"></a><span class="do">## 223 0 35 170 1 0 1 0 0 1 4174</span></span>
+<span id="cb83-75"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-75" tabindex="-1"></a><span class="do">## 224 0 19 120 1 1 0 0 0 0 4238</span></span>
+<span id="cb83-76"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-76" tabindex="-1"></a><span class="do">## 225 0 24 116 1 0 0 0 0 1 4593</span></span>
+<span id="cb83-77"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-77" tabindex="-1"></a><span class="do">## 226 0 45 123 1 0 0 0 0 1 4990</span></span>
+<span id="cb83-78"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-78" tabindex="-1"></a><span class="do">## 10 1 29 130 1 0 0 0 1 2 1021</span></span>
+<span id="cb83-79"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-79" tabindex="-1"></a><span class="do">## 20 1 21 165 1 1 0 1 0 1 1790</span></span>
+<span id="cb83-80"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-80" tabindex="-1"></a><span class="do">## 22 1 32 105 1 1 0 0 0 0 1818</span></span>
+<span id="cb83-81"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-81" tabindex="-1"></a><span class="do">## 23 1 19 91 1 1 2 0 1 0 1885</span></span>
+<span id="cb83-82"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-82" tabindex="-1"></a><span class="do">## 26 1 25 92 1 1 0 0 0 0 1928</span></span>
+<span id="cb83-83"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-83" tabindex="-1"></a><span class="do">## 27 1 20 150 1 1 0 0 0 2 1928</span></span>
+<span id="cb83-84"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-84" tabindex="-1"></a><span class="do">## 29 1 24 155 1 1 1 0 0 0 1936</span></span>
+<span id="cb83-85"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-85" tabindex="-1"></a><span class="do">## 33 1 19 102 1 0 0 0 0 2 2082</span></span>
+<span id="cb83-86"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-86" tabindex="-1"></a><span class="do">## 34 1 19 112 1 1 0 0 1 0 2084</span></span>
+<span id="cb83-87"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-87" tabindex="-1"></a><span class="do">## 35 1 26 117 1 1 1 0 0 0 2084</span></span>
+<span id="cb83-88"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-88" tabindex="-1"></a><span class="do">## 36 1 24 138 1 0 0 0 0 0 2100</span></span>
+<span id="cb83-89"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-89" tabindex="-1"></a><span class="do">## 42 1 22 130 1 1 1 0 1 1 2187</span></span>
+<span id="cb83-90"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-90" tabindex="-1"></a><span class="do">## 45 1 17 110 1 1 0 0 0 0 2225</span></span>
+<span id="cb83-91"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-91" tabindex="-1"></a><span class="do">## 51 1 20 121 1 1 1 0 1 0 2296</span></span>
+<span id="cb83-92"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-92" tabindex="-1"></a><span class="do">## 56 1 31 102 1 1 1 0 0 1 2353</span></span>
+<span id="cb83-93"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-93" tabindex="-1"></a><span class="do">## 57 1 15 110 1 0 0 0 0 0 2353</span></span>
+<span id="cb83-94"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-94" tabindex="-1"></a><span class="do">## 65 1 30 142 1 1 1 0 0 0 2410</span></span>
+<span id="cb83-95"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-95" tabindex="-1"></a><span class="do">## 67 1 22 130 1 1 0 0 0 1 2410</span></span>
+<span id="cb83-96"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-96" tabindex="-1"></a><span class="do">## 68 1 17 120 1 1 0 0 0 3 2414</span></span>
+<span id="cb83-97"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-97" tabindex="-1"></a><span class="do">## 69 1 23 110 1 1 1 0 0 0 2424</span></span>
+<span id="cb83-98"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-98" tabindex="-1"></a><span class="do">## 77 1 26 190 1 1 0 0 0 0 2466</span></span>
+<span id="cb83-99"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-99" tabindex="-1"></a><span class="do">## 79 1 28 95 1 1 0 0 0 2 2466</span></span>
+<span id="cb83-100"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-100" tabindex="-1"></a><span class="do">## 84 1 21 130 1 1 0 1 0 3 2495</span></span>
+<span id="cb83-101"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-101" tabindex="-1"></a>madres.raza.negra <span class="ot">&lt;-</span> birthwt[birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">2</span>, ]</span>
+<span id="cb83-102"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-102" tabindex="-1"></a>madres.raza.negra</span>
+<span id="cb83-103"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-103" tabindex="-1"></a><span class="do">## low age lwt race smoke ptl ht ui ftv bwt</span></span>
+<span id="cb83-104"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-104" tabindex="-1"></a><span class="do">## 85 0 19 182 2 0 0 0 1 0 2523</span></span>
+<span id="cb83-105"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-105" tabindex="-1"></a><span class="do">## 102 0 15 98 2 0 0 0 0 0 2778</span></span>
+<span id="cb83-106"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-106" tabindex="-1"></a><span class="do">## 115 0 26 168 2 1 0 0 0 0 2920</span></span>
+<span id="cb83-107"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-107" tabindex="-1"></a><span class="do">## 116 0 17 113 2 0 0 0 0 1 2920</span></span>
+<span id="cb83-108"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-108" tabindex="-1"></a><span class="do">## 117 0 17 113 2 0 0 0 0 1 2920</span></span>
+<span id="cb83-109"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-109" tabindex="-1"></a><span class="do">## 119 0 35 121 2 1 1 0 0 1 2948</span></span>
+<span id="cb83-110"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-110" tabindex="-1"></a><span class="do">## 121 0 25 125 2 0 0 0 0 0 2977</span></span>
+<span id="cb83-111"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-111" tabindex="-1"></a><span class="do">## 128 0 21 185 2 1 0 0 0 2 3042</span></span>
+<span id="cb83-112"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-112" tabindex="-1"></a><span class="do">## 130 0 23 130 2 0 0 0 0 1 3062</span></span>
+<span id="cb83-113"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-113" tabindex="-1"></a><span class="do">## 161 0 22 158 2 0 1 0 0 2 3317</span></span>
+<span id="cb83-114"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-114" tabindex="-1"></a><span class="do">## 166 0 16 112 2 0 0 0 0 0 3374</span></span>
+<span id="cb83-115"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-115" tabindex="-1"></a><span class="do">## 168 0 18 229 2 0 0 0 0 0 3402</span></span>
+<span id="cb83-116"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-116" tabindex="-1"></a><span class="do">## 172 0 20 121 2 1 0 0 0 0 3444</span></span>
+<span id="cb83-117"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-117" tabindex="-1"></a><span class="do">## 202 0 25 241 2 0 0 1 0 0 3790</span></span>
+<span id="cb83-118"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-118" tabindex="-1"></a><span class="do">## 206 0 16 170 2 0 0 0 0 4 3860</span></span>
+<span id="cb83-119"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-119" tabindex="-1"></a><span class="do">## 11 1 34 187 2 1 0 1 0 0 1135</span></span>
+<span id="cb83-120"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-120" tabindex="-1"></a><span class="do">## 18 1 24 128 2 0 1 0 0 1 1701</span></span>
+<span id="cb83-121"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-121" tabindex="-1"></a><span class="do">## 28 1 21 200 2 0 0 0 1 2 1928</span></span>
+<span id="cb83-122"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-122" tabindex="-1"></a><span class="do">## 40 1 20 120 2 1 0 0 0 3 2126</span></span>
+<span id="cb83-123"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-123" tabindex="-1"></a><span class="do">## 43 1 27 130 2 0 0 0 1 0 2187</span></span>
+<span id="cb83-124"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-124" tabindex="-1"></a><span class="do">## 50 1 18 110 2 1 1 0 0 0 2296</span></span>
+<span id="cb83-125"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-125" tabindex="-1"></a><span class="do">## 59 1 23 187 2 1 0 0 0 1 2367</span></span>
+<span id="cb83-126"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-126" tabindex="-1"></a><span class="do">## 60 1 20 122 2 1 0 0 0 0 2381</span></span>
+<span id="cb83-127"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-127" tabindex="-1"></a><span class="do">## 61 1 24 105 2 1 0 0 0 0 2381</span></span>
+<span id="cb83-128"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-128" tabindex="-1"></a><span class="do">## 71 1 17 120 2 0 0 0 0 2 2438</span></span>
+<span id="cb83-129"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-129" tabindex="-1"></a><span class="do">## 83 1 17 142 2 0 0 1 0 0 2495</span></span>
+<span id="cb83-130"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-130" tabindex="-1"></a>madres.raza.otras <span class="ot">&lt;-</span> birthwt[birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">3</span>, ]</span>
+<span id="cb83-131"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-131" tabindex="-1"></a>madres.raza.otras</span>
+<span id="cb83-132"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-132" tabindex="-1"></a><span class="do">## low age lwt race smoke ptl ht ui ftv bwt</span></span>
+<span id="cb83-133"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-133" tabindex="-1"></a><span class="do">## 86 0 33 155 3 0 0 0 0 3 2551</span></span>
+<span id="cb83-134"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-134" tabindex="-1"></a><span class="do">## 91 0 21 124 3 0 0 0 0 0 2622</span></span>
+<span id="cb83-135"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-135" tabindex="-1"></a><span class="do">## 93 0 17 103 3 0 0 0 0 1 2637</span></span>
+<span id="cb83-136"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-136" tabindex="-1"></a><span class="do">## 96 0 19 95 3 0 0 0 0 0 2722</span></span>
+<span id="cb83-137"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-137" tabindex="-1"></a><span class="do">## 97 0 19 150 3 0 0 0 0 1 2733</span></span>
+<span id="cb83-138"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-138" tabindex="-1"></a><span class="do">## 98 0 22 95 3 0 0 1 0 0 2751</span></span>
+<span id="cb83-139"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-139" tabindex="-1"></a><span class="do">## 99 0 30 107 3 0 1 0 1 2 2750</span></span>
+<span id="cb83-140"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-140" tabindex="-1"></a><span class="do">## 104 0 20 120 3 0 0 0 1 0 2807</span></span>
+<span id="cb83-141"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-141" tabindex="-1"></a><span class="do">## 106 0 32 121 3 0 0 0 0 2 2835</span></span>
+<span id="cb83-142"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-142" tabindex="-1"></a><span class="do">## 109 0 28 120 3 0 0 0 0 0 2863</span></span>
+<span id="cb83-143"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-143" tabindex="-1"></a><span class="do">## 111 0 25 120 3 0 0 0 1 2 2877</span></span>
+<span id="cb83-144"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-144" tabindex="-1"></a><span class="do">## 135 0 19 132 3 0 0 0 0 0 3090</span></span>
+<span id="cb83-145"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-145" tabindex="-1"></a><span class="do">## 137 0 22 85 3 1 0 0 0 0 3090</span></span>
+<span id="cb83-146"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-146" tabindex="-1"></a><span class="do">## 139 0 23 128 3 0 0 0 0 0 3104</span></span>
+<span id="cb83-147"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-147" tabindex="-1"></a><span class="do">## 142 0 19 115 3 0 0 0 0 0 3175</span></span>
+<span id="cb83-148"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-148" tabindex="-1"></a><span class="do">## 143 0 16 110 3 0 0 0 0 0 3175</span></span>
+<span id="cb83-149"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-149" tabindex="-1"></a><span class="do">## 144 0 21 110 3 1 0 0 1 0 3203</span></span>
+<span id="cb83-150"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-150" tabindex="-1"></a><span class="do">## 145 0 30 153 3 0 0 0 0 0 3203</span></span>
+<span id="cb83-151"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-151" tabindex="-1"></a><span class="do">## 146 0 20 103 3 0 0 0 0 0 3203</span></span>
+<span id="cb83-152"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-152" tabindex="-1"></a><span class="do">## 147 0 17 119 3 0 0 0 0 0 3225</span></span>
+<span id="cb83-153"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-153" tabindex="-1"></a><span class="do">## 148 0 17 119 3 0 0 0 0 0 3225</span></span>
+<span id="cb83-154"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-154" tabindex="-1"></a><span class="do">## 149 0 23 119 3 0 0 0 0 2 3232</span></span>
+<span id="cb83-155"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-155" tabindex="-1"></a><span class="do">## 150 0 24 110 3 0 0 0 0 0 3232</span></span>
+<span id="cb83-156"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-156" tabindex="-1"></a><span class="do">## 154 0 26 133 3 1 2 0 0 0 3260</span></span>
+<span id="cb83-157"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-157" tabindex="-1"></a><span class="do">## 155 0 20 169 3 0 1 0 1 1 3274</span></span>
+<span id="cb83-158"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-158" tabindex="-1"></a><span class="do">## 156 0 24 115 3 0 0 0 0 2 3274</span></span>
+<span id="cb83-159"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-159" tabindex="-1"></a><span class="do">## 159 0 28 250 3 1 0 0 0 6 3303</span></span>
+<span id="cb83-160"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-160" tabindex="-1"></a><span class="do">## 163 0 31 150 3 1 0 0 0 2 3321</span></span>
+<span id="cb83-161"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-161" tabindex="-1"></a><span class="do">## 164 0 23 115 3 1 0 0 0 1 3331</span></span>
+<span id="cb83-162"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-162" tabindex="-1"></a><span class="do">## 176 0 30 110 3 0 0 0 0 0 3544</span></span>
+<span id="cb83-163"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-163" tabindex="-1"></a><span class="do">## 177 0 20 127 3 0 0 0 0 0 3487</span></span>
+<span id="cb83-164"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-164" tabindex="-1"></a><span class="do">## 179 0 23 123 3 0 0 0 0 0 3544</span></span>
+<span id="cb83-165"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-165" tabindex="-1"></a><span class="do">## 180 0 17 120 3 1 0 0 0 0 3572</span></span>
+<span id="cb83-166"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-166" tabindex="-1"></a><span class="do">## 181 0 19 105 3 0 0 0 0 0 3572</span></span>
+<span id="cb83-167"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-167" tabindex="-1"></a><span class="do">## 186 0 21 134 3 0 0 0 0 2 3629</span></span>
+<span id="cb83-168"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-168" tabindex="-1"></a><span class="do">## 199 0 24 110 3 0 1 0 0 0 3770</span></span>
+<span id="cb83-169"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-169" tabindex="-1"></a><span class="do">## 201 0 20 120 3 0 0 0 0 0 3770</span></span>
+<span id="cb83-170"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-170" tabindex="-1"></a><span class="do">## 208 0 18 120 3 0 0 0 0 1 3884</span></span>
+<span id="cb83-171"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-171" tabindex="-1"></a><span class="do">## 212 0 28 134 3 0 0 0 0 1 3941</span></span>
+<span id="cb83-172"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-172" tabindex="-1"></a><span class="do">## 214 0 28 130 3 0 0 0 0 0 3969</span></span>
+<span id="cb83-173"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-173" tabindex="-1"></a><span class="do">## 216 0 16 95 3 0 0 0 0 1 3997</span></span>
+<span id="cb83-174"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-174" tabindex="-1"></a><span class="do">## 218 0 26 160 3 0 0 0 0 0 4054</span></span>
+<span id="cb83-175"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-175" tabindex="-1"></a><span class="do">## 4 1 28 120 3 1 1 0 1 0 709</span></span>
+<span id="cb83-176"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-176" tabindex="-1"></a><span class="do">## 13 1 25 105 3 0 1 1 0 0 1330</span></span>
+<span id="cb83-177"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-177" tabindex="-1"></a><span class="do">## 15 1 25 85 3 0 0 0 1 0 1474</span></span>
+<span id="cb83-178"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-178" tabindex="-1"></a><span class="do">## 16 1 27 150 3 0 0 0 0 0 1588</span></span>
+<span id="cb83-179"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-179" tabindex="-1"></a><span class="do">## 17 1 23 97 3 0 0 0 1 1 1588</span></span>
+<span id="cb83-180"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-180" tabindex="-1"></a><span class="do">## 19 1 24 132 3 0 0 1 0 0 1729</span></span>
+<span id="cb83-181"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-181" tabindex="-1"></a><span class="do">## 24 1 25 115 3 0 0 0 0 0 1893</span></span>
+<span id="cb83-182"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-182" tabindex="-1"></a><span class="do">## 25 1 16 130 3 0 0 0 0 1 1899</span></span>
+<span id="cb83-183"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-183" tabindex="-1"></a><span class="do">## 30 1 21 103 3 0 0 0 0 0 1970</span></span>
+<span id="cb83-184"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-184" tabindex="-1"></a><span class="do">## 31 1 20 125 3 0 0 0 1 0 2055</span></span>
+<span id="cb83-185"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-185" tabindex="-1"></a><span class="do">## 32 1 25 89 3 0 2 0 0 1 2055</span></span>
+<span id="cb83-186"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-186" tabindex="-1"></a><span class="do">## 37 1 17 130 3 1 1 0 1 0 2125</span></span>
+<span id="cb83-187"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-187" tabindex="-1"></a><span class="do">## 44 1 20 80 3 1 0 0 1 0 2211</span></span>
+<span id="cb83-188"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-188" tabindex="-1"></a><span class="do">## 46 1 25 105 3 0 1 0 0 1 2240</span></span>
+<span id="cb83-189"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-189" tabindex="-1"></a><span class="do">## 47 1 20 109 3 0 0 0 0 0 2240</span></span>
+<span id="cb83-190"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-190" tabindex="-1"></a><span class="do">## 49 1 18 148 3 0 0 0 0 0 2282</span></span>
+<span id="cb83-191"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-191" tabindex="-1"></a><span class="do">## 52 1 21 100 3 0 1 0 0 4 2301</span></span>
+<span id="cb83-192"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-192" tabindex="-1"></a><span class="do">## 54 1 26 96 3 0 0 0 0 0 2325</span></span>
+<span id="cb83-193"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-193" tabindex="-1"></a><span class="do">## 62 1 15 115 3 0 0 0 1 0 2381</span></span>
+<span id="cb83-194"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-194" tabindex="-1"></a><span class="do">## 63 1 23 120 3 0 0 0 0 0 2410</span></span>
+<span id="cb83-195"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-195" tabindex="-1"></a><span class="do">## 75 1 26 154 3 0 1 1 0 1 2442</span></span>
+<span id="cb83-196"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-196" tabindex="-1"></a><span class="do">## 76 1 20 105 3 0 0 0 0 3 2450</span></span>
+<span id="cb83-197"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-197" tabindex="-1"></a><span class="do">## 78 1 14 101 3 1 1 0 0 0 2466</span></span>
+<span id="cb83-198"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-198" tabindex="-1"></a><span class="do">## 81 1 14 100 3 0 0 0 0 2 2495</span></span>
+<span id="cb83-199"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-199" tabindex="-1"></a><span class="do">## 82 1 23 94 3 1 0 0 0 0 2495</span></span>
+<span id="cb83-200"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-200" tabindex="-1"></a><span class="fu">table</span>(madres.raza.blanca<span class="sc">$</span>smoke)</span>
+<span id="cb83-201"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-201" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb83-202"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-202" tabindex="-1"></a><span class="do">## 0 1 </span></span>
+<span id="cb83-203"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-203" tabindex="-1"></a><span class="do">## 44 52</span></span>
+<span id="cb83-204"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-204" tabindex="-1"></a><span class="fu">table</span>(madres.raza.negra<span class="sc">$</span>smoke)</span>
+<span id="cb83-205"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-205" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb83-206"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-206" tabindex="-1"></a><span class="do">## 0 1 </span></span>
+<span id="cb83-207"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-207" tabindex="-1"></a><span class="do">## 16 10</span></span>
+<span id="cb83-208"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-208" tabindex="-1"></a><span class="fu">table</span>(madres.raza.otras<span class="sc">$</span>smoke)</span>
+<span id="cb83-209"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-209" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb83-210"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-210" tabindex="-1"></a><span class="do">## 0 1 </span></span>
+<span id="cb83-211"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-211" tabindex="-1"></a><span class="do">## 55 12</span></span>
+<span id="cb83-212"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-212" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(madres.raza.blanca<span class="sc">$</span>smoke)</span>
+<span id="cb83-213"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-213" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(madres.raza.negra<span class="sc">$</span>smoke)</span>
+<span id="cb83-214"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-214" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="fu">length</span>(madres.raza.otras<span class="sc">$</span>smoke)</span>
+<span id="cb83-215"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-215" tabindex="-1"></a><span class="co"># número de madres fumadoras de raza blanca</span></span>
+<span id="cb83-216"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-216" tabindex="-1"></a>x.blanca <span class="ot">&lt;-</span> <span class="fu">table</span>(madres.raza.blanca<span class="sc">$</span>smoke)[<span class="dv">2</span>]</span>
+<span id="cb83-217"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-217" tabindex="-1"></a><span class="co"># número de madres fumadoras de raza negra</span></span>
+<span id="cb83-218"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-218" tabindex="-1"></a>x.negra <span class="ot">&lt;-</span> <span class="fu">table</span>(madres.raza.negra<span class="sc">$</span>smoke)[<span class="dv">2</span>] </span>
+<span id="cb83-219"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-219" tabindex="-1"></a><span class="co"># número de madres fumadoras de otras razas </span></span>
+<span id="cb83-220"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-220" tabindex="-1"></a>x.otras <span class="ot">&lt;-</span> <span class="fu">table</span>(madres.raza.otras<span class="sc">$</span>smoke)[<span class="dv">2</span>] </span>
+<span id="cb83-221"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-221" tabindex="-1"></a><span class="co"># Se hace el contraste de hipótesis</span></span>
+<span id="cb83-222"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-222" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x.blanca, x.negra), <span class="fu">c</span>(n1, n2))</span>
+<span id="cb83-223"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-223" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb83-224"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-224" tabindex="-1"></a><span class="do">## 2-sample test for equality of proportions with continuity correction</span></span>
+<span id="cb83-225"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-225" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb83-226"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-226" tabindex="-1"></a><span class="do">## data: c(x.blanca, x.negra) out of c(n1, n2)</span></span>
+<span id="cb83-227"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-227" tabindex="-1"></a><span class="do">## X-squared = 1.4396, df = 1, p-value = 0.2302</span></span>
+<span id="cb83-228"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-228" tabindex="-1"></a><span class="do">## alternative hypothesis: two.sided</span></span>
+<span id="cb83-229"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-229" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb83-230"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-230" tabindex="-1"></a><span class="do">## -0.07929433 0.39339689</span></span>
+<span id="cb83-231"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-231" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb83-232"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-232" tabindex="-1"></a><span class="do">## prop 1 prop 2 </span></span>
+<span id="cb83-233"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb83-233" tabindex="-1"></a><span class="do">## 0.5416667 0.3846154</span></span></code></pre></div>
+<p>Siguiendo la idea de los hechos con los datos de iris, se contruirá un intervalo de
+confianza de 95% para las proporciones de las muejeres que fumaron durante el
+embaraso según su raza.</p>
+<p>Primeramente se prepara el resumen de datos:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb84-1" tabindex="-1"></a><span class="co"># Carga el paquete MASS que contiene el dataset birthwt</span></span>
+<span id="cb84-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb84-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(MASS)) <span class="fu">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb84-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb84-3" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb84-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb84-4" tabindex="-1"></a>nacimientos <span class="ot">&lt;-</span> birthwt</span>
+<span id="cb84-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb84-5" tabindex="-1"></a><span class="fu">str</span>(nacimientos)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    189 obs. of  10 variables:
+##  $ low  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ age  : int  19 33 20 21 18 21 22 17 29 26 ...
+##  $ lwt  : int  182 155 105 108 107 124 118 103 123 113 ...
+##  $ race : int  2 3 1 1 1 3 1 3 1 1 ...
+##  $ smoke: int  0 0 1 1 1 0 0 0 1 1 ...
+##  $ ptl  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ ht   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ ui   : int  1 0 0 1 1 0 0 0 0 0 ...
+##  $ ftv  : int  0 3 1 2 0 0 1 1 1 0 ...
+##  $ bwt  : int  2523 2551 2557 2594 2600 2622 2637 2637 2663 2665 ...</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-1" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;: 189 obs. of 10 variables:</span></span>
+<span id="cb86-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-2" tabindex="-1"></a><span class="do">## $ low : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb86-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-3" tabindex="-1"></a><span class="do">## $ age : int 19 33 20 21 18 21 22 17 29 26 ...</span></span>
+<span id="cb86-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-4" tabindex="-1"></a><span class="do">## $ lwt : int 182 155 105 108 107 124 118 103 123 113 ...</span></span>
+<span id="cb86-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-5" tabindex="-1"></a><span class="do">## $ race : int 2 3 1 1 1 3 1 3 1 1 ...</span></span>
+<span id="cb86-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-6" tabindex="-1"></a><span class="do">## $ smoke: int 0 0 1 1 1 0 0 0 1 1 ...</span></span>
+<span id="cb86-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-7" tabindex="-1"></a><span class="do">## $ ptl : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb86-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-8" tabindex="-1"></a><span class="do">## $ ht : int 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb86-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-9" tabindex="-1"></a><span class="do">## $ ui : int 1 0 0 1 1 0 0 0 0 0 ...</span></span>
+<span id="cb86-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-10" tabindex="-1"></a><span class="do">## $ ftv : int 0 3 1 2 0 0 1 1 1 0 ...</span></span>
+<span id="cb86-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-11" tabindex="-1"></a><span class="do">## $ bwt : int 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665 ...</span></span>
+<span id="cb86-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-12" tabindex="-1"></a>nacimientos<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Blanca&quot;</span>, </span>
+<span id="cb86-13"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-13" tabindex="-1"></a> <span class="fu">ifelse</span> (birthwt<span class="sc">$</span>race <span class="sc">==</span> <span class="dv">2</span>,<span class="st">&quot;Negra&quot;</span> , <span class="st">&quot;Otras&quot;</span>)</span>
+<span id="cb86-14"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-14" tabindex="-1"></a> </span>
+<span id="cb86-15"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-15" tabindex="-1"></a> )</span>
+<span id="cb86-16"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-16" tabindex="-1"></a>nacimientos<span class="sc">$</span>race <span class="ot">&lt;-</span> <span class="fu">factor</span>(nacimientos<span class="sc">$</span>race, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Blanca&quot;</span>,<span class="st">&quot;Negra&quot;</span></span>
+<span id="cb86-17"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb86-17" tabindex="-1"></a>,<span class="st">&quot;Otras&quot;</span>))</span></code></pre></div>
+<p>La base de datos birthwt utiliza una etiqueta numérica para clasificar la raza de las
+muejeres, por lo que en la instrucción anterior se cambió dicha etiqueta por un texto
+más significativo según el tipo de raza.</p>
+<p>Una vez hecho el cambio, se procede a construir la tabla resumen que usaremos para
+el gráfico:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-1" tabindex="-1"></a>nacimientos.ic <span class="ot">&lt;-</span> nacimientos <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-2" tabindex="-1"></a> <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-3" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb87-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-4" tabindex="-1"></a> <span class="at">x =</span> <span class="fu">table</span>(smoke)[<span class="dv">2</span>],</span>
+<span id="cb87-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-5" tabindex="-1"></a> <span class="at">p =</span> x<span class="sc">/</span>n,</span>
+<span id="cb87-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-6" tabindex="-1"></a> <span class="at">ee =</span> <span class="fu">sqrt</span>(p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">/</span><span class="fu">n</span>()),</span>
+<span id="cb87-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-7" tabindex="-1"></a> <span class="at">li =</span> p <span class="sc">-</span> <span class="fl">1.95996</span><span class="sc">*</span>ee,</span>
+<span id="cb87-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-8" tabindex="-1"></a> <span class="at">ls =</span> p <span class="sc">+</span> <span class="fl">1.95996</span><span class="sc">*</span>ee</span>
+<span id="cb87-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-9" tabindex="-1"></a> )</span>
+<span id="cb87-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb87-10" tabindex="-1"></a>nacimientos.ic</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 7
+##   race       n     x     p     ee     li    ls
+##   &lt;fct&gt;  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 Blanca    96    52 0.542 0.0509 0.442  0.641
+## 2 Negra     26    10 0.385 0.0954 0.198  0.572
+## 3 Otras     67    12 0.179 0.0468 0.0873 0.271</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 7</span></span>
+<span id="cb89-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-2" tabindex="-1"></a><span class="do">## race n x p ee li ls</span></span>
+<span id="cb89-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-3" tabindex="-1"></a><span class="do">## &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb89-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-4" tabindex="-1"></a><span class="do">## 1 Blanca 96 52 0.542 0.0509 0.442 0.641</span></span>
+<span id="cb89-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-5" tabindex="-1"></a><span class="do">## 2 Negra 26 10 0.385 0.0954 0.198 0.572</span></span>
+<span id="cb89-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-6" tabindex="-1"></a><span class="do">## 3 Otras 67 12 0.179 0.0468 0.0873 0.271</span></span>
+<span id="cb89-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-7" tabindex="-1"></a><span class="fu">ggplot</span>(nacimientos, <span class="fu">aes</span>(<span class="at">x =</span> race)) <span class="sc">+</span></span>
+<span id="cb89-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-8" tabindex="-1"></a> <span class="fu">geom_errorbar</span>(<span class="at">data =</span> nacimientos.ic, <span class="fu">aes</span>(race, p, <span class="at">ymin =</span> li, <span class="at">ymax =</span></span>
+<span id="cb89-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-9" tabindex="-1"></a>ls), <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">color =</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb89-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb89-10" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">data =</span> nacimientos.ic, <span class="fu">aes</span>(race, p))</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Haciendo un análisis se puede ver que en el caso de raza Negra y Blanca se evidencia
+un traslape en los intervalos de confianza donde el IC de raza Negra con el de raza
+blanca , por lo que la prueba de hipótesis no puede descar una posible igualdad para
+las proporciones.</p>
+<p>A pesar no haber hecho pruebas comparando las proporciones de las otras razas, se
+podría intuir que la prueba de hipótesis encontrará evidencia en contra para la
+diferencia de proporciones entre las razas <strong>Blanca</strong> y <strong>Otras</strong> como se muestra a
+continuación:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x.blanca, x.otras), <span class="fu">c</span>(n1, n3))</span>
+<span id="cb90-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb90-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-3" tabindex="-1"></a><span class="do">## 2-sample test for equality of proportions with continuity correction</span></span>
+<span id="cb90-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb90-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-5" tabindex="-1"></a><span class="do">## data: c(x.blanca, x.otras) out of c(n1, n3)</span></span>
+<span id="cb90-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-6" tabindex="-1"></a><span class="do">## X-squared = 20.257, df = 1, p-value = 6.769e-06</span></span>
+<span id="cb90-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-7" tabindex="-1"></a><span class="do">## alternative hypothesis: two.sided</span></span>
+<span id="cb90-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-8" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb90-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-9" tabindex="-1"></a><span class="do">## 0.2143770 0.5107474</span></span>
+<span id="cb90-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-10" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb90-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-11" tabindex="-1"></a><span class="do">## prop 1 prop 2 </span></span>
+<span id="cb90-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb90-12" tabindex="-1"></a><span class="do">## 0.5416667 0.1791045</span></span></code></pre></div>
+<p>En el caso del los IC para raza Negra y Otras, también se evidencia traslape de estos y
+por tanto, se esperaría que mediante una prueba de hipótesis se pueda asumir
+igualdad de proporciones, es decir, que la diferencia no sea significativa y que por
+tanto, <span class="math inline">\(H_0\)</span> no sea rechazada como se muestra seguidamente:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x.negra, x.otras), <span class="fu">c</span>(n2, n3))</span>
+<span id="cb91-2"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb91-3"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-3" tabindex="-1"></a><span class="do">## 2-sample test for equality of proportions with continuity correction</span></span>
+<span id="cb91-4"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb91-5"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-5" tabindex="-1"></a><span class="do">## data: c(x.negra, x.otras) out of c(n2, n3)</span></span>
+<span id="cb91-6"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-6" tabindex="-1"></a><span class="do">## X-squared = 3.3164, df = 1, p-value = 0.06859</span></span>
+<span id="cb91-7"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-7" tabindex="-1"></a><span class="do">## alternative hypothesis: two.sided</span></span>
+<span id="cb91-8"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-8" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb91-9"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-9" tabindex="-1"></a><span class="do">## -0.02950876 0.44053057</span></span>
+<span id="cb91-10"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-10" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb91-11"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-11" tabindex="-1"></a><span class="do">## prop 1 prop 2 </span></span>
+<span id="cb91-12"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html#cb91-12" tabindex="-1"></a><span class="do">## 0.3846154 0.1791045</span></span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pruebas-de-hipotesis-para-dos-poblaciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otras-pruebas-de-hipotesis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

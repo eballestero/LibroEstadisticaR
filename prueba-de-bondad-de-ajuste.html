@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Prueba de Bondad de Ajuste | Compendio-Estadística.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Prueba de Bondad de Ajuste | Compendio-Estadística.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Prueba de Bondad de Ajuste | Compendio-Estadística.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="otras-pruebas-de-hipotesis.html"/>
+<link rel="next" href="prueba-de-independencia.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="section.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
+<li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
+<li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#m%C3%A9todo-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#m%C3%A9todo-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
+<li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalo-de-confianza-para-la-varianza-de-una-poblacion-normal"><i class="fa fa-check"></i><b>2.3</b> Intervalo de confianza para la varianza de una poblacion normal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html"><i class="fa fa-check"></i><b>3</b> II Parte: Casos con dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-promedios"><i class="fa fa-check"></i><b>3.1</b> Diferencia de Promedios</a></li>
+<li class="chapter" data-level="3.2" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#cociente-de-varianzas"><i class="fa fa-check"></i><b>3.2</b> Cociente de varianzas</a></li>
+<li class="chapter" data-level="3.3" data-path="ii-parte-casos-con-dos-poblaciones.html"><a href="ii-parte-casos-con-dos-poblaciones.html#diferencia-de-proporciones"><i class="fa fa-check"></i><b>3.3</b> Diferencia de proporciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html"><i class="fa fa-check"></i><b>4</b> Pruebas de hipotesis para una poblacion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
+<li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#muestas-peque%C3%B1as"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#contraste-para-dos-medias-independientes-en-r-funcion-t.test"><i class="fa fa-check"></i><b>5.2.2</b> Contraste para dos medias independientes en R: funcion t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
+<li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#una-visi%C3%B3n-grafica-de-las-pruebas-de-hipotesis"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
+<li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#visualizaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test"><i class="fa fa-check"></i><b>8.2.2</b> Test de normalidad de Anderson-Darling o A-D test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test"><i class="fa fa-check"></i><b>8.2.3</b> Test de Shapiro-Wilks o S-W test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson"><i class="fa fa-check"></i><b>8.2.4</b> Test omnibus de D’Agostino-Pearson</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prueba-de-independencia.html"><a href="prueba-de-independencia.html"><i class="fa fa-check"></i><b>9</b> Prueba de Independencia</a></li>
+<li class="chapter" data-level="10" data-path="prueba-de-analisis-de-varianza-anova.html"><a href="prueba-de-analisis-de-varianza-anova.html"><i class="fa fa-check"></i><b>10</b> Prueba de Analisis de Varianza (ANOVA)</a></li>
+<li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
+<li class="chapter" data-level="11.2" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#coeficientes-de-determinaci%C3%B3n-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
+<li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
+<li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
+<li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
+<li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
+<li class="chapter" data-level="11.8" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#cuidado-con-el-coeficiente-de-correlacion-y-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
+<li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#regresi%C3%B3n-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto"><i class="fa fa-check"></i>Especificaciones del proyecto</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iv-parte-analisis-inferencial-otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#v-parte-analisis-de-regresi%C3%B3n"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones-1"><i class="fa fa-check"></i>III parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#espesificaciones-del-proyecto-fase-iii"><i class="fa fa-check"></i>Espesificaciones del proyecto Fase III</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-otras-pruebas-de-hipotesis-en-r"><i class="fa fa-check"></i>I Parte: Otras pruebas de hipotesis en R</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-1"><i class="fa fa-check"></i>Caso 1</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-2"><i class="fa fa-check"></i>Caso 2</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-3"><i class="fa fa-check"></i>Caso 3</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-4"><i class="fa fa-check"></i>Caso 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-modelos-de-regresion-lineal"><i class="fa fa-check"></i>II Parte: Modelos de regresion lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-5"><i class="fa fa-check"></i>Caso 5</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-6"><i class="fa fa-check"></i>Caso 6</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#generacion-de-los-modelos"><i class="fa fa-check"></i>Generacion de los modelos</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#seleccionando-el-mejor-modelo"><i class="fa fa-check"></i>Seleccionando el mejor modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-modelos-de-regresion-no-lineal"><i class="fa fa-check"></i>III PARTE: Modelos de regresion no lineal</a>
+<ul>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#caso-7"><i class="fa fa-check"></i>Caso 7</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-0-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
+<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
+<li class="chapter" data-level="13.2.1" data-path="chapters/06-OtrasPruebasDeHipotesis.html"><a href="#modelo-3-regresion-no-lineal-multiple-con-interacci%C3%B3n"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="prueba-de-bondad-de-ajuste" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> Prueba de Bondad de Ajuste<a href="prueba-de-bondad-de-ajuste.html#prueba-de-bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Para esta pueba se usará la función chisq.test del paquete stats que requiere de los
+siguientes parámetros:</p>
+<ul>
+<li>x: es el vector (o la tabla de contingencia calculada con table) de frecuencias
+absolutas observadas de las clases en la muestra</li>
+<li>p : es el vector de probabilidades teóricas de las clases para la distribución que
+queremos contrastar. En caso de NO especificarlo, se asume equiprobabilidad
+para todas las clases</li>
+<li>simulate.p.value: es un parámetro lógico que indica a la función si debe
+optar por una simulación para el cálculo del p-valor del contraste. Por defecto
+es FALSE</li>
+</ul>
+<p>Esta herramienta debe tomarse en cuenta cuando falla una o más condiciones al
+aplicar la prueba de <strong>bondad de ajuste</strong>, en ese caso se indica como TRUE y R realizará
+una serie de réplicas aelatorias a partir el método de Monte Carlo test. Este número de
+réplicas es de 2000 por defecto, pero si se desea otra cantidad, se debe indicar
+mediante el parámetro B.
+Consideremos el ejemplo visto en clase:</p>
+<p><strong>Ejemplo 1</strong></p>
+<p>Un grupo de ratas baja 90 veces por una rampa que conecta con 3 puertas. Se observa
+que en 23 ocasiones las ratas pasaron por la puerta 1, 36 veces por la puerta 2 y 31
+veces por la puerta 3.</p>
+<p>Se desea probar que las ratas no tienen preferencias por alguna de las puertas en
+particular. Use un nivel de significancia e 0.05.</p>
+<p>Seguidamente, construimos la tabla resumen</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Puerta 1</th>
+<th align="center">Puerta 2</th>
+<th align="center">Puerta 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Frecuencia observada</td>
+<td align="center">23</td>
+<td align="center">30</td>
+<td align="center">36</td>
+</tr>
+</tbody>
+</table>
+<p>Para realizar esta prueba, se considerarán las siguientes hipótesis:</p>
+<p><span class="math inline">\(H_0: p_1 = p_2 = p_3 = \frac{1}{3}\)</span>, dónde <span class="math inline">\(p_i\)</span> es la probabilidad de que una rata elija la puerta <span class="math inline">\(i = 1,2,3\)</span></p>
+<p><span class="math inline">\(H_1\)</span>: las ratas tienen preferencia por alguna puerta en particular</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="prueba-de-bondad-de-ajuste.html#cb93-1" tabindex="-1"></a>freq.empiricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">36</span>, <span class="dv">31</span>)</span>
+<span id="cb93-2"><a href="prueba-de-bondad-de-ajuste.html#cb93-2" tabindex="-1"></a><span class="co">#prob.teoricas &lt;- c(1/3,1/3,1/3)</span></span>
+<span id="cb93-3"><a href="prueba-de-bondad-de-ajuste.html#cb93-3" tabindex="-1"></a><span class="fu">chisq.test</span>(freq.empiricas)</span>
+<span id="cb93-4"><a href="prueba-de-bondad-de-ajuste.html#cb93-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb93-5"><a href="prueba-de-bondad-de-ajuste.html#cb93-5" tabindex="-1"></a><span class="do">## Chi-squared test for given probabilities</span></span>
+<span id="cb93-6"><a href="prueba-de-bondad-de-ajuste.html#cb93-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb93-7"><a href="prueba-de-bondad-de-ajuste.html#cb93-7" tabindex="-1"></a><span class="do">## data: freq.empiricas</span></span>
+<span id="cb93-8"><a href="prueba-de-bondad-de-ajuste.html#cb93-8" tabindex="-1"></a><span class="do">## X-squared = 2.8667, df = 2, p-value = 0.2385</span></span></code></pre></div>
+<p><strong>Conclusión</strong></p>
+<p>Note que al ser valor <span class="math inline">\(P &gt; a\)</span>se concluye que no se cuenta con suficiente eivdencia en
+contra para rechazar <span class="math inline">\(H_0\)</span> y por tanto, es válido asumir que las ratas no tienen
+preferencia por alguna de las puertas.</p>
+<hr />
+<p><strong>Ejemplo 2</strong></p>
+<p>El curso Estructura de Datos II, es impartido en el segundo año de la carrera de
+Ingeniería en Sistemas de una Universidad. Un profesor considera que las edades de
+los estudiantes que llevan dicho curso, sigue una distribución normal. En una muestra
+de 200 estudiantes se obtuvieron los resultados de la tabla adjunta. ¿Considera
+correcta la afirmación del profesor?.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Edad: X</th>
+<th align="center">Frecuencia observada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(X &lt; 18\)</span></td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(18 \leq X &lt; 19\)</span></td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(19 \leq &lt; 20\)</span></td>
+<td align="center">50</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(20 \leq X &lt; 21\)</span></td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(X \geq 21\)</span></td>
+<td align="center">5</td>
+</tr>
+</tbody>
+</table>
+<p>Tome en cuenta lo siguiente: <span class="math inline">\(\bar{x} = 18.825\)</span> y <span class="math inline">\(s = 0.907464855\)</span></p>
+<p>Para realizar esta prueba, se considerarán las siguientes hipótesis:</p>
+<p><span class="math inline">\(H_0: X \sim N(18.825,0.823492)\)</span> (Los datos de las edades son normales, con media y
+varianza dadas)</p>
+<p><span class="math display">\[
+H_1: X \nsim N(18.825,0.823492)
+\]</span>
+Seguidamente se resuelve el caso en R</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="prueba-de-bondad-de-ajuste.html#cb94-1" tabindex="-1"></a>extremos.izquierdos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">21</span>)</span>
+<span id="cb94-2"><a href="prueba-de-bondad-de-ajuste.html#cb94-2" tabindex="-1"></a>extremos.derechos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="cn">Inf</span>)</span>
+<span id="cb94-3"><a href="prueba-de-bondad-de-ajuste.html#cb94-3" tabindex="-1"></a>frecuencias.empiricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">15</span>, <span class="dv">5</span>)</span>
+<span id="cb94-4"><a href="prueba-de-bondad-de-ajuste.html#cb94-4" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fl">18.825</span></span>
+<span id="cb94-5"><a href="prueba-de-bondad-de-ajuste.html#cb94-5" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.907464855</span></span>
+<span id="cb94-6"><a href="prueba-de-bondad-de-ajuste.html#cb94-6" tabindex="-1"></a>probabilidades.teoricas <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(extremos.derechos, u, sigma) <span class="sc">-</span></span>
+<span id="cb94-7"><a href="prueba-de-bondad-de-ajuste.html#cb94-7" tabindex="-1"></a><span class="fu">pnorm</span>(extremos.izquierdos, u, sigma)</span>
+<span id="cb94-8"><a href="prueba-de-bondad-de-ajuste.html#cb94-8" tabindex="-1"></a><span class="fu">chisq.test</span>(frecuencias.empiricas, <span class="at">p =</span> probabilidades.teoricas)</span>
+<span id="cb94-9"><a href="prueba-de-bondad-de-ajuste.html#cb94-9" tabindex="-1"></a><span class="do">## Warning in chisq.test(frecuencias.empiricas, p = </span></span>
+<span id="cb94-10"><a href="prueba-de-bondad-de-ajuste.html#cb94-10" tabindex="-1"></a>probabilidades.teoricas<span class="er">)</span><span class="sc">:</span></span>
+<span id="cb94-11"><a href="prueba-de-bondad-de-ajuste.html#cb94-11" tabindex="-1"></a><span class="do">## Chi-squared approximation may be incorrect</span></span>
+<span id="cb94-12"><a href="prueba-de-bondad-de-ajuste.html#cb94-12" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb94-13"><a href="prueba-de-bondad-de-ajuste.html#cb94-13" tabindex="-1"></a><span class="do">## Chi-squared test for given probabilities</span></span>
+<span id="cb94-14"><a href="prueba-de-bondad-de-ajuste.html#cb94-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb94-15"><a href="prueba-de-bondad-de-ajuste.html#cb94-15" tabindex="-1"></a><span class="do">## data: frecuencias.empiricas</span></span>
+<span id="cb94-16"><a href="prueba-de-bondad-de-ajuste.html#cb94-16" tabindex="-1"></a><span class="do">## X-squared = 17.472, df = 4, p-value = 0.001564</span></span></code></pre></div>
+<p>Note que aparece un mensaje indicando que la aproximación podría ser incorrecta, <strong>¿A
+qué se debe esto?</strong></p>
+<p>Se calculará seguidamente, las frecuencias teóricas:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="prueba-de-bondad-de-ajuste.html#cb95-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">sum</span>(frecuencias.empiricas)</span>
+<span id="cb95-2"><a href="prueba-de-bondad-de-ajuste.html#cb95-2" tabindex="-1"></a>frecuencias.teoricas <span class="ot">&lt;-</span> n<span class="sc">*</span>probabilidades.teoricas</span>
+<span id="cb95-3"><a href="prueba-de-bondad-de-ajuste.html#cb95-3" tabindex="-1"></a>frecuencias.teoricas</span>
+<span id="cb95-4"><a href="prueba-de-bondad-de-ajuste.html#cb95-4" tabindex="-1"></a><span class="do">## [1] 36.328356 78.963603 65.169670 17.884418 1.653953</span></span></code></pre></div>
+<p>Se puede evidencia que en la última categoría, la frecuencia es menos que 5,
+incumpliendo la condición necesaria.</p>
+<p>Lo anterior se puede resolver de dos maneras:
+1. Se pueden fusionar intervalos
+1. Se puede usar la opción de simular un p-valor con R</p>
+<p>Fusión de intervalos</p>
+<p>La tabla, quedaría de la siguiente forma:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Edad: X</th>
+<th align="center">Frecuencia Observada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">X &lt; 18</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="center">18 <span class="math inline">\(\leq\)</span> X &lt; 19</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">19 <span class="math inline">\(\leq\)</span> X &lt; 20</td>
+<td align="center">50</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<table>
+<thead>
+<tr class="header">
+<th align="center">Edad: X</th>
+<th align="center">Frecuencia Observada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">X <span class="math inline">\(\geq\)</span> 20</td>
+<td align="center">20</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="prueba-de-bondad-de-ajuste.html#cb96-1" tabindex="-1"></a>extremos.izquierdos2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>)</span>
+<span id="cb96-2"><a href="prueba-de-bondad-de-ajuste.html#cb96-2" tabindex="-1"></a>extremos.derechos2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="cn">Inf</span>)</span>
+<span id="cb96-3"><a href="prueba-de-bondad-de-ajuste.html#cb96-3" tabindex="-1"></a>frecuencias.empiricas2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">20</span>)</span>
+<span id="cb96-4"><a href="prueba-de-bondad-de-ajuste.html#cb96-4" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fl">18.825</span></span>
+<span id="cb96-5"><a href="prueba-de-bondad-de-ajuste.html#cb96-5" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.907464855</span></span>
+<span id="cb96-6"><a href="prueba-de-bondad-de-ajuste.html#cb96-6" tabindex="-1"></a>probabilidades.teoricas2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(extremos.derechos2, u, sigma) <span class="sc">-</span></span>
+<span id="cb96-7"><a href="prueba-de-bondad-de-ajuste.html#cb96-7" tabindex="-1"></a><span class="fu">pnorm</span>(extremos.izquierdos2, u, sigma)</span>
+<span id="cb96-8"><a href="prueba-de-bondad-de-ajuste.html#cb96-8" tabindex="-1"></a><span class="fu">chisq.test</span>(frecuencias.empiricas2, <span class="at">p =</span> probabilidades.teoricas2)</span>
+<span id="cb96-9"><a href="prueba-de-bondad-de-ajuste.html#cb96-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb96-10"><a href="prueba-de-bondad-de-ajuste.html#cb96-10" tabindex="-1"></a><span class="do">## Chi-squared test for given probabilities</span></span>
+<span id="cb96-11"><a href="prueba-de-bondad-de-ajuste.html#cb96-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb96-12"><a href="prueba-de-bondad-de-ajuste.html#cb96-12" tabindex="-1"></a><span class="do">## data: frecuencias.empiricas2</span></span>
+<span id="cb96-13"><a href="prueba-de-bondad-de-ajuste.html#cb96-13" tabindex="-1"></a><span class="do">## X-squared = 10.249, df = 3, p-value = 0.01657</span></span></code></pre></div>
+<p>Con esto se logra resolver el problema, concluyendo que se encuentra suficiente
+evidencia para rechazar <span class="math inline">\(H_0\)</span></p>
+<p><strong>Simulando p-valor</strong></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="prueba-de-bondad-de-ajuste.html#cb97-1" tabindex="-1"></a><span class="fu">chisq.test</span>(frecuencias.empiricas, <span class="at">p =</span> probabilidades.teoricas, </span>
+<span id="cb97-2"><a href="prueba-de-bondad-de-ajuste.html#cb97-2" tabindex="-1"></a><span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B=</span><span class="dv">2000</span>)</span>
+<span id="cb97-3"><a href="prueba-de-bondad-de-ajuste.html#cb97-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb97-4"><a href="prueba-de-bondad-de-ajuste.html#cb97-4" tabindex="-1"></a><span class="do">## Chi-squared test for given probabilities with simulated p-value </span></span>
+<span id="cb97-5"><a href="prueba-de-bondad-de-ajuste.html#cb97-5" tabindex="-1"></a>(based</span>
+<span id="cb97-6"><a href="prueba-de-bondad-de-ajuste.html#cb97-6" tabindex="-1"></a><span class="do">## on 2000 replicates)</span></span>
+<span id="cb97-7"><a href="prueba-de-bondad-de-ajuste.html#cb97-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb97-8"><a href="prueba-de-bondad-de-ajuste.html#cb97-8" tabindex="-1"></a><span class="do">## data: frecuencias.empiricas</span></span>
+<span id="cb97-9"><a href="prueba-de-bondad-de-ajuste.html#cb97-9" tabindex="-1"></a><span class="do">## X-squared = 17.472, df = NA, p-value = 0.003998</span></span></code></pre></div>
+<p>Note que se obtiene un 𝑃- <em>valor</em> distinto, pero se coincide en la conclusión.</p>
+<p><strong>Conclusión</strong></p>
+<p>Se encuentra suficiente evidencia para rechazar <span class="math inline">\(H_0\)</span>, por lo que no se puede asumir
+normalidad para las edades de los estudiantes del curso Estructuras de Datos II.</p>
+<hr />
+<p>Dentro de este segmento de Bondad de ajuste, cobra un especial interés las pruebas
+de normalidad, esto por cuanto si una persona desea usar pruebas paramétricas, debe
+primero verificar que se cumplen las condiciones de normalidad para tal fin.</p>
+<p>El enfoque de pruebas de normalidad se puede abordar desde 3 dimensiones:</p>
+<ol style="list-style-type: decimal">
+<li>Visualización de datos mediante Histogarmas o QQ-Plot</li>
+<li>Pruebas formales de Normalidad</li>
+<li>Evaluar simetría (skewness) y la curtosis (kurtosis)</li>
+</ol>
+<div id="visualización-de-datos" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Visualización de datos<a href="#visualizaci%C3%B3n-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para mostrar esta técnica se usarán datos de la tabla <code>Iris</code>, específicamente
+<code>Sepal.with</code>.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="prueba-de-bondad-de-ajuste.html#cb98-1" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb98-2"><a href="prueba-de-bondad-de-ajuste.html#cb98-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># crea un matriz de tamaño 1x2 para imprimir dos gráficos de manera simultánea</span></span>
+<span id="cb98-3"><a href="prueba-de-bondad-de-ajuste.html#cb98-3" tabindex="-1"></a><span class="fu">hist</span>(muestra, <span class="at">main=</span><span class="st">&quot;Histograma de muestra&quot;</span>)</span>
+<span id="cb98-4"><a href="prueba-de-bondad-de-ajuste.html#cb98-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(muestra), <span class="at">main=</span><span class="st">&quot;Estimación de la densidad&quot;</span>)</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>De entrada, pareciera que la curva de densidad adopta una forma similar a la campana
+de Gauss, por lo que podría ser válida la siguiente comparación:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="prueba-de-bondad-de-ajuste.html#cb99-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(muestra), <span class="at">main =</span> <span class="st">&quot;Estimación de la densidad&quot;</span>)</span>
+<span id="cb99-2"><a href="prueba-de-bondad-de-ajuste.html#cb99-2" tabindex="-1"></a><span class="co"># Se generan valores para estimar la distribución normal de media y desviación estáandar igual a los datos de la muerta de iris</span></span>
+<span id="cb99-3"><a href="prueba-de-bondad-de-ajuste.html#cb99-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>,<span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb99-4"><a href="prueba-de-bondad-de-ajuste.html#cb99-4" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb99-5"><a href="prueba-de-bondad-de-ajuste.html#cb99-5" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb99-6"><a href="prueba-de-bondad-de-ajuste.html#cb99-6" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">dnorm</span>(x, <span class="at">mean =</span> u, <span class="at">sd =</span> sigma), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Se observa en la imagen que ambas curvas son muy similares, pero <strong>¿será ese
+parecido suficiente para garantizar normalidad?</strong> En la siguiente sección se
+estudiarán otras técnicas.</p>
+<p>Para ampliar el tema de la curva de densidad <a href="https://www.youtube.com/watch?v=Nx9NwPoTKL8">Curva de densidad|Khan Academy</a></p>
+<p>Otro tipo de gráfico que permite estudiar la normalidad de los datos es el QQ-plot,
+conocido como el cuantil-cuantil</p>
+<p>La función u objetivo de este gráfico es comparar los cuantiles observados en la
+muestra con los cuantiles teóricos de la distribución teórica. Para entender con
+más detalle la forma en que se construyen este tipo de gráficos, se recomienda ver el
+siguiente vídeo: <a href="https://www.youtube.com/watch?v=kx_o9rnI4DE">QQ-plots</a></p>
+<p>La sintaxis para crear un QQ-plot es la siguiente:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="prueba-de-bondad-de-ajuste.html#cb100-1" tabindex="-1"></a><span class="fu">qqPlot</span>(x, <span class="at">distribution=</span>..., parámetros, <span class="at">id=</span><span class="cn">FALSE</span>, ...)</span></code></pre></div>
+<p>donde:</p>
+<ul>
+<li>x: vector que contiene a la muestra de datos</li>
+<li>distribution: nombre de la familia de distribuciones, la cuál, debe escribirse entre comillas: “norm”,“binom”, “poisson”, “t”, etc.</li>
+<li>El QQ-plot agrega varias opciones que se pueden ocultar:
+<ul>
+<li>Ocultar los QQ-puntos con ordenadas más extremas: <code>id = FALSE</code></li>
+<li>Rejilla del gráfico: <code>grid = FALSE</code></li>
+<li>Línea recta que une los QQ-puntos del primer y tercer cuartil, conocida como <em>recta cuartil-cuartil</em>. Se puede ocultar con <code>line = "none"</code></li>
+<li>Curvas discontinuas que abrazan una región de confianza de 95%. Se puede ocultar con <code>envelope = FALSE</code></li>
+<li>Se pueden usar los parámetros usuales de <code>plot</code> para poner nombres a los ejes, título, modificar el estilo de los puntos, etc., y otros parámetros específicos para modificar el aspecto del gráfico. Por ejemplo, <code>col.lines</code> sirve para especificar el color de las líneas que añade.</li>
+</ul></li>
+</ul>
+<p>Seguidamente se muestra el QQ-plot para el ejemplo anterior:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="prueba-de-bondad-de-ajuste.html#cb101-1" tabindex="-1"></a><span class="co"># Cargar el paquete car</span></span>
+<span id="cb101-2"><a href="prueba-de-bondad-de-ajuste.html#cb101-2" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## 
+## Attaching package: &#39;car&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     some</code></pre>
+<pre><code>## The following object is masked from &#39;package:EnvStats&#39;:
+## 
+##     qqPlot</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="prueba-de-bondad-de-ajuste.html#cb107-1" tabindex="-1"></a><span class="co"># Calcular la media y la desviación estándar de Sepal.Width</span></span>
+<span id="cb107-2"><a href="prueba-de-bondad-de-ajuste.html#cb107-2" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb107-3"><a href="prueba-de-bondad-de-ajuste.html#cb107-3" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb107-4"><a href="prueba-de-bondad-de-ajuste.html#cb107-4" tabindex="-1"></a></span>
+<span id="cb107-5"><a href="prueba-de-bondad-de-ajuste.html#cb107-5" tabindex="-1"></a><span class="co"># Crear el QQ-plot</span></span>
+<span id="cb107-6"><a href="prueba-de-bondad-de-ajuste.html#cb107-6" tabindex="-1"></a><span class="fu">qqPlot</span>(iris<span class="sc">$</span>Sepal.Width, <span class="at">distribution =</span> <span class="st">&quot;norm&quot;</span>, <span class="at">mean =</span> u, <span class="at">sd =</span> sigma)</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre><code>## [1] 16 34</code></pre>
+<p>En este caso, miesntras más se ajusten los puntos a la recta, mejor es el ajuste de
+normalidad de los datos. Para el ejemplo anterior, se nota que la mayoria de los
+puntos quedaron dentro de la región del IC de 95%, lo cuál es un buen indicador de
+normalidad.</p>
+</div>
+<div id="pruebas-formales-de-normalidad" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Pruebas formales de normalidad<a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección se estudiarán 4 pruebas que pueden ser de utilidad al estudiar la
+normalidad de los datos.</p>
+<div id="test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test<a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Basada en el paquete nortest</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="prueba-de-bondad-de-ajuste.html#cb109-1" tabindex="-1"></a><span class="fu">lillie.test</span>(muestra)</span>
+<span id="cb109-2"><a href="prueba-de-bondad-de-ajuste.html#cb109-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb109-3"><a href="prueba-de-bondad-de-ajuste.html#cb109-3" tabindex="-1"></a><span class="do">## Lilliefors (Kolmogorov-Smirnov) normality test</span></span>
+<span id="cb109-4"><a href="prueba-de-bondad-de-ajuste.html#cb109-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb109-5"><a href="prueba-de-bondad-de-ajuste.html#cb109-5" tabindex="-1"></a><span class="do">## data: muestra</span></span>
+<span id="cb109-6"><a href="prueba-de-bondad-de-ajuste.html#cb109-6" tabindex="-1"></a><span class="do">## D = 0.10566, p-value = 0.0003142</span></span></code></pre></div>
+<p>Note que en este caso la muestra detecta que sí hay suficiente evidencia en contra
+para no aceptar normalidad en los datos, algo que gráficamente parecía tener esa
+condición.</p>
+<p>El test K-S-L tiene un inconveniente: aunque es muy sensible a las diferencias entre la
+muestra y la distribución teórica alrededor de sus valores medios, le cuesta detectar
+diferencias prominentes en un extremo u otro de la distribución.</p>
+<p>Su potencia se ve afectada por dicho inconveniente.</p>
+<p>Veamos un ejemplo de este hecho intentando ver si una muestra de una distribución t
+de Student nos acepta que es normal o no:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="prueba-de-bondad-de-ajuste.html#cb110-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb110-2"><a href="prueba-de-bondad-de-ajuste.html#cb110-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rt</span>(<span class="dv">50</span>,<span class="dv">3</span>) <span class="co">#se generan 50 datos aleatorio de una distribución t con 3 </span></span>
+<span id="cb110-3"><a href="prueba-de-bondad-de-ajuste.html#cb110-3" tabindex="-1"></a>gl</span>
+<span id="cb110-4"><a href="prueba-de-bondad-de-ajuste.html#cb110-4" tabindex="-1"></a><span class="fu">lillie.test</span>(x)</span>
+<span id="cb110-5"><a href="prueba-de-bondad-de-ajuste.html#cb110-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb110-6"><a href="prueba-de-bondad-de-ajuste.html#cb110-6" tabindex="-1"></a><span class="do">## Lilliefors (Kolmogorov-Smirnov) normality test</span></span>
+<span id="cb110-7"><a href="prueba-de-bondad-de-ajuste.html#cb110-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb110-8"><a href="prueba-de-bondad-de-ajuste.html#cb110-8" tabindex="-1"></a><span class="do">## data: x</span></span>
+<span id="cb110-9"><a href="prueba-de-bondad-de-ajuste.html#cb110-9" tabindex="-1"></a><span class="do">## D = 0.10332, p-value = 0.2013</span></span></code></pre></div>
+<p>Nos dice que <strong>no podemos</strong> rechazar que la muestra x sea normal.</p>
+<p>Esto es debido a que la función de densidad de la distribución <span class="math inline">\(t\)</span> de Student es algo más
+aplanada que la distribución normal, donde en los dos extremos está por encima de la
+de la normal.
+Como el test K-S-L no detecta las diferencias en los extremos, acepta que x es normal.</p>
+</div>
+<div id="test-de-normalidad-de-anderson-darling-o-a-d-test" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Test de normalidad de Anderson-Darling o A-D test<a href="prueba-de-bondad-de-ajuste.html#test-de-normalidad-de-anderson-darling-o-a-d-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El test de normalidad de Anderson-Darling resuelve el inconveniente del test de K-S-L
+y se está implementado en el paquete nortest.
+Note que al aplicar esta prueba al caso anterior con los valores generados de una
+distrubucón t, la noramlidad queda rechazada.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="prueba-de-bondad-de-ajuste.html#cb111-1" tabindex="-1"></a><span class="fu">ad.test</span>(x)</span>
+<span id="cb111-2"><a href="prueba-de-bondad-de-ajuste.html#cb111-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb111-3"><a href="prueba-de-bondad-de-ajuste.html#cb111-3" tabindex="-1"></a><span class="do">## Anderson-Darling normality test</span></span>
+<span id="cb111-4"><a href="prueba-de-bondad-de-ajuste.html#cb111-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb111-5"><a href="prueba-de-bondad-de-ajuste.html#cb111-5" tabindex="-1"></a><span class="do">## data: x</span></span>
+<span id="cb111-6"><a href="prueba-de-bondad-de-ajuste.html#cb111-6" tabindex="-1"></a><span class="do">## A = 1.1657, p-value = 0.004334</span></span></code></pre></div>
+<p>Ahora se le aplicará la prueba a la muestra de Iris</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="prueba-de-bondad-de-ajuste.html#cb112-1" tabindex="-1"></a><span class="fu">ad.test</span>(muestra)</span>
+<span id="cb112-2"><a href="prueba-de-bondad-de-ajuste.html#cb112-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb112-3"><a href="prueba-de-bondad-de-ajuste.html#cb112-3" tabindex="-1"></a><span class="do">## Anderson-Darling normality test</span></span>
+<span id="cb112-4"><a href="prueba-de-bondad-de-ajuste.html#cb112-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb112-5"><a href="prueba-de-bondad-de-ajuste.html#cb112-5" tabindex="-1"></a><span class="do">## data: muestra</span></span>
+<span id="cb112-6"><a href="prueba-de-bondad-de-ajuste.html#cb112-6" tabindex="-1"></a><span class="do">## A = 0.90796, p-value = 0.02023</span></span></code></pre></div>
+<p>Donde el resulta indica por su p-valor, que no se debe aceptar normalidad de los
+datos.</p>
+</div>
+<div id="test-de-shapiro-wilks-o-s-w-test" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Test de Shapiro-Wilks o S-W test<a href="prueba-de-bondad-de-ajuste.html#test-de-shapiro-wilks-o-s-w-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un inconveniente común a los tests K-S-L y A-D es que, si bien pueden usarse con
+muestras pequeñas (pongamos de más de 5 elementos), se comportan mal con
+muestras grandes, de varios miles de elementos.</p>
+<p>En muestras de este tamaño, cualquier pequeña divergencia de la normalidad se
+magnifica y en estos dos tests aumenta la probabilidad de errores de tipo I.</p>
+<p>Un test que viene a resolver el problema es <code>Shapiro-Wilk</code> que se encuentra por
+defecto en R.</p>
+<p>Se aplica la prueba a los dos casos trabajados anteriormente:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="prueba-de-bondad-de-ajuste.html#cb113-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(muestra)</span>
+<span id="cb113-2"><a href="prueba-de-bondad-de-ajuste.html#cb113-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb113-3"><a href="prueba-de-bondad-de-ajuste.html#cb113-3" tabindex="-1"></a><span class="do">## Shapiro-Wilk normality test</span></span>
+<span id="cb113-4"><a href="prueba-de-bondad-de-ajuste.html#cb113-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb113-5"><a href="prueba-de-bondad-de-ajuste.html#cb113-5" tabindex="-1"></a><span class="do">## data: muestra</span></span>
+<span id="cb113-6"><a href="prueba-de-bondad-de-ajuste.html#cb113-6" tabindex="-1"></a><span class="do">## W = 0.98492, p-value = 0.1012</span></span></code></pre></div>
+<p>Note que en este caso no se encontró evidencia en contra para asumir normalidad,
+cosa que no ocurrió con las otras pruebas y posiblemente por una razón, esta muestra
+consta de 150 datos, un tamaño grande para las pruebas anteriores de K-S-L y A-D.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="prueba-de-bondad-de-ajuste.html#cb114-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(x)</span>
+<span id="cb114-2"><a href="prueba-de-bondad-de-ajuste.html#cb114-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb114-3"><a href="prueba-de-bondad-de-ajuste.html#cb114-3" tabindex="-1"></a><span class="do">## Shapiro-Wilk normality test</span></span>
+<span id="cb114-4"><a href="prueba-de-bondad-de-ajuste.html#cb114-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb114-5"><a href="prueba-de-bondad-de-ajuste.html#cb114-5" tabindex="-1"></a><span class="do">## data: x</span></span>
+<span id="cb114-6"><a href="prueba-de-bondad-de-ajuste.html#cb114-6" tabindex="-1"></a><span class="do">## W = 0.89494, p-value = 0.0003285</span></span></code></pre></div>
+<p>El el otro caso donde se simularon datos de una distribución t-student, se concluye
+que la normalidad para los datos no es una condición válida de asumir, claro está que
+los datos provienen de una distribución t-student.</p>
+<p>Si nuestra muestra de valores tiene empates, los p-valores de los contrastes calculados
+a partir de las distribuciones de los estadísticos usados en los tests K-S-L, A-D y S-W se
+pueden ver afectados hasta el punto de que, si hay muchos empates, su significado no
+tenga ningún sentido.</p>
+<p>Hay que decir que el menos afectado por los empates es el test de S-W.</p>
+</div>
+<div id="test-omnibus-de-dagostino-pearson" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Test omnibus de D’Agostino-Pearson<a href="prueba-de-bondad-de-ajuste.html#test-omnibus-de-dagostino-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un test que no es sensible a los empates es el test de normalidad de D’Agostino Pearson.</p>
+<p>Este test se encuentra implementado en la función dagoTest del paquete <code>fBasics</code>, y lo
+que hace es cuantificar los diferentes que son la asimetría y la curtosis de la muestra
+(dos parámetros estadísticos relacionados con la forma de la gráfica de la función de
+densidad muestral) respecto de los esperados en una distribución normal, y resume
+esta discrepancia en un p-valor con el significado usual.</p>
+<p>No debe darse mucha relevancia a los datos de STATISTIC en este caso, pues esto
+difieren, como se verá más adelante, de los valores de curtosis y simetría dados por
+otras funciones de R, posiblemente porque los valores dados no corresponden
+específicamente a valores en las distribuciones donde se realizan los tres tests: chi
+cuadrado, simetría y curtosis. Se priorizará el valor P de cada prueba.</p>
+<p>Para poder aplicar dicho test, el tamaño de la muestra debe ser <strong>20</strong> como mínimo.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="prueba-de-bondad-de-ajuste.html#cb115-1" tabindex="-1"></a><span class="fu">dagoTest</span>(x)</span>
+<span id="cb115-2"><a href="prueba-de-bondad-de-ajuste.html#cb115-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb115-3"><a href="prueba-de-bondad-de-ajuste.html#cb115-3" tabindex="-1"></a><span class="do">## Title:</span></span>
+<span id="cb115-4"><a href="prueba-de-bondad-de-ajuste.html#cb115-4" tabindex="-1"></a><span class="do">## D&#39;Agostino Normality Test</span></span>
+<span id="cb115-5"><a href="prueba-de-bondad-de-ajuste.html#cb115-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb115-6"><a href="prueba-de-bondad-de-ajuste.html#cb115-6" tabindex="-1"></a><span class="do">## Test Results:</span></span>
+<span id="cb115-7"><a href="prueba-de-bondad-de-ajuste.html#cb115-7" tabindex="-1"></a><span class="do">## STATISTIC:</span></span>
+<span id="cb115-8"><a href="prueba-de-bondad-de-ajuste.html#cb115-8" tabindex="-1"></a><span class="do">## Chi2 | Omnibus: 21.8125</span></span>
+<span id="cb115-9"><a href="prueba-de-bondad-de-ajuste.html#cb115-9" tabindex="-1"></a><span class="do">## Z3 | Skewness: 2.8069</span></span>
+<span id="cb115-10"><a href="prueba-de-bondad-de-ajuste.html#cb115-10" tabindex="-1"></a><span class="do">## Z4 | Kurtosis: 3.7328</span></span>
+<span id="cb115-11"><a href="prueba-de-bondad-de-ajuste.html#cb115-11" tabindex="-1"></a><span class="do">## P VALUE:</span></span>
+<span id="cb115-12"><a href="prueba-de-bondad-de-ajuste.html#cb115-12" tabindex="-1"></a><span class="do">## Omnibus Test: 1.834e-05 </span></span>
+<span id="cb115-13"><a href="prueba-de-bondad-de-ajuste.html#cb115-13" tabindex="-1"></a><span class="do">## Skewness Test: 0.005001 </span></span>
+<span id="cb115-14"><a href="prueba-de-bondad-de-ajuste.html#cb115-14" tabindex="-1"></a><span class="do">## Kurtosis Test: 0.0001894</span></span></code></pre></div>
+<p>Vemos que según el test de D’Agostino-Pearson, la muestra x correspondiente a la
+distribución t de Student no sigue una distribución normal, pues todos los valores P
+están por debajo de 0.05.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="prueba-de-bondad-de-ajuste.html#cb116-1" tabindex="-1"></a><span class="fu">dagoTest</span>(muestra)</span>
+<span id="cb116-2"><a href="prueba-de-bondad-de-ajuste.html#cb116-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb116-3"><a href="prueba-de-bondad-de-ajuste.html#cb116-3" tabindex="-1"></a><span class="do">## Title:</span></span>
+<span id="cb116-4"><a href="prueba-de-bondad-de-ajuste.html#cb116-4" tabindex="-1"></a><span class="do">## D&#39;Agostino Normality Test</span></span>
+<span id="cb116-5"><a href="prueba-de-bondad-de-ajuste.html#cb116-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb116-6"><a href="prueba-de-bondad-de-ajuste.html#cb116-6" tabindex="-1"></a><span class="do">## Test Results:</span></span>
+<span id="cb116-7"><a href="prueba-de-bondad-de-ajuste.html#cb116-7" tabindex="-1"></a><span class="do">## STATISTIC:</span></span>
+<span id="cb116-8"><a href="prueba-de-bondad-de-ajuste.html#cb116-8" tabindex="-1"></a><span class="do">## Chi2 | Omnibus: 3.1238</span></span>
+<span id="cb116-9"><a href="prueba-de-bondad-de-ajuste.html#cb116-9" tabindex="-1"></a><span class="do">## Z3 | Skewness: 1.616</span></span>
+<span id="cb116-10"><a href="prueba-de-bondad-de-ajuste.html#cb116-10" tabindex="-1"></a><span class="do">## Z4 | Kurtosis: 0.7157</span></span>
+<span id="cb116-11"><a href="prueba-de-bondad-de-ajuste.html#cb116-11" tabindex="-1"></a><span class="do">## P VALUE:</span></span>
+<span id="cb116-12"><a href="prueba-de-bondad-de-ajuste.html#cb116-12" tabindex="-1"></a><span class="do">## Omnibus Test: 0.2097 </span></span>
+<span id="cb116-13"><a href="prueba-de-bondad-de-ajuste.html#cb116-13" tabindex="-1"></a><span class="do">## Skewness Test: 0.1061 </span></span>
+<span id="cb116-14"><a href="prueba-de-bondad-de-ajuste.html#cb116-14" tabindex="-1"></a><span class="do">## Kurtosis Test: 0.4742</span></span></code></pre></div>
+<p>En este caso admite normalidad para los datos.
+Si se desea calcular la curtosis y la simetría, se pueden usar las siguiente funciones del
+paquete <code>moments</code>:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="prueba-de-bondad-de-ajuste.html#cb117-1" tabindex="-1"></a>curtosis <span class="ot">&lt;-</span> <span class="fu">kurtosis</span>(x)</span>
+<span id="cb117-2"><a href="prueba-de-bondad-de-ajuste.html#cb117-2" tabindex="-1"></a>simetria <span class="ot">&lt;-</span> <span class="fu">skewness</span>(x)</span>
+<span id="cb117-3"><a href="prueba-de-bondad-de-ajuste.html#cb117-3" tabindex="-1"></a><span class="fu">plot</span> (<span class="fu">density</span>(x), <span class="at">main =</span> <span class="st">&quot;Normal&quot;</span>,</span>
+<span id="cb117-4"><a href="prueba-de-bondad-de-ajuste.html#cb117-4" tabindex="-1"></a><span class="at">xlab =</span> <span class="fu">paste</span>(<span class="st">&quot;Curtosis &quot;</span>, <span class="fu">round</span>(curtosis, <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb117-5"><a href="prueba-de-bondad-de-ajuste.html#cb117-5" tabindex="-1"></a><span class="st">&quot;Simetría &quot;</span>, <span class="fu">round</span>(simetria,<span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="prueba-de-bondad-de-ajuste.html#cb118-1" tabindex="-1"></a>curtosis <span class="ot">&lt;-</span> <span class="fu">kurtosis</span>(muestra)</span>
+<span id="cb118-2"><a href="prueba-de-bondad-de-ajuste.html#cb118-2" tabindex="-1"></a>simetria <span class="ot">&lt;-</span> <span class="fu">skewness</span>(muestra)</span>
+<span id="cb118-3"><a href="prueba-de-bondad-de-ajuste.html#cb118-3" tabindex="-1"></a><span class="fu">plot</span> (<span class="fu">density</span>(muestra), <span class="at">main =</span> <span class="st">&quot;Normal&quot;</span>,</span>
+<span id="cb118-4"><a href="prueba-de-bondad-de-ajuste.html#cb118-4" tabindex="-1"></a><span class="at">xlab =</span> <span class="fu">paste</span>(<span class="st">&quot;Curtosis &quot;</span>, <span class="fu">round</span>(curtosis, <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb118-5"><a href="prueba-de-bondad-de-ajuste.html#cb118-5" tabindex="-1"></a><span class="st">&quot;Simetría &quot;</span>, <span class="fu">round</span>(simetria,<span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Para interpretaciones, considere lo siguiente:
+**Simetría hace referencia a la distancia de la media al menor valor en la proporción a la distancia de la media al valor mayor.</p>
+<p><strong>Simetría</strong> hace referencia a la distancia de la media al menor valor en proporción a la distancia de la media al valor mayor.</p>
+<ul>
+<li>Si el valor de la simetría se acerca a 0, indica que la distribución es simétrica, es decir ambos valores extremos están aproximadamente a la misma distancia de la media.</li>
+<li>Si el valor de la simetría es positivo (S &gt; 0) indica que el valor menor está más cerca de la media que el valor mayor, inclinando la media hacia la izquierda.</li>
+<li>Si el valor de la simetría es negativo (S &lt; 0) indica que el valor mayor está más cerca de la media que el valor menor, inclinando la media hacia la derecha.</li>
+</ul>
+<div style="text-align: center;">
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="assets/simetria.jpg" alt="Simetría en la distribución de los datos" width="70%" />
+<p class="caption">
+Figure 8.1: Simetría en la distribución de los datos
+</p>
+</div>
+</div>
+<p>La curtosis indica qué tan pronunciada es la forma de campana en una distribución normal.</p>
+<ul>
+<li>Una curtosis muy alta denota una campana alargada y con las colas muy bajas - <strong>Leptocúrtica</strong></li>
+<li>Un valor intermedio denota una campana “ideal” con la punta semicircular y la curva de las colas pronunciada - <strong>Mesocúrtica</strong></li>
+<li>Una curtosis muy baja indica una campana chata y ancha con la curva de las colas poco pronunciada - <strong>Platicúrtica</strong></li>
+</ul>
+<p>En una distribución normal “ideal”, la curtosis tiene un valor cercano a 3.</p>
+<div style="text-align: center;">
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
+<img src="assets/Kurtosis.jpg" alt="Forma de la curva según el tipo de curtosis" width="70%" />
+<p class="caption">
+Figure 8.2: Forma de la curva según el tipo de curtosis
+</p>
+</div>
+</div>
+<div style="text-align: center;">
+<p><img src="assets/curtosisGraficos.png" width="100%" /></p>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="otras-pruebas-de-hipotesis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-independencia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
