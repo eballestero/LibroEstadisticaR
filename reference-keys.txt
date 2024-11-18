@@ -1,5 +1,5 @@
-fig:unnamed-chunk-24
 fig:unnamed-chunk-25
+fig:unnamed-chunk-26
 cargar-chunks
 i-parte-casos-para-una-poblacion
 simulacion-de-intervalos-de-confianza

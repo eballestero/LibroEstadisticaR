@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 I Parte: Casos para una poblacion | “Elementos de Estadística Inferencial con R”</title>
-  <meta name="description" content="Capítulo 2 I Parte: Casos para una poblacion | “Elementos de Estadística Inferencial con R”" />
+  <title>Capítulo 2 I Parte: Casos para una poblacion | Compendio-Estadística.knit</title>
+  <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 2 I Parte: Casos para una poblacion | “Elementos de Estadística Inferencial con R”" />
+  <meta property="og:title" content="Capítulo 2 I Parte: Casos para una poblacion | Compendio-Estadística.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 I Parte: Casos para una poblacion | “Elementos de Estadística Inferencial con R”" />
+  <meta name="twitter:title" content="Capítulo 2 I Parte: Casos para una poblacion | Compendio-Estadística.knit" />
   
   
   
@@ -64,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -134,20 +134,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#section" id="toc-section"></a></li>
+<li><a href="section.html#section" id="toc-section"></a></li>
 <li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
 <li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
 <li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
-<li class="chapter" data-level="2.1.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulación-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#m%C3%A9todo-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapters/02-casosUnaPoblacion.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
 <li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#m%C3%A9todo-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
 <li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
 <li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
 </ul></li>
@@ -164,14 +164,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
 <li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-pequeñas"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#muestas-peque%C3%B1as"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
 <li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
 <li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
@@ -180,11 +180,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
 <li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="6" data-path="chapters/02-casosUnaPoblacion.html"><a href="#una-visi%C3%B3n-grafica-de-las-pruebas-de-hipotesis"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
 <li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
 <li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#visualización-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#visualizaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
 <li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
@@ -198,20 +198,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
-<li class="chapter" data-level="11.2" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#coeficientes-de-determinación-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.2" data-path="chapters/02-casosUnaPoblacion.html"><a href="#coeficientes-de-determinaci%C3%B3n-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
 <li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
 <li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
 <li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
 <li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
 <li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
-<li class="chapter" data-level="11.8" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#cuidado-con-el-coeficiente-de-correlacion-y-de-determinación"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.8" data-path="chapters/02-casosUnaPoblacion.html"><a href="#cuidado-con-el-coeficiente-de-correlacion-y-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
 <li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
 <li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
-<li class="chapter" data-level="13.2" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresión-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="chapters/02-casosUnaPoblacion.html"><a href="#regresi%C3%B3n-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
@@ -220,8 +220,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iv-parte-analisis-inferencial-otras-pruebas-de-hipótesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#v-parte-analisis-de-regresión"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iv-parte-analisis-inferencial-otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#v-parte-analisis-de-regresi%C3%B3n"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
 <ul>
@@ -248,10 +248,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
 <ul>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-0-regresión-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-0-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
-<li class="chapter" data-level="13.2.1" data-path="anexos.html"><a href="anexos.html#modelo-3-regresion-no-lineal-multiple-con-interacción"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+<li class="chapter" data-level="13.2.1" data-path="chapters/02-casosUnaPoblacion.html"><a href="#modelo-3-regresion-no-lineal-multiple-con-interacci%C3%B3n"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -263,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">“Elementos de Estadística Inferencial con R”</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -279,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 primero sigue un procedimiento más rudimentario mienstras que la segunda opción
 se apoya en el paquete <strong>PASWR2</strong></p>
 <div id="método-de-simulacion-ejemplo-1" class="section level3 hasAnchor" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Método de simulacion: Ejemplo 1<a href="i-parte-casos-para-una-poblacion.html#método-de-simulacion-ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.1.1</span> Método de simulacion: Ejemplo 1<a href="#m%C3%A9todo-de-simulacion-ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El siguiente ejemplo simula el funcionamiento de una IC para una distribución normal.
 Consideramos una población de 106 valores de una distribución normal de
 parámetros 𝜇 = 1.5 y 𝜎 = 1 :</p>
@@ -352,10 +352,10 @@ aproximadamente 5 en los que esta condición falle.</p>
 <span id="cb11-5"><a href="i-parte-casos-para-una-poblacion.html#cb11-5" tabindex="-1"></a> <span class="fu">segments</span>(M[<span class="dv">1</span>,i], i, M[<span class="dv">2</span>,i],i, <span class="at">col =</span> color,<span class="at">lwd =</span> <span class="dv">3</span>)}</span>
 <span id="cb11-6"><a href="i-parte-casos-para-una-poblacion.html#cb11-6" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">FUN =</span> seg.int))</span>
 <span id="cb11-7"><a href="i-parte-casos-para-una-poblacion.html#cb11-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu,<span class="at">lwd =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="método-de-simulación-ejemplo-2" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Método de simulación: Ejemplo 2<a href="i-parte-casos-para-una-poblacion.html#método-de-simulación-ejemplo-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.1.2</span> Método de simulación: Ejemplo 2<a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El segudo método muestra como realizar simulaciones de Intervalos de Confianza de
 manera gráfica, usando el paquete PASWR2.
 Los requerimientos para usar la función cisim, son los siguientes:</p>
@@ -382,21 +382,21 @@ Simulación de 100 muestras de tamaño 30, con media 100 y desviación estándar
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="i-parte-casos-para-una-poblacion.html#cb12-1" tabindex="-1"></a><span class="co">#install.packages(&quot;PASWR2&quot;, dependencies = T)</span></span>
 <span id="cb12-2"><a href="i-parte-casos-para-una-poblacion.html#cb12-2" tabindex="-1"></a><span class="fu">cisim</span>(<span class="at">samples =</span> <span class="dv">100</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">parameter =</span> <span class="dv">100</span>, <span class="at">sigma =</span> <span class="dv">10</span>, <span class="at">conf.level =</span></span>
 <span id="cb12-3"><a href="i-parte-casos-para-una-poblacion.html#cb12-3" tabindex="-1"></a><span class="fl">0.90</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>## 
 ## 9% of the random confidence intervals do not contain Mu = 100.</code></pre>
 <p><strong>Ejemplo</strong>
 Simulación de 100 muestras de tamaño 50, para una porporción de 0.5. El IC es de
 92%</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="i-parte-casos-para-una-poblacion.html#cb14-1" tabindex="-1"></a><span class="fu">cisim</span>(<span class="dv">100</span>, <span class="dv">50</span>, <span class="fl">0.5</span>, <span class="at">type =</span> <span class="st">&quot;Pi&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.92</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre><code>## 
 ## 4% of the random confidence intervals do not contain Pi = 0.5.</code></pre>
 <p><strong>Ejemplo</strong>
 Simulación de 100 muestras de tamaño 30, con varianza 100 y desviación estándar de
 10. El IC 95%</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="i-parte-casos-para-una-poblacion.html#cb16-1" tabindex="-1"></a><span class="fu">cisim</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">10</span>, <span class="at">type =</span> <span class="st">&quot;Var&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <pre><code>## 
 ## 6% of the random confidence intervals do not contain Var = 100.</code></pre>
 <p><strong>Ejemplo de procesador de Intel</strong>
@@ -500,7 +500,7 @@ Seguidamente, se puede visualizar gráficamente estos intervalos:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="i-parte-casos-para-una-poblacion.html#cb34-1" tabindex="-1"></a><span class="do">## list()</span></span>
 <span id="cb34-2"><a href="i-parte-casos-para-una-poblacion.html#cb34-2" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="i-parte-casos-para-una-poblacion.html#cb34-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 </div>
 <div id="intervalos-de-confianza-para-el-parameto-p" class="section level2 hasAnchor" number="2.2">
@@ -508,7 +508,7 @@ Seguidamente, se puede visualizar gráficamente estos intervalos:</p>
 <p>Aunque en el curso sólo de abordó un método, en esta sección se estudiarán 3
 métodos para estimar el parámetro 𝑝.</p>
 <div id="método-exacto-o-de-clopper-pearson" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Método “exacto” o de Clopper-Pearson<a href="i-parte-casos-para-una-poblacion.html#método-exacto-o-de-clopper-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.2.1</span> Método “exacto” o de Clopper-Pearson<a href="#m%C3%A9todo-exacto-o-de-clopper-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consideremos lo siguiente:</p>
 <p><span class="math display">\[
 \begin{equation*}

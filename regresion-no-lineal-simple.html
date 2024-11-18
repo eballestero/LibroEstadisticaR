@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 12 Regresion no lineal simple | “Elementos de Estadística Inferencial con R”</title>
-  <meta name="description" content="Capítulo 12 Regresion no lineal simple | “Elementos de Estadística Inferencial con R”" />
+  <title>Capítulo 12 Regresion no lineal simple | Compendio-Estadística.knit</title>
+  <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 12 Regresion no lineal simple | “Elementos de Estadística Inferencial con R”" />
+  <meta property="og:title" content="Capítulo 12 Regresion no lineal simple | Compendio-Estadística.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 12 Regresion no lineal simple | “Elementos de Estadística Inferencial con R”" />
+  <meta name="twitter:title" content="Capítulo 12 Regresion no lineal simple | Compendio-Estadística.knit" />
   
   
   
@@ -64,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -134,20 +134,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#section" id="toc-section"></a></li>
+<li><a href="section.html#section" id="toc-section"></a></li>
 <li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introduccion</a></li>
 <li class="chapter" data-level="1" data-path="cargar-chunks.html"><a href="cargar-chunks.html"><i class="fa fa-check"></i><b>1</b> Cargar Chunks</a></li>
 <li class="chapter" data-level="2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html"><i class="fa fa-check"></i><b>2</b> I Parte: Casos para una poblacion</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#simulacion-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>2.1</b> Simulacion de Intervalos de Confianza</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
-<li class="chapter" data-level="2.1.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-de-simulación-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
+<li class="chapter" data-level="2.1.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#m%C3%A9todo-de-simulacion-ejemplo-1"><i class="fa fa-check"></i><b>2.1.1</b> Método de simulacion: Ejemplo 1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#m%C3%A9todo-de-simulaci%C3%B3n-ejemplo-2"><i class="fa fa-check"></i><b>2.1.2</b> Método de simulación: Ejemplo 2</a></li>
 <li class="chapter" data-level="2.1.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#experimento-con-la-confianza"><i class="fa fa-check"></i><b>2.1.3</b> Experimento con la “Confianza”</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#intervalos-de-confianza-para-el-parameto-p"><i class="fa fa-check"></i><b>2.2</b> Intervalos de confianza para el parameto p</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#método-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
+<li class="chapter" data-level="2.2.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#m%C3%A9todo-exacto-o-de-clopper-pearson"><i class="fa fa-check"></i><b>2.2.1</b> Método “exacto” o de Clopper-Pearson</a></li>
 <li class="chapter" data-level="2.2.2" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-wilson"><i class="fa fa-check"></i><b>2.2.2</b> Metodo de Wilson</a></li>
 <li class="chapter" data-level="2.2.3" data-path="i-parte-casos-para-una-poblacion.html"><a href="i-parte-casos-para-una-poblacion.html#metodo-de-laplace"><i class="fa fa-check"></i><b>2.2.3</b> Metodo de Laplace</a></li>
 </ul></li>
@@ -164,14 +164,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-micro"><i class="fa fa-check"></i><b>4.1</b> Prueba de hipotesis para Micro</a></li>
 <li class="chapter" data-level="4.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-p"><i class="fa fa-check"></i><b>4.2</b> Prueba de hipotesis para p</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-pequeñas"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
+<li class="chapter" data-level="4.2.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#muestas-peque%C3%B1as"><i class="fa fa-check"></i><b>4.2.1</b> Muestas Pequeñas</a></li>
 <li class="chapter" data-level="4.2.2" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#muestas-grandes"><i class="fa fa-check"></i><b>4.2.2</b> Muestas Grandes</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="pruebas-de-hipotesis-para-una-poblacion.html"><a href="pruebas-de-hipotesis-para-una-poblacion.html#prueba-de-hipotesis-para-sigma-de-una-variable-aleatoria-con-comportamiento-normal"><i class="fa fa-check"></i><b>4.3</b> Prueba de hipotesis para sigma de una variable aleatoria con comportamiento normal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html"><i class="fa fa-check"></i><b>5</b> Pruebas de hipotesis para dos poblaciones</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
 <li class="chapter" data-level="5.2" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#casos-de-dos-poblaciones"><i class="fa fa-check"></i><b>5.2</b> Casos de Dos poblaciones</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-medias-poblacionales-mu_1-y-mu_2"><i class="fa fa-check"></i><b>5.2.1</b> Prueba de hipotesis para dos medias poblacionales <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span></a></li>
@@ -180,11 +180,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-proporciones-p_1-p_2"><i class="fa fa-check"></i><b>5.3</b> Prueba de hipotesis para dos proporciones <span class="math inline">\(p_1, p_2\)</span></a></li>
 <li class="chapter" data-level="5.4" data-path="pruebas-de-hipotesis-para-dos-poblaciones.html"><a href="pruebas-de-hipotesis-para-dos-poblaciones.html#prueba-de-hipotesis-para-dos-varianzas-de-sigma_12-sigma_22"><i class="fa fa-check"></i><b>5.4</b> Prueba de hipotesis para dos varianzas de <span class="math inline">\(\sigma_1^2\)</span>, <span class="math inline">\(\sigma_2^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><a href="una-visión-grafica-de-las-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
+<li class="chapter" data-level="6" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#una-visi%C3%B3n-grafica-de-las-pruebas-de-hipotesis"><i class="fa fa-check"></i><b>6</b> Una visión grafica de las pruebas de hipotesis</a></li>
 <li class="chapter" data-level="7" data-path="otras-pruebas-de-hipotesis.html"><a href="otras-pruebas-de-hipotesis.html"><i class="fa fa-check"></i><b>7</b> Otras pruebas de Hipotesis</a></li>
 <li class="chapter" data-level="8" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html"><i class="fa fa-check"></i><b>8</b> Prueba de Bondad de Ajuste</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#visualización-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
+<li class="chapter" data-level="8.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#visualizaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>8.1</b> Visualización de datos</a></li>
 <li class="chapter" data-level="8.2" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#pruebas-formales-de-normalidad"><i class="fa fa-check"></i><b>8.2</b> Pruebas formales de normalidad</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="prueba-de-bondad-de-ajuste.html"><a href="prueba-de-bondad-de-ajuste.html#test-de-kolmogorov-smirnov-lilliefors-o-k-s-l-test"><i class="fa fa-check"></i><b>8.2.1</b> Test de Kolmogorov-Smirnov-Lilliefors o K-S-L test</a></li>
@@ -198,20 +198,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html"><i class="fa fa-check"></i><b>11</b> Regresion y correlacion lineal</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#generando-el-modelo-de-regresion"><i class="fa fa-check"></i><b>11.1</b> Generando el modelo de regresion</a></li>
-<li class="chapter" data-level="11.2" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#coeficientes-de-determinación-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
+<li class="chapter" data-level="11.2" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#coeficientes-de-determinaci%C3%B3n-y-correlacion"><i class="fa fa-check"></i><b>11.2</b> Coeficientes de determinación y correlacion</a></li>
 <li class="chapter" data-level="11.3" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#prueba-para-los-residuos"><i class="fa fa-check"></i><b>11.3</b> Prueba para los residuos</a></li>
 <li class="chapter" data-level="11.4" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalos-de-confianza-para-la-pendiente-y-el-intercepto"><i class="fa fa-check"></i><b>11.4</b> Intervalos de confianza para la pendiente y el intercepto</a></li>
 <li class="chapter" data-level="11.5" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#intervalo-de-confianza-y-prediccion"><i class="fa fa-check"></i><b>11.5</b> Intervalo de confianza y prediccion</a></li>
 <li class="chapter" data-level="11.6" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#constraste-de-hipotesis"><i class="fa fa-check"></i><b>11.6</b> Constraste de hipotesis</a></li>
 <li class="chapter" data-level="11.7" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#comprobacion-de-las-variabilidades-presentes"><i class="fa fa-check"></i><b>11.7</b> Comprobacion de las variabilidades presentes</a></li>
-<li class="chapter" data-level="11.8" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#cuidado-con-el-coeficiente-de-correlacion-y-de-determinación"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
+<li class="chapter" data-level="11.8" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#cuidado-con-el-coeficiente-de-correlacion-y-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>11.8</b> Cuidado con el coeficiente de correlacion y de determinación</a></li>
 <li class="chapter" data-level="11.9" data-path="regresion-y-correlacion-lineal.html"><a href="regresion-y-correlacion-lineal.html#ejemplo-2-correlaciones"><i class="fa fa-check"></i><b>11.9</b> EJEMPLO 2: CORRELACIONES</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="regresion-no-lineal-simple.html"><a href="regresion-no-lineal-simple.html"><i class="fa fa-check"></i><b>12</b> Regresion no lineal simple</a></li>
 <li class="chapter" data-level="13" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html"><i class="fa fa-check"></i><b>13</b> Regresion lineal multiple</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresion-lineal-multiple-rlm"><i class="fa fa-check"></i><b>13.1</b> Regresion Lineal Multiple (RLM)</a></li>
-<li class="chapter" data-level="13.2" data-path="regresion-lineal-multiple.html"><a href="regresion-lineal-multiple.html#regresión-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
+<li class="chapter" data-level="13.2" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#regresi%C3%B3n-no-lineal-multiple-rnlm"><i class="fa fa-check"></i><b>13.2</b> Regresión No Lineal Multiple (RNLM)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html"><i class="fa fa-check"></i>Anexos</a>
@@ -220,8 +220,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#i-parte-explicacion-de-los-datos"><i class="fa fa-check"></i>I Parte: Explicacion de los datos</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#ii-parte-analisis-inferencial-ic"><i class="fa fa-check"></i>II Parte: Analisis Inferencial (IC)</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iii-parte-analisis-inferencial-pruebas-de-hipotesis-de-una-y-dos-poblaciones"><i class="fa fa-check"></i>III Parte: Analisis Inferencial (pruebas de hipotesis de una y dos poblaciones)</a></li>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#iv-parte-analisis-inferencial-otras-pruebas-de-hipótesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#v-parte-analisis-de-regresión"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#iv-parte-analisis-inferencial-otras-pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i>IV Parte: Analisis Inferencial (Otras pruebas de hipótesis)</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#v-parte-analisis-de-regresi%C3%B3n"><i class="fa fa-check"></i>V Parte: : Analisis de regresión</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#fases-del-proyecto-y-detalles-de-entrega"><i class="fa fa-check"></i>Fases del proyecto y detalles de entrega</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#especificaciones-del-proyecto-ii-fase"><i class="fa fa-check"></i>Especificaciones del proyecto II Fase</a>
 <ul>
@@ -248,10 +248,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#solucion-iii-parcial-de-estadistica"><i class="fa fa-check"></i>Solucion III Parcial de Estadistica</a>
 <ul>
-<li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-0-regresión-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#modelo-0-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i>Modelo 0: Regresión lineal simple</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-1-regresion-lineal-multiple-con-todas-las-variables"><i class="fa fa-check"></i>Modelo 1: Regresion lineal multiple con todas las variables</a></li>
 <li class="chapter" data-level="" data-path="anexos.html"><a href="anexos.html#modelo-2-regresion-lineal-multiple-con-variables-tv-y-radio"><i class="fa fa-check"></i>Modelo 2: Regresion Lineal Multiple con Variables TV y Radio</a></li>
-<li class="chapter" data-level="13.2.1" data-path="anexos.html"><a href="anexos.html#modelo-3-regresion-no-lineal-multiple-con-interacción"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
+<li class="chapter" data-level="13.2.1" data-path="chapters/08-RegresionNoLinealSimple.html"><a href="#modelo-3-regresion-no-lineal-multiple-con-interacci%C3%B3n"><i class="fa fa-check"></i><b>13.2.1</b> Modelo 3: Regresion no Lineal Multiple (Con Interacción)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -263,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">“Elementos de Estadística Inferencial con R”</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -335,7 +335,7 @@ proceder a la modelación de datos mediante el <strong>Regresión No Lineal Simp
 <span id="cb220-3"><a href="regresion-no-lineal-simple.html#cb220-3" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## Warning in geom_point(shape = 21, width = 0.3, alpha = 0.4, fill = &quot;blue&quot;, :
 ## Ignoring unknown parameters: `width`</code></pre>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>De los datos anteriores, se considera que un buen modelo de RNLS para los datos, puede ser el <strong>Modelo Hiperbólico</strong>, es decir:</p>
 <table>
 <colgroup>
@@ -394,7 +394,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <span id="cb224-4"><a href="regresion-no-lineal-simple.html#cb224-4" tabindex="-1"></a><span class="co"># Graficamos dispersión y el modelo de ajuste en un mismo plot</span></span>
 <span id="cb224-5"><a href="regresion-no-lineal-simple.html#cb224-5" tabindex="-1"></a><span class="fu">plot</span>(X,Y, <span class="at">main =</span> <span class="st">&quot;Modelo de RNLS f(x)=-x/(0.4698*x + 9.4032)&quot;</span>, <span class="at">col =</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb224-6"><a href="regresion-no-lineal-simple.html#cb224-6" tabindex="-1"></a><span class="fu">lines</span>(xo, yo, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>Otra opción para el gráfico es usar ggplot2, como se muestra en el siguente código:</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="regresion-no-lineal-simple.html#cb225-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(X, Y, xo, yo) <span class="co"># se juntan las columnas</span></span></code></pre></div>
 <pre><code>## Warning in cbind(X, Y, xo, yo): number of rows of result is not a multiple of
@@ -407,7 +407,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <span id="cb229-3"><a href="regresion-no-lineal-simple.html#cb229-3" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data.df, <span class="fu">aes</span>(X, Y, <span class="at">xmin =</span> <span class="fl">17.7</span>, <span class="at">xmax =</span> <span class="fl">20.3</span>, <span class="at">ymin =</span> <span class="sc">-</span><span class="dv">100</span>, <span class="at">ymax =</span> <span class="dv">500</span> ))</span>
 <span id="cb229-4"><a href="regresion-no-lineal-simple.html#cb229-4" tabindex="-1"></a>g3 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> xo, <span class="at">y =</span> yo), <span class="at">colour =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb229-5"><a href="regresion-no-lineal-simple.html#cb229-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;Modelo RNLS&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>Tome en cuenta que los vectores <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son más pequeños que los vectores <span class="math inline">\(Xo\)</span> e <span class="math inline">\(Yo\)</span> que fueron creados solamente con fines estéticos de la graficación, entonces, R se encarga de equilibrar en dimensión los vectores generando secuencias repedidas de los vectores <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> hasta completar las filas, pero, sin alterar los pares ordenados originales.</p>
 <p>Seguidamente a manera de ilustración, se muestran las tablas:</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="regresion-no-lineal-simple.html#cb230-1" tabindex="-1"></a><span class="fu">head</span>(datos.df)</span></code></pre></div>
@@ -480,7 +480,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <span id="cb246-3"><a href="regresion-no-lineal-simple.html#cb246-3" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(datanlm.df, <span class="fu">aes</span>(X, Y, <span class="at">xmin =</span> <span class="fl">17.7</span>, <span class="at">xmax =</span> <span class="fl">20.01</span>, <span class="at">ymin =</span> <span class="sc">-</span><span class="dv">100</span>, <span class="at">ymax =</span> <span class="dv">500</span> ))</span>
 <span id="cb246-4"><a href="regresion-no-lineal-simple.html#cb246-4" tabindex="-1"></a></span>
 <span id="cb246-5"><a href="regresion-no-lineal-simple.html#cb246-5" tabindex="-1"></a>g3 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> xo, <span class="at">y =</span> yo), <span class="at">colour =</span> <span class="st">&quot;darkblue&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p><strong>Ejemplo 2</strong>:</p>
 <p>Considere los datos de la siguiente tabla:</p>
 <table>
@@ -521,7 +521,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="regresion-no-lineal-simple.html#cb249-1" tabindex="-1"></a><span class="co"># Se crea un gráfico de dipsersión para ver de manera exporatoria los datos</span></span>
 <span id="cb249-2"><a href="regresion-no-lineal-simple.html#cb249-2" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(datos3.df, <span class="fu">aes</span>(X, Y))</span>
 <span id="cb249-3"><a href="regresion-no-lineal-simple.html#cb249-3" tabindex="-1"></a>g1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>De los datos anteriores, se considera que un buen modelo de regresión No lineal para los datos, puede ser el <strong>Modelo Potencial</strong>, es decir:
 | Modelo | Transformación |
 | <span class="math inline">\(y = a \cdot x^\beta\)</span> | Aplicando logaritmo natural: <br> <span class="math inline">\(ln(y) = ln(\alpha) + \beta \cdot ln(x)\)</span> |
@@ -571,7 +571,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <span id="cb256-4"><a href="regresion-no-lineal-simple.html#cb256-4" tabindex="-1"></a><span class="co"># Graficamos dispersión y el modelo de ajuste en un mismo plot</span></span>
 <span id="cb256-5"><a href="regresion-no-lineal-simple.html#cb256-5" tabindex="-1"></a><span class="fu">plot</span>(X,Y, <span class="at">main =</span> <span class="st">&quot;Modelo de RNLS f(x)=3 + x^2.024&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb256-6"><a href="regresion-no-lineal-simple.html#cb256-6" tabindex="-1"></a><span class="fu">lines</span>(xo, yo, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>Otra opción para el gráfico es usar ggplot2, como se muestra en el siguente código:</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="regresion-no-lineal-simple.html#cb257-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(X, Y, xo, yo) <span class="co"># se juntan las columnas</span></span></code></pre></div>
 <pre><code>## Warning in cbind(X, Y, xo, yo): number of rows of result is not a multiple of
@@ -585,7 +585,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <span id="cb261-4"><a href="regresion-no-lineal-simple.html#cb261-4" tabindex="-1"></a>))</span>
 <span id="cb261-5"><a href="regresion-no-lineal-simple.html#cb261-5" tabindex="-1"></a>g3 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> xo, <span class="at">y =</span> yo), <span class="at">colour =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb261-6"><a href="regresion-no-lineal-simple.html#cb261-6" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;Modelo RNLS&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Tome en cuenta que los vectores <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son más pequeños que los vectores <span class="math inline">\(Xo\)</span> y <span class="math inline">\(Yo\)</span> que fueron creados solamente con fines estéticos de la graficación, entonces, R se encarga de equilibrar en dimensión los vectores generando secuencias repqedidas de los vectores más <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> hasta completar las filas, pero, sin alterar los pares ordenados originales.</p>
 <p>Seguidamente a manera de ilustración, se muestran las tablas:</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="regresion-no-lineal-simple.html#cb262-1" tabindex="-1"></a><span class="fu">head</span>(datos.df)</span></code></pre></div>
@@ -651,7 +651,7 @@ Los siguiente códigos ayudarán a mostrar gráficamente el modelo obtenido con 
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="regresion-no-lineal-simple.html#cb276-1" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(datanlm2.df, <span class="fu">aes</span>(X, Y, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">7</span>, <span class="at">ymin =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">ymax =</span><span class="dv">50</span> ))</span>
 <span id="cb276-2"><a href="regresion-no-lineal-simple.html#cb276-2" tabindex="-1"></a>g3 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">stroke =</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> xo, <span class="at">y =</span> yo), <span class="at">colour =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb276-3"><a href="regresion-no-lineal-simple.html#cb276-3" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;Modelo RNLS&quot;</span>)</span></code></pre></div>
-<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p><img src="Compendio-Estad%C3%ADstica_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>A manera de práctica, se comparten los siguientes ejercicios:</p>
 <p><strong>Ejercicio 49</strong></p>
 <p>Considere los datos en la siguiente tabla:</p>
